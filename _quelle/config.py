@@ -57,6 +57,20 @@ PREISE = {
     "apherese_reset": None,
 }
 
+# Infusionsmenü: (erste Infusion, jede weitere). None = Platzhalter "… €".
+# Bei NAD+ zählt nur der erste Wert (z. B. "ab 249 €"), sonst gilt "nad_infusion" oben.
+INFUSIONSPREISE = {
+    "winter": (None, None), "winter_plus": (None, None),
+    "myers": (None, None),
+    "recharge": (None, None), "recharge_plus": (None, None),
+    "sport": (None, None), "sport_plus": (None, None),
+    "night_out": (None, None),
+    "longevity_basis": (None, None), "longevity_plus": (None, None), "longevity_premium": (None, None),
+    "glow": (None, None), "glow_plus": (None, None),
+    "mito": (None, None),
+    "nad": (None, None),
+}
+
 # ------------------------------------------------------------ Weiterleitungen
 # (alte Adresse, neue Adresse) – als 301 in .htaccess und als Weiterleitungsseite
 WEITERLEITUNGEN = [
