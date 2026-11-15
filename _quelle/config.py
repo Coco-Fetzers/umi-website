@@ -36,25 +36,25 @@ GUTSCHEIN_SHOP = None
 
 # ------------------------------------------------------------ Preise
 # None = Platzhalter "ab … €" auf der Website. Werte als Text eintragen,
-# z. B. "449 €" oder "ca. 1.900 €". Vorschläge stehen im Kommentar.
+# z. B. "449 €" oder "ca. 1.900 €".
 PREISE = {
     # UMI Medizin
-    "apherese_programm": None,   # Vorschlag 5.300 €
-    "apherese_sitzung": None,    # Vorschlag ca. 2.258 € je Sitzung INUSpherese
-    "help_sitzung": None,        # nach Kostenvoranschlag
-    "energie_check": None,       # Vorschlag 690 €
-    "kur_hyperthermie": None,    # Vorschlag ca. 1.900 € (6 Sitzungen)
-    "kur_oxyvenierung": None,    # Vorschlag ca. 480 € (12 Sitzungen)
-    "kur_farblaser": None,       # Vorschlag ca. 540 € (12 Sitzungen)
+    "apherese_programm": None,
+    "apherese_sitzung": None,
+    "help_sitzung": None,
+    "energie_check": None,
+    "kur_hyperthermie": None,
+    "kur_oxyvenierung": None,
+    "kur_farblaser": None,
     "hyperthermie_sitzung": None,
     "erstgespraech": None,
     # UMI Longevity
-    "longevity_check": None,     # Vorschlag 449 €
-    "nad_infusion": None,        # Vorschlag ab ca. 199 € je Infusion
-    "infusion_erste": None,      # Vorschlag ab 119 €
-    "infusion_weitere": None,    # Vorschlag ab ca. 59 bis 69 €
-    "supplement_analyse": None,  # Vorschlag 299 €
-    "apherese_reset": None,      # Vorschlag ab ca. 5.400 €
+    "longevity_check": None,
+    "nad_infusion": None,
+    "infusion_erste": None,
+    "infusion_weitere": None,
+    "supplement_analyse": None,
+    "apherese_reset": None,
 }
 
 # ------------------------------------------------------------ Weiterleitungen
