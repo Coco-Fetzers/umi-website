@@ -334,7 +334,6 @@ TEAM = [
         ("Bini Göller", "Praxismanagement, Dipl.-Betriebswirtin (FH)", None,
          ["2003 Dipl.-Betriebswirtin (FH), Reutlingen", "Vertrieb und Controlling bei Bosch und der Daimler AG",
           "2018 Sekretariatsleitung, Institut für Psychoanalyse der DPG Stuttgart"]),
-        ("Marcus Kraft", "Finanzen und Controlling, Dipl.-Wirtschaftsingenieur (FH)", None, []),
     ]),
 ]
 
