@@ -316,9 +316,6 @@ TEAM = [
          ["2011 Bachelor Medizin, Bangladesch", "2013 Assistenzärztin Notfall und Innere Medizin, Kathmandu, Nepal",
           "2017 Assistenzärztin, AMEOS Gruppe Halberstadt", "2019 Approbation in Deutschland",
           "2022 Assistenzärztin Innere Medizin, RKH Bietigheim-Bissingen", "2023 Assistenzärztin, Filderklinik Stuttgart"]),
-        ("Dr. med. Karin Berner", "Fachärztin für Allgemeinmedizin, Naturheilverfahren, Akupunktur, Hämostaseologie", None,
-         ["1988 Studium der Medizin, Universität des Saarlandes", "1997 Approbation", "1998 Promotion",
-          "1999 Fachärztin für Allgemeinmedizin", "2009 Akupunktur", "2015 Hämostaseologie", "2018 Naturheilverfahren"]),
     ]),
     ("Naturheilkunde", [
         ("Aurelia Bürgler", "Heilpraktikerin, Entspannungstherapeutin", "team-aurelia-buergler.jpg",
