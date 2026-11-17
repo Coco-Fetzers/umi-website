@@ -110,31 +110,64 @@ INFUSIONEN = [
 ]
 
 
+MIT_GESPRAECH = {"recharge", "recharge_plus", "nad"}
+
+
 def infusionen():
     def one(v):
         return v.replace(" €", "&nbsp;€") if v else '<span class="preis-offen" title="Preis folgt nach Freigabe">…&nbsp;€</span>'
+
     def name(n):
         return "<b>" + (a("longevity/nad-infusion/", n) if n == "NAD+" else n) + "</b>"
-    rows = "".join(f'<tr><td>{name(n)}</td><td style="font-weight:400;white-space:normal">{i}</td><td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][0])}</td><td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>' for n, i, k in INFUSIONEN)
+
+    def table(items):
+        rows = "".join(f'<tr><td>{name(n)}</td><td style="font-weight:400;white-space:normal">{i}</td>'
+                       f'<td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][0])}</td>'
+                       f'<td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>'
+                       for n, i, k in items)
+        return f'<div class="table-wrap"><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table></div>'
+
+    direkt = [x for x in INFUSIONEN if x[2] not in MIT_GESPRAECH]
+    gespraech = [x for x in INFUSIONEN if x[2] in MIT_GESPRAECH]
     fh, fld = faq([
+        ("Woran erkenne ich, ob ich vorher ein Arztgespräch brauche?", "An der Gruppe im Menü. Die meisten Infusionen kannst du direkt buchen. Bei Recharge, Recharge Plus und NAD+ führt die Ärztin vor der ersten Infusion ein Gespräch mit dir, dafür planen wir beim ersten Termin mehr Zeit ein."),
+        ("Muss ich vorher ein Formular ausfüllen?", "Nein. Komm zur ersten Infusion einfach 10 Minuten früher. Den kurzen Gesundheitsbogen füllst du bei uns aus."),
         ("Was bedeutet „Plus“?", "Die Plus-Varianten haben eine erweiterte Rezeptur mit aufwendigeren Präparaten. Deshalb prüft die Ärztin vor der ersten Infusion Rezeptur und Dosierung."),
-        ("Muss ich vorher ein Formular ausfüllen?", "Nein. Komm zur ersten Infusion einfach 10 Minuten früher. Den kurzen Gesundheitsbogen füllst du bei uns aus, danach klärt dich die Ärztin oder unsere Heilpraktikerin persönlich auf."),
-        ("Brauche ich vorher einen eigenen Termin für ein Gespräch?", "Meist nicht. Bei Recharge und NAD+ führt die Ärztin vor der ersten Infusion ein ausführlicheres Gespräch, das planen wir bei der Buchung mit ein. Ein ausführliches Gespräch kannst du dir bei jeder Infusion wünschen."),
-        ("Warum ist die erste Infusion teurer?", "In der ersten Infusion steckt die ärztliche Aufklärung, bei manchen Infusionen auch die Prüfung von Rezeptur und Dosierung oder ein Gespräch. Ab der zweiten Infusion fällt das weg. Das ist kein Rabatt."),
+        ("Warum ist die erste Infusion teurer?", "In der ersten Infusion steckt die ärztliche Aufklärung, bei manchen Infusionen auch die Prüfung der Rezeptur oder das Arztgespräch. Ab der zweiten Infusion fällt das weg. Das ist kein Rabatt."),
+        ("Kann ich mir auch bei den direkt buchbaren Infusionen ein ausführliches Gespräch wünschen?", "Ja, jederzeit. Sag es uns bei der Buchung oder kreuze es im Gesundheitsbogen an."),
     ])
     body = f"""{hero('Auftanken · UMI Longevity', 'Infusionsmenü in Stuttgart',
-    '15 Infusionen mit klaren Inhaltsstoffen, von Winter bis NAD+. Ohne Formular vorab: Du kommst zur ersten Infusion 10 Minuten früher, füllst bei uns einen kurzen Gesundheitsbogen aus, und die Ärztin klärt dich vor der Infusion persönlich auf.',
-    book('Infusion buchen') + a('longevity/nad-infusion/', 'NAD+', 'btn ghost'), 'lon',
+    '15 Infusionen mit klaren Inhaltsstoffen, in zwei Gruppen: Die meisten kannst du direkt buchen, ohne Formular vorab. Bei drei Infusionen sprichst du vor der ersten Infusion mit unserer Ärztin.',
+    book('Infusion buchen') + a('#mit-gespraech', 'Infusionen mit Arztgespräch', 'btn ghost'), 'lon',
     f'<p class="price-line"><b>Erste Infusion {price("infusion_erste")}, jede weitere {price("infusion_weitere")}</b> · nach GOÄ</p>')}
-<section class="bg-white"><div class="wrap"><div class="split wide">
-<div><div class="table-wrap"><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table></div><p class="small muted" style="margin-top:10px">Die erste Infusion enthält die ärztliche Aufklärung, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Eine Kur kostet die Summe der Einzelinfusionen. Alle Preise sind voraussichtliche Kosten nach GOÄ und können je nach Rezeptur abweichen.</p></div>
-<div><div class="box" style="margin-bottom:16px"><h3>So läuft deine erste Infusion</h3>{schritte([
+<section class="tight"><div class="wrap"><div class="grid g2">
+<a class="card" href="#direkt"><span class="tag">12 Infusionen</span><h3>Direkt buchen</h3><p>Online oder am Telefon buchen, 10 Minuten früher kommen, Gesundheitsbogen in der Praxis ausfüllen. Kurze Aufklärung vor Ort, dann die Infusion.</p><span class="more">Zu den Infusionen →</span></a>
+<a class="card" href="#mit-gespraech"><span class="tag">3 Infusionen</span><h3>Mit Arztgespräch vorab</h3><p>Recharge, Recharge Plus und NAD+. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Dafür planen wir beim ersten Termin mehr Zeit ein.</p><span class="more">Zu den Infusionen →</span></a>
+</div></div></section>
+
+<section class="bg-white" id="direkt"><div class="wrap"><div class="split wide">
+<div><span class="eyebrow">Gruppe 1</span><h2>Direkt buchen</h2>{table(direkt)}</div>
+<div class="box"><h3>So läuft es ab</h3>{schritte([
     ('Buchen', ' online oder am Telefon, ohne Formular.'),
     ('10 Minuten früher kommen', ' und den kurzen Gesundheitsbogen ausfüllen.'),
-    ('Aufklärung', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch und klärt dich auf.'),
+    ('Kurze Aufklärung', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch. Bei Plus-Infusionen prüft die Ärztin dabei Rezeptur und Dosierung.'),
     ('Infusion', ' in Ruhe, unter Aufsicht. Ab dem zweiten Mal reicht ein kurzer Check am Empfang.')])}</div>
-<div class="box" style="margin-bottom:16px"><h3>Warum ärztlich?</h3><p>Das Bundesinstitut für Arzneimittel hat 2026 vor unkontrollierten Infusionen in Drip-Bars gewarnt. Bei uns gibt es jede Infusion nur nach ärztlicher Aufklärung, mit Prüfung von Gegenanzeigen und unter Aufsicht. Wir versprechen keine Wirkung.</p></div>
-{kosten_box(True)}</div></div></div></section>
+</div></div></section>
+
+<section id="mit-gespraech"><div class="wrap"><div class="split wide">
+<div><span class="eyebrow">Gruppe 2</span><h2>Mit Arztgespräch vorab</h2>{table(gespraech)}
+<p class="small muted" style="margin-top:10px">Bei diesen Infusionen ist ein Gespräch mit der Ärztin vor der ersten Infusion Pflicht, zum Beispiel weil die Infusion lange dauert oder die Beschwerden eine ärztliche Einschätzung brauchen.</p></div>
+<div class="box"><h3>So läuft es ab</h3>{schritte([
+    ('Buchen', ' online oder am Telefon. Wir planen beim ersten Termin mehr Zeit für das Gespräch ein.'),
+    ('10 Minuten früher kommen', ' und den Gesundheitsbogen ausfüllen.'),
+    ('Arztgespräch', ' mit der Ärztin: Vorgeschichte, Medikamente, ob die Infusion zu dir passt.'),
+    ('Infusion', ' im Anschluss, wenn nichts dagegen spricht. Ab dem zweiten Mal ohne Gespräch.')])}</div>
+</div></div></section>
+
+<section class="bg-white"><div class="wrap"><div class="grid g2">
+<div class="box"><h3>Warum ärztlich?</h3><p>Das Bundesinstitut für Arzneimittel hat 2026 vor unkontrollierten Infusionen in Drip-Bars gewarnt. Bei uns gibt es jede Infusion nur nach ärztlicher Aufklärung, mit Prüfung von Gegenanzeigen und unter Aufsicht. Wir versprechen keine Wirkung.</p></div>
+{kosten_box(True, '<p>Die erste Infusion enthält die Aufklärung oder das Arztgespräch, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Eine Kur kostet die Summe der Einzelinfusionen.</p>')}
+</div></div></section>
 {team_mini(['kafle', 'buergler'], True)}{fh}{gutschein_hinweis(True)}"""
     return body, [fld]
 
