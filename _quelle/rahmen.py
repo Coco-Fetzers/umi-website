@@ -160,7 +160,7 @@ def footer():
 <p class="small">Telefon {tel()}<br>E-Mail <a href="mailto:{C.MAIL}">{C.MAIL}</a></p></div>
 <div><h4>UMI Medizin</h4><ul>
 <li>{a('medizin/', 'Übersicht')}</li><li>{a('medizin/#schwerpunkte', 'Schwerpunkte')}</li>
-<li>{a('medizin/apherese-programm/', 'Apherese-Programm')}</li><li>{a('energie-check/', 'Energie-Check')}</li>
+<li>{a('medizin/apherese-programm/', 'Apherese-Programm')}</li><li>{a('medizin/help-apherese/', 'H.E.L.P.-Apherese')}</li><li>{a('energie-check/', 'Energie-Check')}</li>
 <li>{a('ganzkoerperhyperthermie/', 'Ganzkörperhyperthermie')}</li><li>{a('labordiagnostik/', 'Diagnostik')}</li></ul></div>
 <div><h4>UMI Longevity</h4><ul>
 <li>{a('longevity/', 'Übersicht')}</li><li>{a('longevity/check/', 'Longevity-Check')}</li>

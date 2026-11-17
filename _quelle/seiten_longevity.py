@@ -32,7 +32,7 @@ def longevity():
 <div><span class="eyebrow">Ergänzen</span><h2>Ernährung und Mikronährstoffe</h2>
 {card('longevity/supplement-analyse/', 'Analyse', 'Supplement-Analyse', 'Was dir fehlt, was du schon nimmst und was davon sinnvoll ist. Mit schriftlichem Plan und Kontrolle nach 3 Monaten.', price('supplement_analyse'))}</div>
 <div id="apherese"><span class="eyebrow">Premium</span><h2>Apherese</h2>
-{card('longevity/apherese-reset/', 'Premium', 'Apherese Reset', 'Zwei Sitzungen INUSpherese oder H.E.L.P., Labor vorher und nachher, Eluat-Analyse und Auswertungsgespräch.', price('apherese_reset'))}</div>
+{card('longevity/apherese-reset/', 'Premium', 'Apherese Reset', 'Zwei Sitzungen INUSpherese, Labor vorher und nachher, Eluat-Analyse und Auswertungsgespräch.', price('apherese_reset'))}</div>
 </div></div></section>
 <section id="ausgleichen"><div class="wrap"><div class="grid g2">
 <div class="box"><span class="eyebrow">Ausgleichen · bald</span><h3>Stress, Schlaf, Hormone</h3><p>Stress-Messung mit HRV, Entspannungstraining und Hormonberatung für Frauen. Bis die eigenen Angebote stehen, frag gern im Longevity-Gespräch danach.</p></div>
@@ -210,9 +210,9 @@ def reset():
     return paket(
         eyebrow="Premium · UMI Longevity", line="lon", du=True,
         h1="Apherese Reset in Stuttgart",
-        lead="Die Apherese filtert das Blutplasma außerhalb des Körpers. Im Apherese Reset verbinden wir zwei Sitzungen INUSpherese oder H.E.L.P. mit Labor vorher und nachher, Eluat-Analyse und einem Auswertungsgespräch. Für Gesunde, ärztlich begleitet.",
+        lead="Die Apherese filtert das Blutplasma außerhalb des Körpers. Im Apherese Reset verbinden wir zwei Sitzungen INUSpherese mit Labor vorher und nachher, Eluat-Analyse und einem Auswertungsgespräch. Für Gesunde, ärztlich begleitet.",
         preis_html=price("apherese_reset"),
-        enthalten=["Vorgespräch mit der Ärztin", "Labor vorher und nachher (Entzündung, Blutfette, Schadstoffe)", "2 Sitzungen INUSpherese oder H.E.L.P.-Apherese",
+        enthalten=["Vorgespräch mit der Ärztin", "Labor vorher und nachher (Entzündung, Blutfette, Schadstoffe)", "2 Sitzungen INUSpherese",
                    "Eluat-Analyse", "Auswertungsgespräch"],
         ablauf=[("Vorgespräch", " Passt die Apherese zu dir? Aufklärung über Ablauf und Risiken."), ("Labor", " Ausgangswerte."),
                 ("Zwei Sitzungen", " je etwa zwei bis drei Stunden, innerhalb von fünf Tagen, mit mindestens einem Tag Pause."), ("Auswertung", " Eluat-Analyse und Labor danach, gemeinsam besprochen.")],
@@ -221,7 +221,6 @@ def reset():
         team=["kafle", "gusic", "gentsch"],
         intro_extra=f"""<section class="tight"><div class="wrap"><div class="grid g2">
 <div class="box"><h3>INUSpherese einzeln</h3><p>Doppelmembran-Filtration des Plasmas, ca. 2 bis 3 Stunden, mit Vorgespräch. Voraussichtlich {price('apherese_sitzung', '')} je Sitzung.</p></div>
-<div class="box"><h3>H.E.L.P.-Apherese einzeln</h3><p>Senkt gezielt LDL-Cholesterin, Lp(a) und Fibrinogen. Mit Vorgespräch, Preis nach Kostenvoranschlag.</p></div>
 </div></div></section>""",
         faqs=[("Warum kostet der Reset nicht mehr als das Apherese-Programm?", "Es ist dieselbe Behandlung. Der Unterschied liegt in Begleitdiagnostik und Ziel, nicht in der Apherese selbst."),
               ("Zahlt die Versicherung?", "Bei Anwendung ohne medizinischen Anlass in der Regel nicht."),
@@ -271,7 +270,7 @@ PAGES = [
          "Supplement-Analyse bei UMI Stuttgart: Mikronährstoffstatus messen, eigene Präparate prüfen, schriftlicher Plan und Kontrolle nach 3 Monaten.",
          supplement, line="lon", nav="lon", crumbs=LON + [(None, "Supplement-Analyse")]),
     Page("longevity/apherese-reset", "Apherese Reset: Blutwäsche für Gesunde · UMI",
-         "Apherese Reset in Stuttgart: zwei Sitzungen INUSpherese oder H.E.L.P., Labor vorher und nachher, Eluat-Analyse, Auswertung. Ärztlich begleitet.",
+         "Apherese Reset in Stuttgart: zwei Sitzungen INUSpherese, Labor vorher und nachher, Eluat-Analyse, Auswertung. Ärztlich begleitet.",
          reset, line="lon", nav="lon", crumbs=LON + [(None, "Apherese Reset")]),
     Page("longevity/preise", "Preise UMI Longevity Stuttgart",
          "Alle Preise von UMI Longevity auf einen Blick: Longevity-Check, NAD+, Infusionen, Kuren, Apherese Reset. Voraussichtliche Kosten nach GOÄ.",

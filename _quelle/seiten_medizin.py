@@ -22,7 +22,7 @@ def medizin():
     sp += ('<div class="card"><span class="tag">Weitere Schwerpunkte</span><h3>Schmerz, Frauengesundheit, Kinder</h3>'
            '<p>Mit unserer Heilpraktikerin und unserer Ärztin. Buchbar als Erstgespräch, Seiten folgen.</p></div>')
     pk = "".join(a(t, f'<span class="tag">Paket</span><h3>{n}</h3><p>{d}</p><span class="price">{p}</span><span class="more">Zum Paket →</span>', "card") for t, n, d, p in [
-        ("medizin/apherese-programm/", "Apherese-Programm", "Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese oder H.E.L.P., Eluat-Analyse und Nachgespräch.", price("apherese_programm")),
+        ("medizin/apherese-programm/", "Apherese-Programm", "Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch.", price("apherese_programm")),
         ("energie-check/", "Energie-Check", "Gründliche Abklärung bei anhaltender Erschöpfung, mit Befundgespräch und Therapieplan.", price("energie_check")),
         ("medizin/regenerationskuren/", "Regenerationskuren", "Ganzkörperhyperthermie, Oxyvenierung oder Farblaser als Kur mit festem Ablauf.", price("kur_oxyvenierung")),
     ])
@@ -36,7 +36,7 @@ def medizin():
 <section><div class="wrap"><span class="eyebrow">Pakete</span><h2>Klare Abläufe, voraussichtliche Kosten vorab</h2>
 <div class="grid g3" style="margin-top:28px">{pk}</div></div></section>
 <section class="bg-white"><div class="wrap"><div class="grid g3">
-{a('inuspherese-zentrum-stuttgart/', '<span class="tag">Apherese</span><h3>INUSpherese und H.E.L.P.</h3><p>Blutplasma-Filtration im einzigen INUSpherese-Zentrum in Stuttgart.</p><span class="more">Zur Apherese →</span>', 'card')}
+{a('inuspherese-zentrum-stuttgart/', '<span class="tag">Apherese</span><h3>INUSpherese</h3><p>Blutplasma-Filtration im einzigen INUSpherese-Zentrum in Stuttgart.</p><span class="more">Zur Apherese →</span>', 'card')}
 {a('labordiagnostik/', '<span class="tag">Diagnostik</span><h3>Genau hinschauen</h3><p>Immunstatus, Entzündung, Zellenergie, Mikronährstoffe, Umweltbelastungen und mehr.</p><span class="more">Zur Diagnostik →</span>', 'card')}
 {a('ganzkoerperhyperthermie/', '<span class="tag">Regeneration</span><h3>Ganzkörperhyperthermie</h3><p>Kontrollierte Erwärmung des Körpers, ärztlich überwacht.</p><span class="more">Zur Hyperthermie →</span>', 'card')}
 </div>
@@ -160,7 +160,7 @@ FRAGEN = [
 
 VERFAHREN = [
     ("INUSpherese®", "Doppelfiltration des Plasmas, hält große Eiweiße, Fette und daran Gebundenes zurück", "ja"),
-    ("H.E.L.P.-Apherese", "fällt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen mit Heparin aus dem Plasma", "ja"),
+    ("H.E.L.P.-Apherese", "fällt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen mit Heparin aus dem Plasma", "ja, für bestimmte schwere Fettstoffwechselstörungen; darüber hinaus Off-Label-Anwendung, nur nach ärztlicher Prüfung · {HELP_LINK}"),
     ("Lipidapherese", "Sammelbegriff für Verfahren, die vor allem Blutfette senken", "über H.E.L.P."),
     ("Immunadsorption", "bindet gezielt Antikörper an eine Säule", "nein"),
     ("Plasmaaustausch", "Plasma wird verworfen und durch eine Lösung ersetzt", "nein"),
@@ -185,7 +185,7 @@ def apherese():
 <p><b>Woher:</b> {w}</p><p><b>Was man weiß:</b> {k}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
     t2 = "".join(f"""<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{s}</p><p>{m}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
     fr = "".join(f'<li>{q}</li>' for q in FRAGEN)
-    vt = "".join(f'<tr><td><b>{n}</b></td><td style="white-space:normal;font-weight:400">{k}</td><td>{u}</td></tr>' for n, k, u in VERFAHREN)
+    vt = "".join(f'<tr><td><b>{n}</b></td><td style="white-space:normal;font-weight:400">{k}</td><td style="white-space:normal">{u.replace('{HELP_LINK}', a('medizin/help-apherese/', 'Mehr zur H.E.L.P.-Apherese'))}</td></tr>' for n, k, u in VERFAHREN)
     anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
 
     body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese®-Zentrum Stuttgart<span class="h1-sub">Blutplasma filtern, Belastungsstoffe reduzieren</span>',
@@ -274,15 +274,65 @@ def apherese():
     return body, [fld, proc]
 
 
+def help_apherese():
+    fh, fld = faq([
+        ("Was ist der Unterschied zur INUSpherese®?", "Beide Verfahren behandeln das Blutplasma außerhalb des Körpers. Die INUSpherese® filtert nach Molekülgröße. Bei der H.E.L.P.-Apherese werden bestimmte Bestandteile mit Heparin und einem sauren Puffer ausgefällt und dann abgefiltert. Sie ist vor allem auf Blutfette und Fibrinogen ausgerichtet."),
+        ("Was bedeutet „außerhalb der Zulassung“?", "Ein Verfahren wird für einen Zweck eingesetzt, für den es nicht ausdrücklich zugelassen ist. Das ist in der Medizin erlaubt, setzt aber eine sorgfältige ärztliche Prüfung im Einzelfall und eine ausführliche Aufklärung voraus. Darüber sprechen wir offen mit Ihnen."),
+        ("Wie lange dauert eine Behandlung?", "Etwa zwei bis drei Stunden. Sie liegen bequem, unser Team überwacht Kreislauf und Werte die ganze Zeit."),
+        ("Ist die Behandlung gut verträglich?", "Wie bei jeder Behandlung am Blutkreislauf kann es zu Nebenwirkungen kommen, zum Beispiel Kreislaufschwäche oder Blutergüsse. Weil Heparin eingesetzt wird, prüfen wir vorher auch die Blutgerinnung. Über alle Risiken klären wir Sie vorher ausführlich auf."),
+        ("Was kostet die H.E.L.P.-Apherese?", f"Eine Behandlung voraussichtlich {price('help_sitzung', 'ab')}. Die genauen Kosten stehen in Ihrem schriftlichen Kostenvoranschlag. Bei Anwendung außerhalb der Zulassung erstatten Versicherungen in der Regel nicht."),
+    ])
+    proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "H.E.L.P.-Apherese",
+            "alternateName": "Heparin-induzierte extrakorporale LDL-Präzipitation",
+            "description": "Apherese-Verfahren zur Senkung von LDL-Cholesterin, Lipoprotein(a) und Fibrinogen bei UMI Stuttgart."}
+    werte = [("LDL-Cholesterin", "das „schlechte“ Cholesterin"), ("Lipoprotein(a)", "ein vor allem erblich bedingtes Blutfett"),
+             ("Fibrinogen", "ein Gerinnungseiweiß"), ("Triglyceride", "Neutralfette im Blut"), ("CRP", "ein Entzündungswert")]
+    wk = "".join(f'<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{d}</p></div>' for i, (n, d) in enumerate(werte, 1))
+    body = f"""{hero('Apherese · UMI Medizin', 'H.E.L.P.-Apherese in Stuttgart<span class="h1-sub">Blutfette und Fibrinogen gezielt senken</span>',
+    'Die H.E.L.P.-Apherese ist ein etabliertes Apherese-Verfahren. Ihr Blutplasma wird außerhalb des Körpers behandelt: Bestimmte Blutfette und Eiweiße werden ausgefällt und abgefiltert, danach bekommen Sie Ihr Plasma zurück.',
+    book('Arztgespräch vereinbaren') + a('inuspherese-zentrum-stuttgart/#verfahren', 'Vergleich der Verfahren', 'btn ghost'), 'med',
+    '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Nur nach ärztlicher Prüfung</li></ul>')}
+
+<section class="bg-white" id="verfahren"><div class="wrap"><div class="split">
+<div><span class="eyebrow">So funktioniert es</span><h2>Ausfällen statt nur filtern</h2>
+<p>Das Blut wird zunächst in Blutzellen und Plasma getrennt. Dem Plasma werden Heparin und ein saurer Puffer zugesetzt. Dadurch ändert sich der pH-Wert, und bestimmte Bestandteile wie LDL-Cholesterin und Fibrinogen fallen aus. Ein Filter hält sie zurück.</p>
+<p>Anschließend wird das Plasma wieder neutralisiert, mit Ihren Blutzellen zusammengeführt und über die andere Armvene zurückgegeben.</p></div>
+<div class="svg-schema">{schema_svg()}</div></div></div></section>
+
+<section id="werte"><div class="wrap">
+<span class="eyebrow">Was gesenkt werden kann</span><h2>Diese Werte stehen im Mittelpunkt</h2>
+<div class="stoffe">{wk}</div>
+<div class="grid g2" style="margin-top:28px">
+<div class="box"><h3>Zugelassene Anwendung</h3><p>Die H.E.L.P.-Apherese ist für bestimmte schwere Fettstoffwechselstörungen zugelassen, zum Beispiel wenn LDL-Cholesterin oder Lipoprotein(a) trotz Behandlung zu hoch bleiben.</p></div>
+<div class="note" style="font-size:17px"><b>Anwendung im Einzelfall:</b> Darüber hinaus setzen wir das Verfahren im Einzelfall außerhalb der Zulassung ein. Ob das für Sie infrage kommt und welche Risiken es gibt, besprechen wir ausführlich im Arztgespräch.</div>
+</div></div></section>
+
+<section class="bg-white" id="ablauf"><div class="wrap"><div class="split">
+<div><h2>So läuft es ab</h2>{schritte([
+    ('Arztgespräch', ' Vorgeschichte, Laborwerte, Gegenanzeigen. Wir prüfen, ob die H.E.L.P.-Apherese für Sie infrage kommt, und klären Sie ausführlich auf.'),
+    ('Labor vorher', ' Blutfette, Fibrinogen, Entzündungswerte und Gerinnung.'),
+    ('Behandlung', ' Im Liegen, etwa 2 bis 3 Stunden, mit ständiger Überwachung durch unser Pflegeteam.'),
+    ('Auswertung', ' Werte vorher und nachher im Vergleich, und die Frage, ob weitere Behandlungen sinnvoll sind.'),
+])}</div>
+<div class="box"><h3>Kosten</h3><p>Eine Behandlung voraussichtlich <b>{price('help_sitzung', 'ab')}</b>, nach GOÄ. Vor Beginn erhalten Sie einen schriftlichen Kostenvoranschlag.</p>
+<p>Ob Ihre private Krankenversicherung oder Beihilfe erstattet, hängt von Ihrem Tarif und vom Anlass ab. Bei Anwendung außerhalb der Zulassung wird in der Regel nicht erstattet.</p>
+<p style="margin:0">{a('kosten/', 'Mehr zu Kosten und Erstattung')}</p></div>
+</div></div></section>
+{team_mini(['kafle', 'gusic', 'gentsch'])}
+{fh}
+<section class="tight"><div class="wrap"><div class="hint"><p><b>Ob die H.E.L.P.-Apherese zu Ihnen passt, entscheiden wir gemeinsam,</b> nach einem ärztlichen Gespräch und mit Blick auf Ihre Werte. Telefon {tel()}</p>{book('Arztgespräch vereinbaren', 'btn')}</div></div></section>"""
+    return body, [fld, proc]
+
+
 # ------------------------------------------------------------ Pakete
 
 def apherese_programm():
     return paket(
         eyebrow="Paket · UMI Medizin", line="med",
         h1="Apherese-Programm",
-        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese oder H.E.L.P.-Apherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf.",
+        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf.",
         preis_html=price("apherese_programm"),
-        enthalten=["Beratungs- und Vorgespräch mit der Ärztin", "Diagnostik vor der Behandlung", "2 Sitzungen INUSpherese oder H.E.L.P.-Apherese",
+        enthalten=["Beratungs- und Vorgespräch mit der Ärztin", "Diagnostik vor der Behandlung", "2 Sitzungen INUSpherese",
                    "Eluat-Analyse der abgefilterten Bestandteile", "Begleitende Infusionen nach ärztlicher Empfehlung", "Nachgespräch mit Befunden",
                    "Hilfe beim Erstattungsantrag an PKV oder Beihilfe"],
         ablauf=[("Vorgespräch", " Telefon, Video oder in der Praxis. Wir prüfen, ob die Apherese für Sie passt."),
@@ -439,8 +489,11 @@ PAGES = [
     Page("inuspherese-zentrum-stuttgart", "INUSpherese-Zentrum Stuttgart: Blutplasma filtern · UMI",
          "INUSpherese-Zentrum Stuttgart-Vaihingen: Blutplasma filtern und das Ergebnis im Labor sehen. Ablauf, Verfahren, Team, Info-Abend am 9.12. Erstgespräch online.",
          apherese, nav="aph", crumbs=[(None, "Apherese")]),
+    Page("medizin/help-apherese", "H.E.L.P.-Apherese in Stuttgart · UMI Medizin",
+         "H.E.L.P.-Apherese bei UMI Stuttgart: LDL-Cholesterin, Lipoprotein(a) und Fibrinogen senken. Verfahren, Ablauf, Kosten nach GOÄ. Nur nach ärztlicher Prüfung.",
+         help_apherese, line="med", nav="aph", crumbs=MED + [(None, "H.E.L.P.-Apherese")]),
     Page("medizin/apherese-programm", "Apherese-Programm Stuttgart · UMI Medizin",
-         "Apherese-Programm bei UMI Stuttgart: Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese oder H.E.L.P., Eluat-Analyse. Voraussichtliche Kosten nach GOÄ.",
+         "Apherese-Programm bei UMI Stuttgart: Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse. Voraussichtliche Kosten nach GOÄ.",
          apherese_programm, line="med", nav="med", crumbs=MED + [(None, "Apherese-Programm")]),
     Page("energie-check", "Energie-Check: immer müde? · UMI Stuttgart",
          "Energie-Check bei UMI Stuttgart: Erschöpfung abklären mit Neurostress, Zellenergie, Mikronährstoffen, HRV und Therapieplan. Termin online buchen.",
