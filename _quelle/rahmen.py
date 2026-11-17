@@ -142,7 +142,7 @@ def header(page):
         cls = ' class="hl"' if key == "gut" else ""
         items.append(f'<a href="{rel(target)}"{cur}{cls}>{label}</a>')
     preview = ('<div class="preview-bar">Vorschau der neuen Website · nicht öffentlich · '
-               'Preise und einzelne Angaben folgen</div>') if PREVIEW else ""
+               'einzelne Preise folgen</div>') if PREVIEW else ""
     return f"""{preview}<header class="site-header"><div class="wrap">
 <a class="brand" href="{rel('')}" aria-label="UMI Stuttgart, zur Startseite">{mark('dach')}<div><b>UMI</b><span>Stuttgart</span></div></a>
 <button class="menu-toggle" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
