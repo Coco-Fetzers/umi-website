@@ -52,7 +52,7 @@ PREISE = {
     "longevity_check": None,
     "nad_infusion": "489 €",
     "nad_weitere": "439 €",
-    "infusion_erste": "119 €",
+    "infusion_erste": "124 €",
     "infusion_weitere": "99 €",
     "supplement_analyse": None,
     "apherese_reset": "ca. 5.400 €",
@@ -61,14 +61,14 @@ PREISE = {
 # Infusionsmenü: (erste Infusion, jede weitere). None = Platzhalter "… €".
 # "-" = kein Preis für weitere Infusionen. Erste Infusion inkl. ärztlicher Aufklärung.
 INFUSIONSPREISE = {
-    "winter": ("119 €", "99 €"), "winter_plus": ("209 €", "179 €"),
-    "myers": ("179 €", "159 €"),
+    "winter": ("124 €", "99 €"), "winter_plus": ("204 €", "179 €"),
+    "myers": ("184 €", "159 €"),
     "recharge": ("179 €", "129 €"), "recharge_plus": ("219 €", "169 €"),
-    "sport": ("129 €", "109 €"), "sport_plus": ("179 €", "149 €"),
+    "sport": ("134 €", "109 €"), "sport_plus": ("174 €", "149 €"),
     "night_out": ("149 €", "-"),
-    "longevity_basis": ("209 €", "179 €"), "longevity_plus": ("209 €", "179 €"), "longevity_premium": ("219 €", "189 €"),
-    "glow": ("189 €", "169 €"), "glow_plus": ("269 €", "239 €"),
-    "mito": ("179 €", "149 €"),
+    "longevity_basis": ("204 €", "179 €"), "longevity_plus": ("204 €", "179 €"), "longevity_premium": ("214 €", "189 €"),
+    "glow": ("194 €", "169 €"), "glow_plus": ("264 €", "239 €"),
+    "mito": ("174 €", "149 €"),
     "nad": ("489 €", "439 €"),
 }
 

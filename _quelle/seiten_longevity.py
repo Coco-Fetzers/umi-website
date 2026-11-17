@@ -225,7 +225,7 @@ PAGES = [
          "NAD+-Infusion (250 mg) und NAD+-Kur in Stuttgart, mit ärztlichem Gespräch und unter Aufsicht. Ablauf, Dauer und voraussichtliche Kosten ab 489 €.",
          nad, line="lon", nav="lon", crumbs=LON + [(None, "NAD+")]),
     Page("longevity/infusionen", "Infusionstherapie Stuttgart: Infusionsmenü · UMI",
-         "Infusionsmenü bei UMI Stuttgart: 15 Infusionen von Winter bis NAD+, mit ärztlicher Aufklärung, ohne Formular vorab. Preise ab 119 €.",
+         "Infusionsmenü bei UMI Stuttgart: 15 Infusionen von Winter bis NAD+, mit ärztlicher Aufklärung, ohne Formular vorab. Preise ab 124 €.",
          infusionen, line="lon", nav="lon", crumbs=LON + [(None, "Infusionsmenü")]),
     Page("longevity/regenerationskuren", "Regenerationskuren · UMI Longevity Stuttgart",
          "Wärmekur, Oxyvenierung oder Farblaser als Kur mit festen Terminen bei UMI Longevity in Stuttgart. Nach ärztlichem Vorgespräch.",
