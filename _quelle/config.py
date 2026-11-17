@@ -66,7 +66,7 @@ INFUSIONSPREISE = {
     "recharge": ("179 €", "129 €"), "recharge_plus": ("219 €", "169 €"),
     "sport": ("134 €", "109 €"), "sport_plus": ("174 €", "149 €"),
     "night_out": ("149 €", "-"),
-    "longevity_basis": ("204 €", "179 €"), "longevity_plus": ("204 €", "179 €"), "longevity_premium": ("214 €", "189 €"),
+    "longevity_basis": ("204 €", "179 €"), "longevity_plus": ("224 €", "199 €"), "longevity_premium": ("274 €", "249 €"),
     "glow": ("194 €", "169 €"), "glow_plus": ("264 €", "239 €"),
     "mito": ("174 €", "149 €"),
     "nad": ("489 €", "439 €"),
