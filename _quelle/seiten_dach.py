@@ -10,7 +10,7 @@ GUTSCHEINE_G = [
     ("ab 500 €", "Gesundheit nach Wunsch", "Ein Wert ganz nach deinem Wunsch."),
 ]
 GUTSCHEINE_L = [
-    ("150 €", "Balance"), ("300 €", "Fokus"), ("450 €", "Insight"), ("ab 500 €", "Aufbruch"),
+    ("150 €", "Atempause"), ("300 €", "Fokus"), ("450 €", "Insight"), ("ab 500 €", "Aufbruch"),
 ]
 
 
