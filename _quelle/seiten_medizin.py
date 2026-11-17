@@ -160,8 +160,8 @@ FRAGEN = [
 
 VERFAHREN = [
     ("INUSpherese®", "Doppelfiltration des Plasmas, hält große Eiweiße, Fette und daran Gebundenes zurück", "ja"),
-    ("H.E.L.P.-Apherese", "fällt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen mit Heparin aus dem Plasma", "ja, für bestimmte schwere Fettstoffwechselstörungen; darüber hinaus Off-Label-Anwendung, nur nach ärztlicher Prüfung · {HELP_LINK}"),
-    ("Lipidapherese", "Sammelbegriff für Verfahren, die vor allem Blutfette senken", "über H.E.L.P."),
+    ("H.E.L.P.-Apherese", "fällt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen mit Heparin aus dem Plasma", "Off-Label-Anwendung, nur nach ärztlicher Prüfung · {HELP_LINK}"),
+    ("Lipidapherese", "Sammelbegriff für Verfahren, die vor allem Blutfette senken", "nein"),
     ("Immunadsorption", "bindet gezielt Antikörper an eine Säule", "nein"),
     ("Plasmaaustausch", "Plasma wird verworfen und durch eine Lösung ersetzt", "nein"),
     ("Dialyse", "ersetzt die Nierenfunktion, filtert kleine, harnpflichtige Stoffe", "nein"),
@@ -280,15 +280,15 @@ def help_apherese():
         ("Was bedeutet „außerhalb der Zulassung“?", "Ein Verfahren wird für einen Zweck eingesetzt, für den es nicht ausdrücklich zugelassen ist. Das ist in der Medizin erlaubt, setzt aber eine sorgfältige ärztliche Prüfung im Einzelfall und eine ausführliche Aufklärung voraus. Darüber sprechen wir offen mit Ihnen."),
         ("Wie lange dauert eine Behandlung?", "Etwa zwei bis drei Stunden. Sie liegen bequem, unser Team überwacht Kreislauf und Werte die ganze Zeit."),
         ("Ist die Behandlung gut verträglich?", "Wie bei jeder Behandlung am Blutkreislauf kann es zu Nebenwirkungen kommen, zum Beispiel Kreislaufschwäche oder Blutergüsse. Weil Heparin eingesetzt wird, prüfen wir vorher auch die Blutgerinnung. Über alle Risiken klären wir Sie vorher ausführlich auf."),
-        ("Was kostet die H.E.L.P.-Apherese?", f"Eine Behandlung voraussichtlich {price('help_sitzung', 'ab')}. Die genauen Kosten stehen in Ihrem schriftlichen Kostenvoranschlag. Bei Anwendung außerhalb der Zulassung erstatten Versicherungen in der Regel nicht."),
+        ("Was kostet die H.E.L.P.-Apherese?", f"Eine Behandlung voraussichtlich {price('help_sitzung', 'ab')}. Die genauen Kosten stehen in Ihrem schriftlichen Kostenvoranschlag. Die Off-Label-Anwendung erstatten Versicherungen in der Regel nicht."),
     ])
     proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "H.E.L.P.-Apherese",
             "alternateName": "Heparin-induzierte extrakorporale LDL-Präzipitation",
-            "description": "Apherese-Verfahren zur Senkung von LDL-Cholesterin, Lipoprotein(a) und Fibrinogen bei UMI Stuttgart."}
+            "description": "Apherese-Verfahren, bei UMI Stuttgart als Off-Label-Anwendung nach ärztlicher Prüfung."}
     werte = [("LDL-Cholesterin", "das „schlechte“ Cholesterin"), ("Lipoprotein(a)", "ein vor allem erblich bedingtes Blutfett"),
              ("Fibrinogen", "ein Gerinnungseiweiß"), ("Triglyceride", "Neutralfette im Blut"), ("CRP", "ein Entzündungswert")]
     wk = "".join(f'<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{d}</p></div>' for i, (n, d) in enumerate(werte, 1))
-    body = f"""{hero('Apherese · UMI Medizin', 'H.E.L.P.-Apherese in Stuttgart<span class="h1-sub">Blutfette und Fibrinogen gezielt senken</span>',
+    body = f"""{hero('Apherese · UMI Medizin', 'H.E.L.P.-Apherese in Stuttgart<span class="h1-sub">Off-Label-Anwendung, nur nach ärztlicher Prüfung</span>',
     'Die H.E.L.P.-Apherese ist ein etabliertes Apherese-Verfahren. Ihr Blutplasma wird außerhalb des Körpers behandelt: Bestimmte Blutfette und Eiweiße werden ausgefällt und abgefiltert, danach bekommen Sie Ihr Plasma zurück.',
     book('Arztgespräch vereinbaren') + a('inuspherese-zentrum-stuttgart/#verfahren', 'Vergleich der Verfahren', 'btn ghost'), 'med',
     '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Nur nach ärztlicher Prüfung</li></ul>')}
@@ -300,12 +300,10 @@ def help_apherese():
 <div class="svg-schema">{schema_svg()}</div></div></div></section>
 
 <section id="werte"><div class="wrap">
-<span class="eyebrow">Was gesenkt werden kann</span><h2>Diese Werte stehen im Mittelpunkt</h2>
+<span class="eyebrow">Was ausgefällt wird</span><h2>Welche Bestandteile das Verfahren erfasst</h2>
 <div class="stoffe">{wk}</div>
-<div class="grid g2" style="margin-top:28px">
-<div class="box"><h3>Zugelassene Anwendung</h3><p>Die H.E.L.P.-Apherese ist für bestimmte schwere Fettstoffwechselstörungen zugelassen, zum Beispiel wenn LDL-Cholesterin oder Lipoprotein(a) trotz Behandlung zu hoch bleiben.</p></div>
-<div class="note" style="font-size:17px"><b>Anwendung im Einzelfall:</b> Darüber hinaus setzen wir das Verfahren im Einzelfall außerhalb der Zulassung ein. Ob das für Sie infrage kommt und welche Risiken es gibt, besprechen wir ausführlich im Arztgespräch.</div>
-</div></div></section>
+<div class="note" style="font-size:17px;margin-top:28px"><b>Nur als Off-Label-Anwendung:</b> Wir setzen die H.E.L.P.-Apherese ausschließlich im Einzelfall außerhalb der Zulassung ein. Ob das für Sie infrage kommt und welche Risiken es gibt, besprechen wir ausführlich im Arztgespräch.</div>
+</div></section>
 
 <section class="bg-white" id="ablauf"><div class="wrap"><div class="split">
 <div><h2>So läuft es ab</h2>{schritte([
@@ -315,7 +313,7 @@ def help_apherese():
     ('Auswertung', ' Werte vorher und nachher im Vergleich, und die Frage, ob weitere Behandlungen sinnvoll sind.'),
 ])}</div>
 <div class="box"><h3>Kosten</h3><p>Eine Behandlung voraussichtlich <b>{price('help_sitzung', 'ab')}</b>, nach GOÄ. Vor Beginn erhalten Sie einen schriftlichen Kostenvoranschlag.</p>
-<p>Ob Ihre private Krankenversicherung oder Beihilfe erstattet, hängt von Ihrem Tarif und vom Anlass ab. Bei Anwendung außerhalb der Zulassung wird in der Regel nicht erstattet.</p>
+<p>Ob Ihre private Krankenversicherung oder Beihilfe erstattet, hängt von Ihrem Tarif und vom Anlass ab. Die Off-Label-Anwendung erstatten Versicherungen in der Regel nicht.</p>
 <p style="margin:0">{a('kosten/', 'Mehr zu Kosten und Erstattung')}</p></div>
 </div></div></section>
 {team_mini(['kafle', 'gusic', 'gentsch'])}
@@ -490,7 +488,7 @@ PAGES = [
          "INUSpherese-Zentrum Stuttgart-Vaihingen: Blutplasma filtern und das Ergebnis im Labor sehen. Ablauf, Verfahren, Team, Info-Abend am 9.12. Erstgespräch online.",
          apherese, nav="aph", crumbs=[(None, "Apherese")]),
     Page("medizin/help-apherese", "H.E.L.P.-Apherese in Stuttgart · UMI Medizin",
-         "H.E.L.P.-Apherese bei UMI Stuttgart: LDL-Cholesterin, Lipoprotein(a) und Fibrinogen senken. Verfahren, Ablauf, Kosten nach GOÄ. Nur nach ärztlicher Prüfung.",
+         "H.E.L.P.-Apherese bei UMI Stuttgart: Off-Label-Anwendung nach ärztlicher Prüfung. Wie das Verfahren funktioniert, Ablauf, Kosten nach GOÄ.",
          help_apherese, line="med", nav="aph", crumbs=MED + [(None, "H.E.L.P.-Apherese")]),
     Page("medizin/apherese-programm", "Apherese-Programm Stuttgart · UMI Medizin",
          "Apherese-Programm bei UMI Stuttgart: Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse. Voraussichtliche Kosten nach GOÄ.",
