@@ -99,7 +99,7 @@ INFUSIONEN = [
     ("Recharge Plus", "erweiterte Mikronährstoff-Rezeptur", "recharge_plus"),
     ("Sport", "vier Aminosäuren", "sport"),
     ("Sport Plus", "L-Carnitin, Glutathion, Mineralien, Vitamin C, B-Vitamine u. a.", "sport_plus"),
-    ("Night Out", "für vor oder nach einem langen Abend: Flüssigkeit mit Elektrolyten, B-Vitamine, Vitamin C, Magnesium", "night_out"),
+    ("Night Out", "Flüssigkeit mit Elektrolyten, B-Vitamine, Vitamin C, Magnesium", "night_out"),
     ("Longevity Basis", "Rezeptur nach Protokoll der Praxis", "longevity_basis"),
     ("Longevity Plus", "erweiterte Rezeptur mit Glutathion und Aminosäuren", "longevity_plus"),
     ("Longevity Premium", "mit Spermidin oder Polyphenolen", "longevity_premium"),
