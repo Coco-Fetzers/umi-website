@@ -186,7 +186,7 @@ def apherese():
     vt = "".join(f'<tr><td><b>{n}</b></td><td style="white-space:normal;font-weight:400">{k}</td><td>{u}</td></tr>' for n, k, u in VERFAHREN)
     anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
 
-    body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese® in Stuttgart: Blutplasma filtern, Ergebnis sehen',
+    body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese®-Zentrum Stuttgart<span class="h1-sub">Blutplasma filtern, Belastungsstoffe reduzieren</span>',
     'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen.',
     book('Erstgespräch vereinbaren') + a('#info-abend', 'Info-Abend am 9. Dezember', 'btn ghost'), 'dach',
     '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Wichtige Eiweiße und Elektrolyte bleiben erhalten</li></ul>')}
@@ -429,7 +429,7 @@ PAGES = [
     Page("long-covid-sprechstunde", "Beschwerden nach Infektionen · UMI Medizin Stuttgart",
          "Anhaltende Beschwerden nach Infektion oder Impfung: gründliche Abklärung und Begleitung in Stuttgart-Vaihingen. Vorgespräch auch per Video.",
          infektionen, line="med", nav="med", crumbs=MED + [(None, "Beschwerden nach Infektionen")]),
-    Page("inuspherese-zentrum-stuttgart", "INUSpherese® in Stuttgart: Apherese mit Eluat-Analyse · UMI",
+    Page("inuspherese-zentrum-stuttgart", "INUSpherese-Zentrum Stuttgart: Blutplasma filtern · UMI",
          "INUSpherese-Zentrum Stuttgart-Vaihingen: Blutplasma filtern und das Ergebnis im Labor sehen. Ablauf, Verfahren, Team, Info-Abend am 9.12. Erstgespräch online.",
          apherese, nav="aph", crumbs=[(None, "Apherese")]),
     Page("medizin/apherese-programm", "Apherese-Programm Stuttgart · UMI Medizin",
