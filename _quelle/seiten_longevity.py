@@ -152,7 +152,7 @@ def infusionen():
 <div class="box"><h3>So läuft es ab</h3>{schritte([
     ('Buchen', ' online oder am Telefon, ohne Formular.'),
     ('10 Minuten früher kommen', ' und den kurzen Gesundheitsbogen ausfüllen.'),
-    ('Kurze Aufklärung', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch. Bei Plus-Infusionen prüft die Ärztin dabei Rezeptur und Dosierung.'),
+    ('Kurze Aufklärung (beim ersten Besuch)', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch. Bei Plus-Infusionen prüft die Ärztin dabei Rezeptur und Dosierung.'),
     ('Infusion', ' in Ruhe, unter Aufsicht. Ab dem zweiten Mal reicht ein kurzer Check am Empfang.*')])}</div>
 </div></div></section>
 
@@ -162,7 +162,7 @@ def infusionen():
 <div class="box"><h3>So läuft es ab</h3>{schritte([
     ('Buchen', ' online oder am Telefon. Wir planen beim ersten Termin mehr Zeit für das Gespräch ein.'),
     ('10 Minuten früher kommen', ' und den Gesundheitsbogen ausfüllen.'),
-    ('Arztgespräch', ' mit der Ärztin: Vorgeschichte, Medikamente, ob die Infusion zu dir passt.'),
+    ('Arztgespräch (beim ersten Besuch)', ' mit der Ärztin: Vorgeschichte, Medikamente, ob die Infusion zu dir passt.'),
     ('Infusion', ' im Anschluss, wenn nichts dagegen spricht. Weitere Infusionen ohne erneutes Gespräch, wenn die letzte nicht länger als 6 Monate her ist und sich nichts geändert hat.*')])}</div>
 </div></div></section>
 
