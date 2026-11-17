@@ -235,3 +235,6 @@ a.card:hover{border-color:var(--accent)}
 .nav .mob-only{display:none}
 @media (max-width:1060px){.nav .mob-only{display:block}}
 .price-table td:first-child{white-space:nowrap}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius)}
+.split>*{min-width:0}
+@media (max-width:760px){.price-table th,.price-table td{padding:10px 8px}.price-table{font-size:14px}}

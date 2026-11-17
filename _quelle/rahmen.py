@@ -74,7 +74,7 @@ def price(key, prefix="ab"):
     if v is None:
         return (f'<span class="preis-offen" title="Preis folgt nach Freigabe">'
                 f'{prefix + " " if prefix else ""}… €</span>')
-    return f"{prefix + ' ' if prefix else ''}{v}"
+    return f"{prefix + '&nbsp;' if prefix else ''}{v.replace(' €', '&nbsp;€')}"
 
 
 def book(label="Termin buchen", cls="btn", url=None):
@@ -103,7 +103,7 @@ def faq(items, heading="Fragen und Antworten"):
     import re
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q,
-         "acceptedAnswer": {"@type": "Answer", "text": re.sub("<[^>]+>", "", ans)}}
+         "acceptedAnswer": {"@type": "Answer", "text": re.sub("<[^>]+>", "", ans).replace("&nbsp;", " ")}}
         for q, ans in items]}
     return "".join(html), ld
 

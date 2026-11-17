@@ -112,25 +112,22 @@ INFUSIONEN = [
 
 def infusionen():
     def one(v):
-        return v if v else '<span class="preis-offen" title="Preis folgt nach Freigabe">… €</span>'
+        return v.replace(" €", "&nbsp;€") if v else '<span class="preis-offen" title="Preis folgt nach Freigabe">…&nbsp;€</span>'
     def name(n):
         return "<b>" + (a("longevity/nad-infusion/", n) if n == "NAD+" else n) + "</b>"
-    rows = "".join(f'<tr><td>{name(n)}</td><td style="font-weight:400;white-space:normal">{i}</td><td>{one(C.INFUSIONSPREISE[k][0])}</td><td>{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>' for n, i, k in INFUSIONEN)
+    rows = "".join(f'<tr><td>{name(n)}</td><td style="font-weight:400;white-space:normal">{i}</td><td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][0])}</td><td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>' for n, i, k in INFUSIONEN)
     fh, fld = faq([
-        ("Warum heißen die Infusionen nicht „Immun-Booster“ oder „Detox“?", "Weil wir nichts versprechen wollen, was eine Infusion nicht halten kann. Die Namen beschreiben die Rezeptur, nicht eine Wirkung."),
         ("Was bedeutet „Plus“?", "Die Plus-Varianten haben eine erweiterte Rezeptur mit aufwendigeren Präparaten. Deshalb prüft die Ärztin vor der ersten Infusion Rezeptur und Dosierung."),
         ("Muss ich vorher ein Formular ausfüllen?", "Nein. Komm zur ersten Infusion einfach 10 Minuten früher. Den kurzen Gesundheitsbogen füllst du bei uns aus, danach klärt dich die Ärztin oder unsere Heilpraktikerin persönlich auf."),
         ("Brauche ich vorher einen eigenen Termin für ein Gespräch?", "Meist nicht. Bei Recharge und NAD+ führt die Ärztin vor der ersten Infusion ein ausführlicheres Gespräch, das planen wir bei der Buchung mit ein. Ein ausführliches Gespräch kannst du dir bei jeder Infusion wünschen."),
-        ("Was ist die Night-Out-Infusion?", "Eine Infusion mit Flüssigkeit, Elektrolyten, B-Vitaminen, Vitamin C und Magnesium, für vor oder nach einem langen Abend. Auch hier gilt: erst die Aufklärung, dann die Infusion. Bei akutem Rausch geben wir keine Infusion."),
         ("Warum ist die erste Infusion teurer?", "In der ersten Infusion steckt die ärztliche Aufklärung, bei manchen Infusionen auch die Prüfung von Rezeptur und Dosierung oder ein Gespräch. Ab der zweiten Infusion fällt das weg. Das ist kein Rabatt."),
-        ("Ich bin Leistungssportler. Darf ich Infusionen bekommen?", "Wenn du unter die Anti-Doping-Regeln fällst, sind Infusionen über 100 ml in 12 Stunden grundsätzlich verboten. Gib das bitte im Gesundheitsbogen an."),
     ])
     body = f"""{hero('Auftanken · UMI Longevity', 'Infusionsmenü in Stuttgart',
     '15 Infusionen mit klaren Inhaltsstoffen, von Winter bis NAD+. Ohne Formular vorab: Du kommst zur ersten Infusion 10 Minuten früher, füllst bei uns einen kurzen Gesundheitsbogen aus, und die Ärztin klärt dich vor der Infusion persönlich auf.',
     book('Infusion buchen') + a('longevity/nad-infusion/', 'NAD+', 'btn ghost'), 'lon',
     f'<p class="price-line"><b>Erste Infusion {price("infusion_erste")}, jede weitere {price("infusion_weitere")}</b> · nach GOÄ</p>')}
 <section class="bg-white"><div class="wrap"><div class="split wide">
-<div><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table><p class="small muted" style="margin-top:10px">Die erste Infusion enthält die ärztliche Aufklärung, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Eine Kur kostet die Summe der Einzelinfusionen. Alle Preise sind voraussichtliche Kosten nach GOÄ und können je nach Rezeptur abweichen.</p></div>
+<div><div class="table-wrap"><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table></div><p class="small muted" style="margin-top:10px">Die erste Infusion enthält die ärztliche Aufklärung, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Eine Kur kostet die Summe der Einzelinfusionen. Alle Preise sind voraussichtliche Kosten nach GOÄ und können je nach Rezeptur abweichen.</p></div>
 <div><div class="box" style="margin-bottom:16px"><h3>So läuft deine erste Infusion</h3>{schritte([
     ('Buchen', ' online oder am Telefon, ohne Formular.'),
     ('10 Minuten früher kommen', ' und den kurzen Gesundheitsbogen ausfüllen.'),
