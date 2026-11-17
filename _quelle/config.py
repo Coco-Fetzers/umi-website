@@ -50,25 +50,26 @@ PREISE = {
     "erstgespraech": None,
     # UMI Longevity
     "longevity_check": None,
-    "nad_infusion": None,
-    "infusion_erste": None,
-    "infusion_weitere": None,
+    "nad_infusion": "489 €",
+    "nad_weitere": "439 €",
+    "infusion_erste": "119 €",
+    "infusion_weitere": "99 €",
     "supplement_analyse": None,
-    "apherese_reset": None,
+    "apherese_reset": "ca. 5.400 €",
 }
 
 # Infusionsmenü: (erste Infusion, jede weitere). None = Platzhalter "… €".
-# Bei NAD+ zählt nur der erste Wert (z. B. "ab 249 €"), sonst gilt "nad_infusion" oben.
+# "-" = kein Preis für weitere Infusionen. Erste Infusion inkl. ärztlicher Aufklärung.
 INFUSIONSPREISE = {
-    "winter": (None, None), "winter_plus": (None, None),
-    "myers": (None, None),
-    "recharge": (None, None), "recharge_plus": (None, None),
-    "sport": (None, None), "sport_plus": (None, None),
-    "night_out": (None, None),
-    "longevity_basis": (None, None), "longevity_plus": (None, None), "longevity_premium": (None, None),
-    "glow": (None, None), "glow_plus": (None, None),
-    "mito": (None, None),
-    "nad": (None, None),
+    "winter": ("119 €", "99 €"), "winter_plus": ("209 €", "179 €"),
+    "myers": ("179 €", "159 €"),
+    "recharge": ("179 €", "129 €"), "recharge_plus": ("219 €", "169 €"),
+    "sport": ("129 €", "109 €"), "sport_plus": ("179 €", "149 €"),
+    "night_out": ("149 €", "-"),
+    "longevity_basis": ("209 €", "179 €"), "longevity_plus": ("209 €", "179 €"), "longevity_premium": ("219 €", "189 €"),
+    "glow": ("189 €", "169 €"), "glow_plus": ("269 €", "239 €"),
+    "mito": ("179 €", "149 €"),
+    "nad": ("489 €", "439 €"),
 }
 
 # ------------------------------------------------------------ Weiterleitungen

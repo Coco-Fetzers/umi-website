@@ -24,8 +24,8 @@ def longevity():
 </div></div></section>
 <section id="auftanken"><div class="wrap"><span class="eyebrow">Auftanken</span><h2>Infusionen und Regeneration</h2>
 <div class="grid g3" style="margin-top:24px">
-{card('longevity/nad-infusion/', 'Infusion', 'NAD+-Infusion und NAD+-Kur', 'Einzeln oder als Kur mit 5 oder 10 Infusionen, immer nach ärztlichem Vorgespräch.', price('nad_infusion') + ' je Infusion')}
-{card('longevity/infusionen/', 'Menü', 'Infusionsmenü', '15 Infusionen mit klaren Rezepturen, von Winter über Night Out bis NAD+. Die Ärztin prüft, was zu dir passt.', 'erste Infusion ' + price('infusion_erste'))}
+{card('longevity/nad-infusion/', 'Infusion', 'NAD+-Infusion und NAD+-Kur', 'NAD+ 250 mg, einzeln oder als Kur mit 5 oder 10 Infusionen, mit ärztlichem Gespräch vor der ersten Infusion.', price('nad_infusion') + ' je Infusion')}
+{card('longevity/infusionen/', 'Menü', 'Infusionsmenü', '15 Infusionen mit klaren Rezepturen, von Winter über Night Out bis NAD+. Ohne Formular vorab, mit ärztlicher Aufklärung.', 'erste Infusion ' + price('infusion_erste'))}
 {card('longevity/regenerationskuren/', 'Kur', 'Regenerationskuren', 'Wärmekur, Oxyvenierung oder Farblaser: feste Termine, die du dir für Erholung freihältst.', '')}
 </div></div></section>
 <section class="bg-white" id="ergaenzen"><div class="wrap"><div class="grid g2">
@@ -44,7 +44,7 @@ def longevity():
     ('Messen', ' Labor und Messungen, die über den Routine-Check hinausgehen.'),
     ('Auswertung', ' Wir erklären die Werte und machen einen Plan, der in deinen Alltag passt.'),
     ('Check-in', ' Nach einigen Monaten wird nachgemessen.')])}</div>
-<div class="box"><h3>Was wir nicht tun</h3><p>Wir versprechen keine Verjüngung und keine Wunder. Longevity heißt für uns: gesund älter werden, mit Wissen statt Bauchgefühl. Jede Infusion und jede Behandlung gibt es nur nach ärztlichem Gespräch.</p></div>
+<div class="box"><h3>Was wir nicht tun</h3><p>Wir versprechen keine Verjüngung und keine Wunder. Longevity heißt für uns: gesund älter werden, mit Wissen statt Bauchgefühl. Jede Infusion und jede Behandlung gibt es nur nach ärztlicher Aufklärung.</p></div>
 </div></div></section>
 {gutschein_hinweis(True)}"""
 
@@ -74,68 +74,69 @@ def nad():
     return paket(
         eyebrow="Infusion · UMI Longevity", line="lon", du=True,
         h1="NAD+-Infusion und NAD+-Kur in Stuttgart",
-        lead="NAD+ ist ein Coenzym, das in jeder Zelle am Energiestoffwechsel beteiligt ist. Bei UMI bekommst du NAD+ als Infusion nach ärztlichem Vorgespräch, einzeln oder als Kur mit 5 oder 10 Infusionen.",
-        preis_html=price("nad_infusion") + " je Infusion",
-        enthalten=["Ärztliches Vorgespräch mit Prüfung, ob die Infusion zu dir passt", "NAD+-Infusion in ruhiger Atmosphäre, langsam über 2 bis 4 Stunden, 250 oder 500 mg",
+        lead="NAD+ ist ein Coenzym, das in jeder Zelle am Energiestoffwechsel beteiligt ist. Bei UMI bekommst du NAD+ in 250 mg als Infusion, langsam über 2 bis 4 Stunden. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Einzeln oder als Kur mit 5 oder 10 Infusionen.",
+        preis_html=price("nad_infusion") + " für die erste Infusion, jede weitere " + price("nad_weitere"),
+        enthalten=["Ärztliches Gespräch vor der ersten Infusion mit Prüfung, ob NAD+ zu dir passt", "NAD+ 250 mg in ruhiger Atmosphäre, langsam über 2 bis 4 Stunden",
                    "Überwachung durch unser Pflegeteam", "Kur: 5 oder 10 Infusionen, Preis = Summe der Einzelinfusionen"],
-        ablauf=[("Vorgespräch", " Gesundheitsfragen, Medikamente, Gegenanzeigen."), ("Erste Infusion", " langsam, damit du sie gut verträgst."),
+        ablauf=[("Gesundheitsbogen und Gespräch", " 10 Minuten früher kommen, Bogen ausfüllen, dann Gespräch mit der Ärztin."), ("Erste Infusion", " langsam, damit du sie gut verträgst."),
                 ("Weitere Termine", " bei einer Kur meist ein- bis zweimal pro Woche."), ("Check-in", " Wie ging es dir, wie geht es weiter?")],
         passt=["du gesund bist und deine Regeneration unterstützen willst", "du eine ärztlich begleitete Infusion suchst, keine Drip-Bar"],
         passt_nicht=["du schwanger bist oder stillst", "du unter die Anti-Doping-Regeln fällst (Infusionen über 100 ml sind dort verboten)", "du eine schnelle Wirkung erwartest"],
         team=["kafle", "buergler"],
-        faqs=[("Wie lange dauert eine NAD+-Infusion?", "Je nach Dosis (250 oder 500 mg) etwa 2 bis 4 Stunden. Eine zu schnelle Gabe ist unangenehm, deshalb lassen wir uns Zeit."),
-              ("Warum ist die erste Infusion teurer?", "Beim ersten Termin kommt das ärztliche Vorgespräch dazu. Das ist kein Rabatt für die weiteren."),
-              ("Ist NAD+ sicher?", "Infusionen sind ein medizinischer Eingriff. Deshalb gibt es sie bei uns nur nach Vorgespräch und unter Aufsicht."),
-              ("Wie viele Infusionen brauche ich?", "Das besprechen wir im Vorgespräch. Viele starten mit einer einzelnen Infusion.")],
+        faqs=[("Wie lange dauert eine NAD+-Infusion?", "Etwa 2 bis 4 Stunden für 250 mg. Eine zu schnelle Gabe ist unangenehm, deshalb lassen wir uns Zeit."),
+              ("Warum ist die erste Infusion teurer?", "Beim ersten Termin kommt das ärztliche Gespräch dazu. Ab der zweiten Infusion fällt es weg, das ist kein Rabatt."),
+              ("Ist NAD+ sicher?", "Infusionen sind ein medizinischer Eingriff. Häufig sind Druckgefühl, Übelkeit oder Kreislaufreaktionen, wenn NAD+ zu schnell läuft. Deshalb gibt es NAD+ bei uns nur nach ärztlichem Gespräch, langsam und unter Aufsicht."),
+              ("Wie viele Infusionen brauche ich?", "Das besprechen wir vor der ersten Infusion. Viele starten mit einer einzelnen Infusion. Eine Kur kostet die Summe der Einzelinfusionen.")],
         next_step=("Noch mehr wissen?", "longevity/infusionen/", "Zum Infusionsmenü"))
 
 
 INFUSIONEN = [
-    # (Name, Inhalt, Hinweis, Preis-Schlüssel in config.INFUSIONSPREISE)
-    ("Winter", "Vitamin C, Zink, Lysin", "", "winter"),
-    ("Winter Plus", "Vitamin C, Zink, Lysin, Glutathion, Aminosäuren, Vitamine", "nur ärztlich", "winter_plus"),
-    ("Myers-Infusion", "Vitamin C, B-Vitamine, Folsäure", "", "myers"),
-    ("Recharge", "Mikronährstoff-Rezeptur nach Protokoll", "", "recharge"),
-    ("Recharge Plus", "erweiterte Rezeptur", "nur ärztlich", "recharge_plus"),
-    ("Sport", "vier Aminosäuren", "", "sport"),
-    ("Sport Plus", "L-Carnitin, Glutathion, Mineralien, Vitamin C, B-Vitamine u. a.", "nur ärztlich", "sport_plus"),
-    ("Night Out", "für vor oder nach einem langen Abend: Elektrolyte, B-Vitamine, Vitamin C, Magnesium", "", "night_out"),
-    ("Longevity Basis", "Rezeptur nach Protokoll oder Resveratrol", "", "longevity_basis"),
-    ("Longevity Plus", "erweiterte Rezeptur", "nur ärztlich", "longevity_plus"),
-    ("Longevity Premium", "Spermidin oder Polyphenole", "nur ärztlich", "longevity_premium"),
-    ("Glow", "Rezeptur mit Glutathion", "", "glow"),
-    ("Glow Plus", "Rezeptur mit Spermidin", "nur ärztlich", "glow_plus"),
-    ("Mito", "Mitochondrien-Rezeptur mit Spermidin", "nur ärztlich", "mito"),
-    ("NAD+", "NAD+ in 250 oder 500 mg, langsam über 2 bis 4 Stunden", "", "nad"),
+    # (Name, Inhalt, Preis-Schlüssel in config.INFUSIONSPREISE)
+    ("Winter", "Vitamin C, Zink, Lysin", "winter"),
+    ("Winter Plus", "Vitamin C, Zink, Lysin, Glutathion, Aminosäuren, Vitamine", "winter_plus"),
+    ("Myers-Infusion", "Vitamin C, B-Vitamine, Folsäure", "myers"),
+    ("Recharge", "Mikronährstoff-Rezeptur, als Fertigpräparat oder nach Protokoll der Praxis", "recharge"),
+    ("Recharge Plus", "erweiterte Mikronährstoff-Rezeptur", "recharge_plus"),
+    ("Sport", "vier Aminosäuren", "sport"),
+    ("Sport Plus", "L-Carnitin, Glutathion, Mineralien, Vitamin C, B-Vitamine u. a.", "sport_plus"),
+    ("Night Out", "für vor oder nach einem langen Abend: Flüssigkeit mit Elektrolyten, B-Vitamine, Vitamin C, Magnesium", "night_out"),
+    ("Longevity Basis", "Rezeptur nach Protokoll der Praxis", "longevity_basis"),
+    ("Longevity Plus", "erweiterte Rezeptur mit Glutathion und Aminosäuren", "longevity_plus"),
+    ("Longevity Premium", "mit Spermidin oder Polyphenolen", "longevity_premium"),
+    ("Glow", "Rezeptur für Haut und Haar mit Glutathion", "glow"),
+    ("Glow Plus", "Rezeptur für Haut und Haar mit Spermidin", "glow_plus"),
+    ("Mito", "Mitochondrien-Rezeptur, auf Wunsch mit Spermidin", "mito"),
+    ("NAD+", "NAD+ 250 mg, langsam über 2 bis 4 Stunden", "nad"),
 ]
 
 
 def infusionen():
-    def preis(key):
-        erste, weitere = C.INFUSIONSPREISE.get(key, (None, None))
-        def one(v):
-            return v if v else '<span class="preis-offen" title="Preis folgt nach Freigabe">… €</span>'
-        if key == "nad":
-            return one(erste) if erste else price("nad_infusion")
-        return f"{one(erste)} / {one(weitere)}"
-    def name(n, w):
-        nm = a("longevity/nad-infusion/", n) if n == "NAD+" else n
-        return f"<b>{nm}</b>" + (f' · <span class="small">{w}</span>' if w else "")
-    rows = "".join(f'<tr><td>{name(n, w)}</td><td style="font-weight:400;white-space:normal">{i}</td><td>{preis(k)}</td></tr>' for n, i, w, k in INFUSIONEN)
+    def one(v):
+        return v if v else '<span class="preis-offen" title="Preis folgt nach Freigabe">… €</span>'
+    def name(n):
+        return "<b>" + (a("longevity/nad-infusion/", n) if n == "NAD+" else n) + "</b>"
+    rows = "".join(f'<tr><td>{name(n)}</td><td style="font-weight:400;white-space:normal">{i}</td><td>{one(C.INFUSIONSPREISE[k][0])}</td><td>{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>' for n, i, k in INFUSIONEN)
     fh, fld = faq([
         ("Warum heißen die Infusionen nicht „Immun-Booster“ oder „Detox“?", "Weil wir nichts versprechen wollen, was eine Infusion nicht halten kann. Die Namen beschreiben die Rezeptur, nicht eine Wirkung."),
-        ("Was bedeutet „Plus“?", "Die Plus-Varianten haben eine erweiterte Rezeptur mit aufwendigeren Präparaten und werden nur von der Ärztin gegeben."),
-        ("Was ist die Night-Out-Infusion?", "Eine Infusion mit Elektrolyten, B-Vitaminen, Vitamin C und Magnesium, für vor oder nach einem langen Abend. Auch hier gilt: erst das Gespräch, dann die Infusion."),
-        ("Warum ist die erste Infusion teurer?", "Beim ersten Termin ist das ärztliche Vorgespräch enthalten. Bei weiteren Infusionen fällt es weg."),
-        ("Ich bin Leistungssportler. Darf ich Infusionen bekommen?", "Wenn du unter die Anti-Doping-Regeln fällst, sind Infusionen über 100 ml in 12 Stunden grundsätzlich verboten. Sag uns das bitte im Vorgespräch."),
+        ("Was bedeutet „Plus“?", "Die Plus-Varianten haben eine erweiterte Rezeptur mit aufwendigeren Präparaten. Deshalb prüft die Ärztin vor der ersten Infusion Rezeptur und Dosierung."),
+        ("Muss ich vorher ein Formular ausfüllen?", "Nein. Komm zur ersten Infusion einfach 10 Minuten früher. Den kurzen Gesundheitsbogen füllst du bei uns aus, danach klärt dich die Ärztin oder unsere Heilpraktikerin persönlich auf."),
+        ("Brauche ich vorher einen eigenen Termin für ein Gespräch?", "Meist nicht. Bei Recharge und NAD+ führt die Ärztin vor der ersten Infusion ein ausführlicheres Gespräch, das planen wir bei der Buchung mit ein. Ein ausführliches Gespräch kannst du dir bei jeder Infusion wünschen."),
+        ("Was ist die Night-Out-Infusion?", "Eine Infusion mit Flüssigkeit, Elektrolyten, B-Vitaminen, Vitamin C und Magnesium, für vor oder nach einem langen Abend. Auch hier gilt: erst die Aufklärung, dann die Infusion. Bei akutem Rausch geben wir keine Infusion."),
+        ("Warum ist die erste Infusion teurer?", "In der ersten Infusion steckt die ärztliche Aufklärung, bei manchen Infusionen auch die Prüfung von Rezeptur und Dosierung oder ein Gespräch. Ab der zweiten Infusion fällt das weg. Das ist kein Rabatt."),
+        ("Ich bin Leistungssportler. Darf ich Infusionen bekommen?", "Wenn du unter die Anti-Doping-Regeln fällst, sind Infusionen über 100 ml in 12 Stunden grundsätzlich verboten. Gib das bitte im Gesundheitsbogen an."),
     ])
     body = f"""{hero('Auftanken · UMI Longevity', 'Infusionsmenü in Stuttgart',
-    'Infusionen gibt es bei uns nur nach ärztlichem Vorgespräch. Die Ärztin prüft, ob eine Infusion zu dir passt und welche. Unser Menü hat 15 Infusionen mit klaren Inhaltsstoffen, von Winter bis NAD+.',
-    book('Vorgespräch buchen') + a('longevity/nad-infusion/', 'NAD+', 'btn ghost'), 'lon',
+    '15 Infusionen mit klaren Inhaltsstoffen, von Winter bis NAD+. Ohne Formular vorab: Du kommst zur ersten Infusion 10 Minuten früher, füllst bei uns einen kurzen Gesundheitsbogen aus, und die Ärztin klärt dich vor der Infusion persönlich auf.',
+    book('Infusion buchen') + a('longevity/nad-infusion/', 'NAD+', 'btn ghost'), 'lon',
     f'<p class="price-line"><b>Erste Infusion {price("infusion_erste")}, jede weitere {price("infusion_weitere")}</b> · nach GOÄ</p>')}
 <section class="bg-white"><div class="wrap"><div class="split wide">
-<div><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste / weitere</th></tr>{rows}</table><p class="small muted" style="margin-top:10px">Die erste Infusion enthält das ärztliche Vorgespräch, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Alle Preise voraussichtlich nach GOÄ.</p></div>
-<div><div class="box" style="margin-bottom:16px"><h3>Warum ärztlich?</h3><p>Das Bundesinstitut für Arzneimittel hat 2026 vor unkontrollierten Infusionen in Drip-Bars gewarnt. Bei uns gibt es jede Infusion nur nach Gespräch, mit Prüfung von Gegenanzeigen und unter Aufsicht.</p></div>
+<div><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table><p class="small muted" style="margin-top:10px">Die erste Infusion enthält die ärztliche Aufklärung, deshalb kostet jede weitere weniger. Das ist kein Rabatt. Eine Kur kostet die Summe der Einzelinfusionen. Alle Preise sind voraussichtliche Kosten nach GOÄ und können je nach Rezeptur abweichen.</p></div>
+<div><div class="box" style="margin-bottom:16px"><h3>So läuft deine erste Infusion</h3>{schritte([
+    ('Buchen', ' online oder am Telefon, ohne Formular.'),
+    ('10 Minuten früher kommen', ' und den kurzen Gesundheitsbogen ausfüllen.'),
+    ('Aufklärung', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch und klärt dich auf.'),
+    ('Infusion', ' in Ruhe, unter Aufsicht. Ab dem zweiten Mal reicht ein kurzer Check am Empfang.')])}</div>
+<div class="box" style="margin-bottom:16px"><h3>Warum ärztlich?</h3><p>Das Bundesinstitut für Arzneimittel hat 2026 vor unkontrollierten Infusionen in Drip-Bars gewarnt. Bei uns gibt es jede Infusion nur nach ärztlicher Aufklärung, mit Prüfung von Gegenanzeigen und unter Aufsicht. Wir versprechen keine Wirkung.</p></div>
 {kosten_box(True)}</div></div></div></section>
 {team_mini(['kafle', 'buergler'], True)}{fh}{gutschein_hinweis(True)}"""
     return body, [fld]
@@ -198,9 +199,9 @@ def preise():
     rows = [
         ("longevity/check/", "Longevity-Check", "Gespräch, Labor, HRV, Auswertung", price("longevity_check")),
         ("longevity/supplement-analyse/", "Supplement-Analyse", "Mikronährstoffe, Plan, Kontrolle nach 3 Monaten", price("supplement_analyse")),
-        ("longevity/nad-infusion/", "NAD+-Infusion", "je Infusion, Kur = Summe der Einzelinfusionen", price("nad_infusion")),
-        ("longevity/infusionen/", "Infusionsmenü, erste Infusion", "mit ärztlichem Vorgespräch", price("infusion_erste")),
-        ("longevity/infusionen/", "Infusionsmenü, jede weitere", "ohne Vorgespräch", price("infusion_weitere")),
+        ("longevity/nad-infusion/", "NAD+-Infusion, 250 mg", "erste Infusion mit ärztlichem Gespräch, jede weitere " + price("nad_weitere") + ", Kur = Summe der Einzelinfusionen", price("nad_infusion")),
+        ("longevity/infusionen/", "Infusionsmenü, erste Infusion", "je nach Infusion, mit ärztlicher Aufklärung", price("infusion_erste")),
+        ("longevity/infusionen/", "Infusionsmenü, jede weitere", "je nach Infusion", price("infusion_weitere")),
         ("longevity/regenerationskuren/", "Wärmekur", "Ganzkörperhyperthermie, 6 Sitzungen", price("kur_hyperthermie")),
         ("longevity/regenerationskuren/", "Oxyvenierung", "12 Sitzungen", price("kur_oxyvenierung")),
         ("longevity/regenerationskuren/", "Farblaser", "12 Sitzungen", price("kur_farblaser")),
@@ -224,10 +225,10 @@ PAGES = [
          "Longevity-Check in Stuttgart: Longevity-Gespräch, Labor mit ApoB, Lp(a), HbA1c, Omega-3-Index, HRV und persönlichem Plan. Jetzt online buchen.",
          check, line="lon", nav="lon", crumbs=LON + [(None, "Longevity-Check")]),
     Page("longevity/nad-infusion", "NAD+ Infusion Stuttgart · UMI Longevity",
-         "NAD+-Infusion und NAD+-Kur in Stuttgart, nach ärztlichem Vorgespräch und unter Aufsicht. Ablauf, Dauer und voraussichtliche Kosten.",
+         "NAD+-Infusion (250 mg) und NAD+-Kur in Stuttgart, mit ärztlichem Gespräch und unter Aufsicht. Ablauf, Dauer und voraussichtliche Kosten ab 489 €.",
          nad, line="lon", nav="lon", crumbs=LON + [(None, "NAD+")]),
     Page("longevity/infusionen", "Infusionstherapie Stuttgart: Infusionsmenü · UMI",
-         "Infusionsmenü bei UMI Stuttgart: 15 Infusionen von Winter bis NAD+, nur nach ärztlichem Vorgespräch. Erste Infusion inkl. Gespräch.",
+         "Infusionsmenü bei UMI Stuttgart: 15 Infusionen von Winter bis NAD+, mit ärztlicher Aufklärung, ohne Formular vorab. Preise ab 119 €.",
          infusionen, line="lon", nav="lon", crumbs=LON + [(None, "Infusionsmenü")]),
     Page("longevity/regenerationskuren", "Regenerationskuren · UMI Longevity Stuttgart",
          "Wärmekur, Oxyvenierung oder Farblaser als Kur mit festen Terminen bei UMI Longevity in Stuttgart. Nach ärztlichem Vorgespräch.",

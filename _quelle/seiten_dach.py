@@ -228,7 +228,7 @@ def kosten():
         ("Warum steht „voraussichtlich“ vor den Preisen?",
          "Ärztliche Leistungen müssen nach der GOÄ abgerechnet werden. Der genaue Betrag ergibt sich aus den tatsächlich erbrachten Leistungen. Unsere Preise beschreiben, was ein Paket in der Regel kostet."),
         ("Gibt es Rabatte?",
-         "Nein. Ärztinnen und Ärzte dürfen keine Rabatte auf Behandlungen geben. Folgeinfusionen sind günstiger, weil das Erstgespräch entfällt."),
+         "Nein. Ärztinnen und Ärzte dürfen keine Rabatte auf Behandlungen geben. Folgeinfusionen sind günstiger, weil die ärztliche Aufklärung der ersten Infusion entfällt."),
     ])
     body = f"""{hero('Kosten und Erstattung', 'Was kostet eine Behandlung bei UMI Stuttgart?',
     'Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Vor jeder Behandlung bekommen Sie einen schriftlichen Kostenvoranschlag. So wissen Sie vorher, was auf Sie zukommt.',
