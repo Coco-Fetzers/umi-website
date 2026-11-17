@@ -211,7 +211,7 @@ def apherese():
 <p>Der Filter kann auch weitere Stoffe zurückhalten, wenn sie an große Eiweiße oder Fette gebunden sind:</p>
 {liste(['Chemikalien wie Pestizide und organische Lösemittel', 'Schwermetalle', 'Immunkomplexe, Allergene und Stoffwechselprodukte'])}
 <p class="small muted" style="margin:0">Dazu gibt es bisher nur Herstellerangaben und einzelne Fallberichte, noch keine größeren Studien. Ob und welche dieser Stoffe in Ihrem Fall im Filter bleiben, kann die Eluat-Analyse zeigen.</p></div>
-<div class="note" style="margin-top:24px"><b>Ehrlich zur Studienlage:</b> Studien zeigen, dass diese Werte direkt nach der Behandlung deutlich niedriger sind. Ob und wie sich das auf einzelne Beschwerden auswirkt, ist in großen kontrollierten Studien noch nicht untersucht. Das sagen wir Ihnen offen. Und weil Stoffe aus dem Gewebe mit der Zeit wieder ins Blut übergehen können, planen wir die Anzahl der Behandlungen individuell.</div>
+<div class="note" style="margin-top:24px"><b>Zur Studienlage:</b> Studien zeigen, dass diese Werte direkt nach der Behandlung deutlich niedriger sind. Ob und wie sich das auf einzelne Beschwerden auswirkt, ist in großen kontrollierten Studien noch nicht untersucht.</div>
 </div></section>
 
 <section class="bg-dark" id="eluat"><div class="wrap"><div class="split">
