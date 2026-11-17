@@ -1,6 +1,6 @@
 """Linie UMI Medizin (Ansprache: Sie) und die gemeinsame Apherese-Seite."""
 from rahmen import Page, a, book, tel, faq, price
-from bausteine import hero, liste, schritte, paket, team_mini, gutschein_hinweis, kosten_box
+from bausteine import hero, liste, schritte, paket, team_mini, gutschein_hinweis, kosten_box, a_img
 from seiten_dach import schema_svg
 import config as C
 
@@ -123,53 +123,147 @@ def infektionen():
 
 # ------------------------------------------------------------ Apherese (Dach)
 
+STOFFE = [
+    # (Name, Unterzeile, Woher, Was man weiß, Was gemessen wurde)
+    ("Blutfette", "LDL-Cholesterin, Lipoprotein(a)",
+     "Teils aus der Ernährung. Lipoprotein(a) ist vor allem erblich bedingt.",
+     "Erhöhte Werte gelten als anerkannter Risikofaktor für Gefäßverengungen und Herz-Kreislauf-Erkrankungen.",
+     "LDL-Cholesterin, Triglyceride und Lipoprotein(a) waren nach der Behandlung deutlich niedriger."),
+    ("Fibrinogen", "Gerinnungseiweiß",
+     "Ein körpereigenes Eiweiß, wichtig für die Blutgerinnung.",
+     "Hohe Werte machen das Blut zähflüssiger und werden mit Durchblutungsstörungen und einem höheren Herz-Kreislauf-Risiko in Verbindung gebracht.",
+     "Fibrinogen war nach der Behandlung deutlich niedriger."),
+    ("Entzündungs­botenstoffe", "zum Beispiel CRP, Interleukin-6",
+     "Der Körper bildet sie selbst, wenn das Immunsystem aktiv ist.",
+     "Bleiben sie dauerhaft leicht erhöht, spricht die Forschung von einer stillen Entzündung. Sie wird mit anhaltender Erschöpfung, Gelenk- und Muskelbeschwerden in Verbindung gebracht.",
+     "Interleukin-6 und CRP waren nach der Behandlung deutlich niedriger."),
+    ("Autoantikörper", "fehlgeleitete Antikörper",
+     "Das Immunsystem bildet Antikörper, die sich gegen körpereigene Strukturen richten.",
+     "Autoantikörper spielen bei Autoimmunerkrankungen eine Rolle. Einige werden mit Beschwerden des Nervensystems, des Kreislaufs und mit Erschöpfung in Verbindung gebracht.",
+     "Bestimmte Autoantikörper waren nach der Behandlung niedriger."),
+    ("Umweltstoffe", "PFAS, Mikroplastik, Schwermetalle",
+     "Aus Verpackungen, beschichteten Pfannen, Kleidung, Wasser, Luft und Nahrung. Viele baut der Körper nur sehr langsam ab.",
+     "Jeder Mensch trägt heute Spuren davon im Blut. Welche in welcher Menge eine Rolle für die Gesundheit spielen, wird intensiv erforscht.",
+     "PFAS im Plasma waren in ersten kleinen Studien niedriger. Im Filtrat fanden sich Hinweise auf Mikroplastik."),
+]
+
+FRAGEN = [
+    "Ihre Blutfette oder Ihr Lipoprotein(a) sind erhöht, obwohl Sie auf Ernährung und Bewegung achten?",
+    "Ihre Entzündungswerte sind immer wieder leicht erhöht, ohne dass ein klarer Grund gefunden wurde?",
+    "Sie fühlen sich seit Langem erschöpft, und die üblichen Untersuchungen haben keine Erklärung gebracht?",
+    "Sie leben mit einer Autoimmunerkrankung und suchen eine Ergänzung zu Ihrer bisherigen Behandlung?",
+    "Sie waren beruflich oder privat Umweltstoffen ausgesetzt, zum Beispiel Lösungsmitteln, Metallen oder PFAS?",
+    "Sie reagieren auf Duftstoffe, Chemikalien oder Ausdünstungen empfindlicher als andere?",
+]
+
+VERFAHREN = [
+    ("INUSpherese®", "Doppelfiltration des Plasmas, hält große Eiweiße, Fette und daran Gebundenes zurück", "ja"),
+    ("H.E.L.P.-Apherese", "fällt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen mit Heparin aus dem Plasma", "ja"),
+    ("Lipidapherese", "Sammelbegriff für Verfahren, die vor allem Blutfette senken", "über H.E.L.P."),
+    ("Immunadsorption", "bindet gezielt Antikörper an eine Säule", "nein"),
+    ("Plasmaaustausch", "Plasma wird verworfen und durch eine Lösung ersetzt", "nein"),
+    ("Dialyse", "ersetzt die Nierenfunktion, filtert kleine, harnpflichtige Stoffe", "nein"),
+]
+
+
 def apherese():
     fh, fld = faq([
-        ("Was ist eine Blutwäsche?", "„Blutwäsche“ ist der Alltagsbegriff für die Apherese. Dabei wird Blut außerhalb des Körpers in Blutzellen und Plasma getrennt, das Plasma gefiltert und anschließend zurückgegeben. Mit Dialyse oder einem Plasmaaustausch ist sie nicht gleichzusetzen."),
-        ("Wie lange dauert eine Sitzung?", "Etwa zwei bis drei Stunden. Sie liegen bequem, wir überwachen Kreislauf und Werte die ganze Zeit."),
-        ("Wie viele Sitzungen sind sinnvoll?", "Häufig werden zwei Sitzungen im Abstand von zwei bis drei Tagen empfohlen. Wie viele es bei Ihnen sind, besprechen wir im Vorgespräch."),
-        ("Ist die Apherese anstrengend?", "Die meisten empfinden sie als gut verträglich. Über mögliche Nebenwirkungen und Risiken klären wir Sie vorher genau auf."),
-        ("Was kostet die Apherese?", f"Eine Sitzung INUSpherese kostet voraussichtlich {price('apherese_sitzung', '')}, das Apherese-Programm voraussichtlich {price('apherese_programm')}. Die genauen Kosten stehen in Ihrem Kostenvoranschlag."),
-        ("Zahlt die Krankenversicherung?", "Private Krankenversicherungen und Beihilfe erstatten bei medizinischem Anlass teilweise. Wir helfen Ihnen beim Antrag. Bei Anwendung zur Vorsorge wird in der Regel nicht erstattet."),
-        ("Was ist die Eluat-Analyse?", "Die abgefilterten Bestandteile werden im Labor untersucht. So sehen Sie, was sich in Ihrem Fall herausfiltern ließ."),
+        ("Ist das eine Dialyse?", "Nein. Die Dialyse ersetzt die Nierenfunktion und filtert kleine Stoffe. Die INUSpherese® filtert gezielt große Moleküle aus dem Plasma."),
+        ("Bekomme ich fremdes Plasma?", "Nein. Ihr eigenes Plasma wird gefiltert und zurückgeführt, eine Ersatzlösung ist nicht nötig."),
+        ("Tut das weh und ist es gut verträglich?", "Spürbar ist vor allem der Einstich in der Armbeuge, die Behandlung selbst ist schmerzarm. Wie bei jeder Behandlung am Blutkreislauf kann es zu Nebenwirkungen wie Kreislaufschwäche oder Blutergüssen kommen. Darüber klären wir Sie vorher ausführlich auf."),
+        ("Wie viele Behandlungen brauche ich?", "Das hängt von Ihren Werten und Zielen ab. Meist beginnen wir mit zwei Behandlungen innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen."),
+        ("Was kostet die INUSpherese®?", f"Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}, zwei Behandlungen inklusive Vorgesprächen, Untersuchungen, Überwachung und begleitenden Infusionen voraussichtlich {price('apherese_programm')}. Was Sie nicht benötigen, wird nicht berechnet. Sie bekommen vorher einen schriftlichen Kostenvoranschlag."),
+        ("Zahlt das meine Krankenkasse?", "In der Regel nicht, die INUSpherese® ist bei uns eine Selbstzahlerleistung. Private Versicherungen erstatten in Einzelfällen. Wir beraten Sie dazu."),
     ])
     proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "INUSpherese",
-            "alternateName": ["Blutwäsche", "Doppelfiltrations-Plasmapherese"],
-            "description": "Ambulante Filtration des Blutplasmas mit Doppelmembranfiltern bei UMI Stuttgart."}
-    body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese und H.E.L.P.-Apherese in Stuttgart',
-    'Bei der Apherese, oft „Blutwäsche“ genannt, wird das Blutplasma außerhalb des Körpers gefiltert. UMI Stuttgart ist seit 2023 zertifizierter INUS-Partner und bietet in Stuttgart als einzige Praxis INUSpherese und H.E.L.P.-Apherese an. Ambulant, etwa zwei bis drei Stunden je Sitzung.',
-    book('Beratungsgespräch buchen') + a('kosten/', 'Kosten', 'btn ghost'), 'dach',
-    f'<p class="price-line"><b>Sitzung INUSpherese voraussichtlich {price("apherese_sitzung", "")}</b> · nach GOÄ, mit Kostenvoranschlag</p>')}
-<section class="bg-white"><div class="wrap"><div class="split">
-<div><h2>Wie funktioniert die Apherese?</h2>
-<p>Über eine Vene am Arm wird Blut entnommen. Ein erster Filter trennt das Plasma von den Blutzellen. Das Plasma läuft durch einen zweiten, feineren Filter, der bestimmte große Bestandteile zurückhält, zum Beispiel Fette, Eiweißkomplexe und Entzündungsbotenstoffe. Das gefilterte Plasma fließt zusammen mit den Blutzellen über die andere Armvene zurück.</p>
-<p>Weil das eigene Plasma zurückgegeben wird, ist keine Ersatzlösung nötig. Das unterscheidet die INUSpherese vom Plasmaaustausch.</p></div>
-<div class="svg-schema">{schema_svg()}</div></div></div></section>
+            "alternateName": ["Doppelfiltrations-Plasmapherese", "Apherese"],
+            "description": "Ambulante Filtration des eigenen Blutplasmas mit Doppelmembranfiltern bei UMI Stuttgart, mit Eluat-Analyse."}
+
+    t1 = "".join(f"""<div class="stoff"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{s}</p>
+<p><b>Woher:</b> {w}</p><p><b>Was man weiß:</b> {k}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
+    t2 = "".join(f"""<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p>{m}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
+    fr = "".join(f'<li>{q}</li>' for q in FRAGEN)
+    vt = "".join(f'<tr><td><b>{n}</b></td><td style="white-space:normal;font-weight:400">{k}</td><td>{u}</td></tr>' for n, k, u in VERFAHREN)
+    anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
+
+    body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese® in Stuttgart: Blutplasma filtern, Ergebnis sehen',
+    'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen.',
+    book('Erstgespräch vereinbaren') + a('#info-abend', 'Info-Abend am 9. Dezember', 'btn ghost'), 'dach',
+    '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Wichtige Eiweiße und Elektrolyte bleiben erhalten</li></ul>')}
+
+<section class="tight bg-dark"><div class="wrap"><p class="claim">Seit 2023 zertifizierter INUS-Partner. Einziges INUSpherese-Zentrum im Raum Stuttgart, in enger Zusammenarbeit mit dem INUS Medical Center in Cham, wo das Verfahren entwickelt wurde.</p></div></section>
+
+<section class="bg-white" id="im-blut"><div class="wrap">
+<span class="eyebrow">Teil 1</span><h2>Was sich im Blut ansammeln kann</h2>
+<p class="lead">Unser Blut transportiert nicht nur Nährstoffe und Sauerstoff. Mit der Zeit können sich darin auch Stoffe anreichern, die wir über Nahrung, Wasser, Luft und Alltagsprodukte aufnehmen oder die der Körper selbst bildet. Ein Überblick:</p>
+<div class="stoffe">{t1}</div>
+<p class="small muted" style="margin-top:20px">Ob und wie stark solche Stoffe bei Ihnen eine Rolle spielen, lässt sich nur im Einzelfall beurteilen. Ein Teil davon lässt sich im Blut messen.</p>
+</div></section>
+
+<section id="filter"><div class="wrap">
+<span class="eyebrow">Teil 2</span><h2>Was die INUSpherese® aus dem Plasma filtert</h2>
+<div class="split"><div><p>Viele Stoffe im Blut schwimmen nicht frei, sondern sind an große Eiweiße und Fette gebunden. Genau hier setzt der Filter an. Er lässt kleine Bestandteile wie Wasser, Salze und die meisten Nährstoffe durch und hält größere Moleküle zurück, und mit ihnen vieles, was daran gebunden ist.</p>
+<p>Anders als beim Plasmaaustausch verlieren Sie dabei keine nennenswerten Mengen an Elektrolyten oder lebenswichtigen Eiweißen.</p></div>
+<div class="svg-schema">{schema_svg()}</div></div>
+<h3 style="margin-top:36px">In Studien gemessen</h3>
+<div class="stoffe">{t2}</div>
+<div class="note" style="margin-top:24px"><b>Ehrlich zur Studienlage:</b> Studien zeigen, dass diese Werte direkt nach der Behandlung deutlich niedriger sind. Ob und wie sich das auf einzelne Beschwerden auswirkt, ist in großen kontrollierten Studien noch nicht untersucht. Das sagen wir Ihnen offen. Und weil Stoffe aus dem Gewebe mit der Zeit wieder ins Blut übergehen können, planen wir die Anzahl der Behandlungen individuell.</div>
+</div></section>
+
+<section class="bg-dark" id="eluat"><div class="wrap"><div class="split">
+<div><span class="eyebrow" style="color:var(--euca)">Eluat-Analyse</span><h2 style="color:var(--shell)">Ihre Werte vorher. Ihre Werte nachher. Und was dazwischen im Filter geblieben ist.</h2></div>
+<div><p>Was der Filter zurückhält, kann ein Labor untersuchen. So sehen Sie schwarz auf weiß, was aus Ihrem Plasma gefiltert wurde. Die Ergebnisse dokumentieren wir, damit wir den Verlauf vergleichen und weitere Behandlungen gezielt planen können.</p></div>
+</div></div></section>
+
+<section class="bg-white" id="fuer-wen"><div class="wrap"><div class="split wide">
+<div><span class="eyebrow">Teil 3</span><h2>Erkennen Sie sich wieder?</h2>
+<p>Die INUSpherese® ist keine Behandlung für jeden und ersetzt keine notwendige Therapie. Sie kann aber ergänzend in Frage kommen. Vielleicht trifft einer dieser Punkte auf Sie zu:</p>
+<ul class="fragen">{fr}</ul></div>
+<div class="box" style="align-self:center"><h3>Sie müssen das nicht selbst einschätzen.</h3><p>Im Erstgespräch sehen wir uns Ihre Vorgeschichte und Ihre Laborwerte an und sagen Ihnen offen, ob die INUSpherese® für Sie in Frage kommt oder ob etwas anderes besser passt.</p>
+<div class="btns">{book('Erstgespräch vereinbaren')}</div>
+<p class="small muted" style="margin:14px 0 0">Andere Beschwerden? Sprechen Sie uns trotzdem an: {tel()}</p></div>
+</div></div></section>
+
 <section id="ablauf"><div class="wrap"><div class="split">
-<div><h2>Wie läuft die Behandlung ab?</h2>{schritte([
-    ('Beratungsgespräch', ' Unsere Ärztin prüft, ob eine Apherese für Sie in Frage kommt, und klärt Sie über Nutzen und Risiken auf.'),
-    ('Voruntersuchung', ' Labor und Untersuchung vor der ersten Sitzung, Kostenvoranschlag.'),
-    ('Behandlung', ' Etwa zwei bis drei Stunden, im Liegen, mit ständiger Überwachung durch unser Pflegeteam mit Dialyse-Erfahrung.'),
-    ('Eluat-Analyse', ' Auf Wunsch untersuchen wir, was der Filter zurückgehalten hat.'),
-    ('Nachgespräch', ' Ergebnisse, Verlauf und die Frage, ob weitere Sitzungen sinnvoll sind.'),
+<div><h2>So läuft es ab</h2>{schritte([
+    ('Erstgespräch', ' Vorgeschichte, Beschwerden, Ziele und mögliche Gegenanzeigen. Die ärztliche Aufklärung findet mindestens 24 Stunden vor der ersten Behandlung statt, bei weiter Anreise auch telefonisch.'),
+    ('Labor vorher', ' Wir messen die Werte, auf die es in Ihrem Fall ankommt.'),
+    ('Zwei Behandlungen', ' Sie liegen bequem, über beide Armbeugen wird je ein Zugang gelegt. Etwa 2 bis 3 Stunden, unser Team ist die ganze Zeit bei Ihnen. Meist zwei Behandlungen innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen.'),
+    ('Auswertung', ' Werte vorher und nachher im Vergleich, auf Wunsch mit Eluat-Analyse.'),
 ])}</div>
-<div id="unterscheidung"><h2>INUSpherese oder H.E.L.P.?</h2>
-<div class="box" style="margin-bottom:16px"><h3>INUSpherese</h3><p>Doppelmembran-Filtration des Plasmas (DFPP). Die Filter halten große Moleküle zurück. Entwickelt und zertifiziert vom INUS Medical Center in Cham, mit dem wir zusammenarbeiten.</p></div>
-<div class="box"><h3>H.E.L.P.-Apherese</h3><p>Heparin-induzierte extrakorporale LDL-Präzipitation. Sie senkt gezielt LDL-Cholesterin, Lipoprotein(a) und Fibrinogen und ist bei schweren Fettstoffwechselstörungen ein etabliertes Verfahren.</p></div>
-<p class="small muted" style="margin-top:12px">Welches Verfahren passt, entscheidet die Ärztin im Beratungsgespräch.</p></div></div></div></section>
-<section class="bg-white" id="indikation"><div class="wrap"><div class="split">
-<div><h2>Für wen kommt die Apherese in Frage?</h2>
-<p>Die Apherese ist kein Allheilmittel. Wir setzen sie ein, wenn Voruntersuchung und Gespräch dafür sprechen. Dazu gehören zum Beispiel Fettstoffwechselstörungen, ausgewählte chronisch-entzündliche Verläufe und Belastungen durch Umweltstoffe. Für manche Anwendungen ist sie nicht zugelassen. Darüber sprechen wir offen.</p>
-<p>Auch gesunde Menschen fragen nach der Apherese zur Vorsorge. Dafür gibt es bei UMI Longevity den {a('longevity/apherese-reset/', 'Apherese Reset')}.</p></div>
-<div class="grid" style="gap:16px">
-{a('medizin/apherese-programm/', '<span class="tag">UMI Medizin</span><h3>Apherese-Programm</h3><p>Mit Diagnostik, zwei Sitzungen, Eluat-Analyse und Hilfe beim Erstattungsantrag.</p><span class="more">Zum Programm →</span>', 'card')}
-{a('longevity/apherese-reset/', '<span class="tag">UMI Longevity</span><h3>Apherese Reset</h3><p>Für Gesunde, mit Labor vorher und nachher und Auswertungsgespräch.</p><span class="more">Zum Reset →</span>', 'card')}
-</div></div></div></section>
-<section id="studien"><div class="wrap narrow"><h2>Was sagt die Forschung?</h2>
-<p>Für die Lipoprotein-Apherese bei schweren Fettstoffwechselstörungen ist der Nutzen gut belegt. Für andere Anwendungen gibt es erste Studien und Erfahrungsberichte, aber noch keine abschließende Bewertung. Gern sprechen wir im Beratungsgespräch über den aktuellen Stand für Ihre Situation.</p>
-<div class="note"><b>Für Angehörige:</b> Eine Begleitperson ist willkommen. Nach der Behandlung sollten Sie nicht selbst Auto fahren. Mehr unter {a('ihr-besuch/', 'Ihr Besuch bei uns')}.</div></div></section>
-{team_mini(['kafle', 'gusic', 'gentsch'])}
-{fh}{gutschein_hinweis()}"""
+<div class="box"><h3>Was dazugehört</h3>{liste([
+    'Ausführliche Anamnese vor dem ersten Termin',
+    'Körperliche Untersuchung und Arztgespräch vor jeder Behandlung',
+    'Überwachung von Kreislauf und Vitalwerten während der Behandlung',
+    'Begleitende Infusionen, wenn ärztlich sinnvoll oder auf Wunsch',
+    'Auf Wunsch Analyse des Eluats in einem externen Labor',
+    'Nachgespräch',
+])}
+<p class="price-line" style="margin:16px 0 0"><b>Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}</b> · nach GOÄ, mit Kostenvoranschlag</p>
+<p class="small" style="margin:12px 0 0">Als festes Paket: {a('medizin/apherese-programm/', 'Apherese-Programm')} · Für Gesunde: {a('longevity/apherese-reset/', 'Apherese Reset')}</p></div>
+</div></div></section>
+
+<section class="bg-white" id="verfahren"><div class="wrap">
+<h2>INUSpherese, H.E.L.P. und andere Verfahren</h2>
+<p style="max-width:760px">Apherese ist der Oberbegriff für Verfahren, bei denen Blut außerhalb des Körpers behandelt und wieder zurückgeführt wird. Sie unterscheiden sich darin, was sie aus dem Blut filtern. Welches für Sie in Frage kommt, klären wir im Gespräch.</p>
+<div class="table-wrap"><table class="price-table"><tr><th>Verfahren</th><th>Kurz erklärt</th><th>Bei UMI</th></tr>{vt}</table></div>
+</div></section>
+
+<section id="team"><div class="wrap"><div class="split wide">
+<div><h2>Unser Team und Ihre Sicherheit</h2>
+<p>Ihre INUSpherese® betreut unsere Ärztin <b>Namrata Kafle</b>, Ärztin für Innere Medizin, gemeinsam mit zwei erfahrenen Pflegefachkräften. <b>Michaela Gusic</b> leitet unser INUSpherese-Zentrum und bringt über 25 Jahre Erfahrung aus der Dialyse mit, zuletzt als Leitung der Dialysestation am Klinikum Stuttgart. <b>Evelyn Gentsch</b> ist examinierte Kinderkrankenschwester mit langjähriger Erfahrung in der Kinderdialyse am Universitätsklinikum Tübingen.</p>
+<p>Gemeinsam begleiten sie Sie vom Vorgespräch bis zur Auswertung.</p></div>
+<div class="team-row">{''.join(f'<img src="{a_img(f)}" alt="{n}" width="480" height="720">' for f, n in [('team-namrata-kafle.jpg', 'Namrata Kafle'), ('team-michaela-gusic.jpg', 'Michaela Gusic'), ('team-evelyn-gentsch.jpg', 'Evelyn Gentsch')])}</div>
+</div></div></section>
+
+<section class="bg-soft" id="info-abend"><div class="wrap"><div class="banner" style="padding:0">
+<div><span class="eyebrow">Kostenloser Info-Abend</span><h2>Mittwoch, 9. Dezember 2026, 17:30 Uhr</h2>
+<p>Lernen Sie uns kennen: Wir erklären, wie die INUSpherese® funktioniert, was im Labor gemessen wird und für wen sie in Frage kommen könnte. Etwa 45 Minuten Vortrag, danach 30 Minuten für Ihre Fragen.</p>
+<div class="btns"><a class="btn" href="{anmeldung}">Zum Info-Abend anmelden</a>{tel('btn ghost', 'Anmelden per Telefon')}</div></div>
+<div class="box"><h3>Programm</h3>{liste(['Vorstellung Praxis und Team', 'Was ist Umweltmedizin?', 'Was sich im Blut ansammeln kann', 'So funktioniert die INUSpherese®', 'Was ergänzend möglich ist'])}</div>
+</div></div></section>
+{fh}
+<section class="tight"><div class="wrap"><div class="hint"><p><b>Ob die INUSpherese® zu Ihnen passt, entscheiden wir gemeinsam,</b> nach einem ärztlichen Gespräch und mit Blick auf Ihre Werte.</p>{book('Erstgespräch vereinbaren', 'btn')}</div></div></section>"""
     return body, [fld, proc]
 
 
@@ -186,7 +280,7 @@ def apherese_programm():
                    "Hilfe beim Erstattungsantrag an PKV oder Beihilfe"],
         ablauf=[("Vorgespräch", " Telefon, Video oder in der Praxis. Wir prüfen, ob die Apherese für Sie passt."),
                 ("Diagnostik", " Labor und Untersuchung, danach Kostenvoranschlag."),
-                ("Zwei Sitzungen", " Je etwa zwei bis drei Stunden, im Abstand von zwei bis drei Tagen."),
+                ("Zwei Sitzungen", " Je etwa zwei bis drei Stunden, innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen."),
                 ("Nachgespräch", " Ergebnisse der Eluat-Analyse, Verlauf, nächste Schritte.")],
         passt=["Ihre Beschwerden bestehen seit Langem", "Sie haben eine gründliche Abklärung hinter sich oder wollen sie bei uns machen", "Sie möchten die Apherese in einem klaren Rahmen ausprobieren"],
         passt_nicht=["Sie haben eine akute, schwere Erkrankung", "Gegenanzeigen sprechen dagegen, das prüfen wir im Vorgespräch", "Sie suchen eine schnelle Lösung ohne Diagnostik"],
@@ -335,8 +429,8 @@ PAGES = [
     Page("long-covid-sprechstunde", "Beschwerden nach Infektionen · UMI Medizin Stuttgart",
          "Anhaltende Beschwerden nach Infektion oder Impfung: gründliche Abklärung und Begleitung in Stuttgart-Vaihingen. Vorgespräch auch per Video.",
          infektionen, line="med", nav="med", crumbs=MED + [(None, "Beschwerden nach Infektionen")]),
-    Page("inuspherese-zentrum-stuttgart", "INUSpherese & H.E.L.P.-Apherese in Stuttgart · UMI",
-         "Blutwäsche (Apherese) in Stuttgart-Vaihingen: INUSpherese und H.E.L.P., Ablauf, Kosten nach GOÄ, Eluat-Analyse. Beratungsgespräch online buchen.",
+    Page("inuspherese-zentrum-stuttgart", "INUSpherese® in Stuttgart: Apherese mit Eluat-Analyse · UMI",
+         "INUSpherese-Zentrum Stuttgart-Vaihingen: Blutplasma filtern und das Ergebnis im Labor sehen. Ablauf, Verfahren, Team, Info-Abend am 9.12. Erstgespräch online.",
          apherese, nav="aph", crumbs=[(None, "Apherese")]),
     Page("medizin/apherese-programm", "Apherese-Programm Stuttgart · UMI Medizin",
          "Apherese-Programm bei UMI Stuttgart: Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese oder H.E.L.P., Eluat-Analyse. Voraussichtliche Kosten nach GOÄ.",

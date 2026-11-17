@@ -238,3 +238,22 @@ a.card:hover{border-color:var(--accent)}
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--radius)}
 .split>*{min-width:0}
 @media (max-width:760px){.price-table th,.price-table td{padding:10px 8px}.price-table{font-size:14px}}
+/* INUSpherese */
+.pills{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.pills li{background:var(--white);border:1px solid var(--flax);border-radius:999px;padding:8px 16px;font-size:15px;font-weight:500;margin:0}
+.claim{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);line-height:1.35;margin:0;max-width:900px}
+.stoffe{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:28px}
+.stoff{background:var(--paper);border:1px solid var(--flax);border-radius:var(--radius);padding:22px;position:relative;font-size:16px}
+.stoff h3{margin:10px 0 2px;font-size:20px;hyphens:auto}
+.stoff .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
+.stoff p{margin:0 0 10px}
+.stoff .nr{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--flax);align-items:center;justify-content:center;font-weight:700}
+.stoff.filter{background:var(--white)}
+.stoff.filter .nr{background:var(--euca);color:var(--white)}
+.fragen{list-style:none;padding:0;display:grid;gap:12px;margin-top:20px}
+.fragen li{background:var(--paper);border-radius:12px;padding:16px 20px 16px 56px;position:relative;margin:0;font-weight:500}
+.fragen li::before{content:"?";position:absolute;left:18px;top:14px;width:26px;height:26px;border-radius:50%;background:var(--mist);color:var(--slate-deep);display:flex;align-items:center;justify-content:center;font-weight:700}
+.team-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.team-row img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:var(--radius)}
+@media (max-width:1060px){.stoffe{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.stoffe{grid-template-columns:1fr}}

@@ -215,7 +215,7 @@ def reset():
         enthalten=["Vorgespräch mit der Ärztin", "Labor vorher und nachher (Entzündung, Blutfette, Schadstoffe)", "2 Sitzungen INUSpherese oder H.E.L.P.-Apherese",
                    "Eluat-Analyse", "Auswertungsgespräch"],
         ablauf=[("Vorgespräch", " Passt die Apherese zu dir? Aufklärung über Ablauf und Risiken."), ("Labor", " Ausgangswerte."),
-                ("Zwei Sitzungen", " je etwa zwei bis drei Stunden, im Abstand von zwei bis drei Tagen."), ("Auswertung", " Eluat-Analyse und Labor danach, gemeinsam besprochen.")],
+                ("Zwei Sitzungen", " je etwa zwei bis drei Stunden, innerhalb von fünf Tagen, mit mindestens einem Tag Pause."), ("Auswertung", " Eluat-Analyse und Labor danach, gemeinsam besprochen.")],
         passt=["du gesund bist und dich für die Apherese interessierst", "du Messwerte vorher und nachher sehen willst", "du dir zwei Behandlungstage freihalten kannst"],
         passt_nicht=["du schwanger bist", "Gegenanzeigen dagegen sprechen, das prüfen wir im Vorgespräch"],
         team=["kafle", "gusic", "gentsch"],
