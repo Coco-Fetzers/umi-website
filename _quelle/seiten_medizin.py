@@ -154,6 +154,8 @@ FRAGEN = [
     "Sie leben mit einer Autoimmunerkrankung und suchen eine Ergänzung zu Ihrer bisherigen Behandlung?",
     "Sie waren beruflich oder privat Umweltstoffen ausgesetzt, zum Beispiel Lösungsmitteln, Metallen oder PFAS?",
     "Sie reagieren auf Duftstoffe, Chemikalien oder Ausdünstungen empfindlicher als andere?",
+    "Sie haben anhaltende Gelenk- oder Muskelbeschwerden, die mit Entzündungen zusammenhängen könnten?",
+    "Sie haben Missempfindungen wie Kribbeln oder Taubheit in Händen und Füßen, bei denen Antikörper oder Umweltstoffe eine Rolle spielen könnten?",
 ]
 
 VERFAHREN = [
@@ -222,7 +224,8 @@ def apherese():
 <section class="bg-white" id="fuer-wen"><div class="wrap"><div class="split wide">
 <div><span class="eyebrow">Teil 3</span><h2>Erkennen Sie sich wieder?</h2>
 <p>Die INUSpherese® ist keine Behandlung für jeden und ersetzt keine notwendige Therapie. Sie kann aber ergänzend in Frage kommen. Vielleicht trifft einer dieser Punkte auf Sie zu:</p>
-<ul class="fragen">{fr}</ul></div>
+<ul class="fragen">{fr}</ul>
+<p style="margin-top:18px"><b>Ob die INUSpherese® für Sie infrage kommt, klären wir im Erstgespräch.</b></p></div>
 <div class="box" style="align-self:center"><h3>Sie müssen das nicht selbst einschätzen.</h3><p>Im Erstgespräch sehen wir uns Ihre Vorgeschichte und Ihre Laborwerte an und sagen Ihnen offen, ob die INUSpherese® für Sie in Frage kommt oder ob etwas anderes besser passt.</p>
 <div class="btns">{book('Erstgespräch vereinbaren')}</div>
 <p class="small muted" style="margin:14px 0 0">Andere Beschwerden? Sprechen Sie uns trotzdem an: {tel()}</p></div>
