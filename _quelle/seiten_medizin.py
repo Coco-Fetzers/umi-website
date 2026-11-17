@@ -133,7 +133,7 @@ STOFFE = [
      "Ein körpereigenes Eiweiß, wichtig für die Blutgerinnung.",
      "Hohe Werte machen das Blut zähflüssiger und werden mit Durchblutungsstörungen und einem höheren Herz-Kreislauf-Risiko in Verbindung gebracht.",
      "Fibrinogen war nach der Behandlung deutlich niedriger."),
-    ("Entzündungs­botenstoffe", "zum Beispiel CRP, Interleukin-6",
+    ("Entzündungs­botenstoffe", "z. B. Interleukine, CRP",
      "Der Körper bildet sie selbst, wenn das Immunsystem aktiv ist.",
      "Bleiben sie dauerhaft leicht erhöht, spricht die Forschung von einer stillen Entzündung. Sie wird mit anhaltender Erschöpfung, Gelenk- und Muskelbeschwerden in Verbindung gebracht.",
      "Interleukin-6 und CRP waren nach der Behandlung deutlich niedriger."),
@@ -183,7 +183,7 @@ def apherese():
 
     t1 = "".join(f"""<div class="stoff"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{s}</p>
 <p><b>Woher:</b> {w}</p><p><b>Was man weiß:</b> {k}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
-    t2 = "".join(f"""<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p>{m}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
+    t2 = "".join(f"""<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{s}</p><p>{m}</p></div>""" for i, (n, s, w, k, m) in enumerate(STOFFE, 1))
     fr = "".join(f'<li>{q}</li>' for q in FRAGEN)
     vt = "".join(f'<tr><td><b>{n}</b></td><td style="white-space:normal;font-weight:400">{k}</td><td>{u}</td></tr>' for n, k, u in VERFAHREN)
     anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
