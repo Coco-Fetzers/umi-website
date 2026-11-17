@@ -289,7 +289,7 @@ def help_apherese():
              ("Fibrinogen", "ein Gerinnungseiweiß"), ("Triglyceride", "Neutralfette im Blut"), ("CRP", "ein Entzündungswert")]
     wk = "".join(f'<div class="stoff filter"><span class="nr">{i}</span><h3>{n}</h3><p class="sub">{d}</p></div>' for i, (n, d) in enumerate(werte, 1))
     body = f"""{hero('Apherese · UMI Medizin', 'H.E.L.P.-Apherese in Stuttgart<span class="h1-sub">Off-Label-Anwendung, nur nach ärztlicher Prüfung</span>',
-    'Die H.E.L.P.-Apherese ist ein etabliertes Apherese-Verfahren. Ihr Blutplasma wird außerhalb des Körpers behandelt: Bestimmte Blutfette und Eiweiße werden ausgefällt und abgefiltert, danach bekommen Sie Ihr Plasma zurück.',
+    'Die H.E.L.P.-Apherese ist ein seit über 30 Jahren etabliertes Apherese-Verfahren. Ihr Blutplasma wird außerhalb des Körpers behandelt: Bestimmte Blutfette und Eiweiße werden ausgefällt und abgefiltert, danach bekommen Sie Ihr Plasma zurück.',
     book('Arztgespräch vereinbaren') + a('inuspherese-zentrum-stuttgart/#verfahren', 'Vergleich der Verfahren', 'btn ghost'), 'med',
     '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Nur nach ärztlicher Prüfung</li></ul>')}
 
