@@ -75,7 +75,7 @@ def nad():
         eyebrow="Infusion · UMI Longevity", line="lon", du=True,
         h1="NAD+-Infusion und NAD+-Kur in Stuttgart",
         lead="NAD+ ist ein Coenzym, das in jeder Zelle am Energiestoffwechsel beteiligt ist. Bei UMI bekommst du NAD+ in 250 mg als Infusion, langsam über 2 bis 4 Stunden. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Einzeln oder als Kur mit 5 oder 10 Infusionen.",
-        preis_html=price("nad_infusion") + " für die erste Infusion, jede weitere " + price("nad_weitere"),
+        preis_html=price("nad_infusion") + " für die erste Infusion, jede weitere " + price("nad_weitere") + '<sup><a href="../infusionen/#weitere" title="Bedingungen für den Preis weiterer Infusionen" style="text-decoration:none">*</a></sup>',
         enthalten=["Ärztliches Gespräch vor der ersten Infusion mit Prüfung, ob NAD+ zu dir passt", "NAD+ 250 mg in ruhiger Atmosphäre, langsam über 2 bis 4 Stunden",
                    "Überwachung durch unser Pflegeteam", "Kur: 5 oder 10 Infusionen, Preis = Summe der Einzelinfusionen"],
         ablauf=[("Gesundheitsbogen und Gespräch", " 10 Minuten früher kommen, Bogen ausfüllen, dann Gespräch mit der Ärztin."), ("Erste Infusion", " langsam, damit du sie gut verträgst."),
@@ -85,6 +85,7 @@ def nad():
         team=["kafle", "buergler"],
         faqs=[("Wie lange dauert eine NAD+-Infusion?", "Etwa 2 bis 4 Stunden für 250 mg. Eine zu schnelle Gabe ist unangenehm, deshalb lassen wir uns Zeit."),
               ("Warum ist die erste Infusion teurer?", "Beim ersten Termin kommt das ärztliche Gespräch dazu. Ab der zweiten Infusion fällt es weg, das ist kein Rabatt."),
+              ("Wann brauche ich wieder ein Arztgespräch?", "Das Gespräch entfällt bei weiteren Infusionen nur, wenn deine letzte Infusion nicht länger als 6 Monate her ist und sich dein Gesundheitszustand, deine Medikamente sowie die Dosis nicht geändert haben. Sonst führen wir das Gespräch erneut, und es gilt wieder der Preis der ersten Infusion. Das klären wir vor Ort, abgerechnet wird erst danach."),
               ("Ist NAD+ sicher?", "Infusionen sind ein medizinischer Eingriff. Häufig sind Druckgefühl, Übelkeit oder Kreislaufreaktionen, wenn NAD+ zu schnell läuft. Deshalb gibt es NAD+ bei uns nur nach ärztlichem Gespräch, langsam und unter Aufsicht."),
               ("Wie viele Infusionen brauche ich?", "Das besprechen wir vor der ersten Infusion. Viele starten mit einer einzelnen Infusion. Eine Kur kostet die Summe der Einzelinfusionen.")],
         next_step=("Noch mehr wissen?", "longevity/infusionen/", "Zum Infusionsmenü"))
@@ -125,7 +126,7 @@ def infusionen():
                        f'<td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][0])}</td>'
                        f'<td style="white-space:nowrap">{one(C.INFUSIONSPREISE[k][1]) if C.INFUSIONSPREISE[k][1] != "-" else "–"}</td></tr>'
                        for n, i, k in items)
-        return f'<div class="table-wrap"><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab</th></tr>{rows}</table></div>'
+        return f'<div class="table-wrap"><table class="price-table"><tr><th>Infusion</th><th>Inhalt</th><th>erste ab</th><th>weitere ab<sup><a href="#weitere" style="text-decoration:none">*</a></sup></th></tr>{rows}</table></div>'
 
     direkt = [x for x in INFUSIONEN if x[2] not in MIT_GESPRAECH]
     gespraech = [x for x in INFUSIONEN if x[2] in MIT_GESPRAECH]
@@ -134,15 +135,16 @@ def infusionen():
         ("Muss ich vorher ein Formular ausfüllen?", "Nein. Komm zur ersten Infusion einfach 10 Minuten früher. Den kurzen Gesundheitsbogen füllst du bei uns aus."),
         ("Was bedeutet „Plus“?", "Die Plus-Varianten haben eine erweiterte Rezeptur mit aufwendigeren Präparaten. Deshalb prüft die Ärztin vor der ersten Infusion Rezeptur und Dosierung."),
         ("Warum ist die erste Infusion teurer?", "In der ersten Infusion steckt die ärztliche Aufklärung, bei manchen Infusionen auch die Prüfung der Rezeptur oder das Arztgespräch. Ab der zweiten Infusion fällt das weg. Das ist kein Rabatt."),
+        ("Wann gilt der Preis für weitere Infusionen?", "Der Preis für jede weitere Infusion gilt, wenn deine letzte Infusion höchstens 6 Monate zurückliegt und sich dein Gesundheitszustand, deine Medikamente sowie Rezeptur und Dosis nicht geändert haben. Sonst sind vorher wieder die ärztliche Aufklärung oder das Arztgespräch nötig, und es gilt der Preis der ersten Infusion. Das klären wir vor Ort mit dir, abgerechnet wird erst nach der Behandlung."),
         ("Kann ich mir auch bei den direkt buchbaren Infusionen ein ausführliches Gespräch wünschen?", "Ja, jederzeit. Sag es uns bei der Buchung oder kreuze es im Gesundheitsbogen an."),
     ])
     body = f"""{hero('Auftanken · UMI Longevity', 'Infusionsmenü in Stuttgart',
     '15 Infusionen mit klaren Inhaltsstoffen, in zwei Gruppen: Die meisten kannst du direkt buchen, ohne Formular vorab. Bei drei Infusionen sprichst du vor der ersten Infusion mit unserer Ärztin.',
     book('Infusion buchen') + a('#mit-gespraech', 'Infusionen mit Arztgespräch', 'btn ghost'), 'lon',
-    f'<p class="price-line"><b>Erste Infusion {price("infusion_erste")}, jede weitere {price("infusion_weitere")}</b> · nach GOÄ</p>')}
+    f'<p class="price-line"><b>Erste Infusion {price("infusion_erste")}, jede weitere {price("infusion_weitere")}<sup><a href="#weitere" style="text-decoration:none">*</a></sup></b> · nach GOÄ</p>')}
 <section class="tight"><div class="wrap"><div class="grid g2">
 <a class="card" href="#direkt"><span class="tag">12 Infusionen</span><h3>Direkt buchen</h3><p>Online oder am Telefon buchen, 10 Minuten früher kommen, Gesundheitsbogen in der Praxis ausfüllen. Kurze Aufklärung vor Ort, dann die Infusion.</p><span class="more">Zu den Infusionen →</span></a>
-<a class="card" href="#mit-gespraech"><span class="tag">3 Infusionen</span><h3>Mit Arztgespräch vorab</h3><p>Recharge, Recharge Plus und NAD+. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Dafür planen wir beim ersten Termin mehr Zeit ein.</p><span class="more">Zu den Infusionen →</span></a>
+<a class="card" href="#mit-gespraech"><span class="tag">3 Infusionen</span><h3>Mit Arztgespräch vorab</h3><p>Recharge, Recharge Plus und NAD+. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Dafür planen wir beim ersten Termin mehr Zeit ein. Nach mehr als 6 Monaten Pause gibt es wieder ein Gespräch.</p><span class="more">Zu den Infusionen →</span></a>
 </div></div></section>
 
 <section class="bg-white" id="direkt"><div class="wrap"><div class="split wide">
@@ -151,7 +153,7 @@ def infusionen():
     ('Buchen', ' online oder am Telefon, ohne Formular.'),
     ('10 Minuten früher kommen', ' und den kurzen Gesundheitsbogen ausfüllen.'),
     ('Kurze Aufklärung', ' Die Ärztin oder unsere Heilpraktikerin geht den Bogen mit dir durch. Bei Plus-Infusionen prüft die Ärztin dabei Rezeptur und Dosierung.'),
-    ('Infusion', ' in Ruhe, unter Aufsicht. Ab dem zweiten Mal reicht ein kurzer Check am Empfang.')])}</div>
+    ('Infusion', ' in Ruhe, unter Aufsicht. Ab dem zweiten Mal reicht ein kurzer Check am Empfang.*')])}</div>
 </div></div></section>
 
 <section id="mit-gespraech"><div class="wrap"><div class="split wide">
@@ -161,8 +163,10 @@ def infusionen():
     ('Buchen', ' online oder am Telefon. Wir planen beim ersten Termin mehr Zeit für das Gespräch ein.'),
     ('10 Minuten früher kommen', ' und den Gesundheitsbogen ausfüllen.'),
     ('Arztgespräch', ' mit der Ärztin: Vorgeschichte, Medikamente, ob die Infusion zu dir passt.'),
-    ('Infusion', ' im Anschluss, wenn nichts dagegen spricht. Ab dem zweiten Mal ohne Gespräch.')])}</div>
+    ('Infusion', ' im Anschluss, wenn nichts dagegen spricht. Weitere Infusionen ohne erneutes Gespräch, wenn die letzte nicht länger als 6 Monate her ist und sich nichts geändert hat.*')])}</div>
 </div></div></section>
+
+<section class="tight" id="weitere"><div class="wrap"><div class="note"><b>* Gilt für alle weiteren Infusionen:</b> Der Preis für jede weitere Infusion gilt, wenn deine letzte Infusion höchstens 6 Monate zurückliegt und sich dein Gesundheitszustand, deine Medikamente sowie Rezeptur und Dosis nicht geändert haben. Sonst sind vorher wieder die ärztliche Aufklärung oder das Arztgespräch nötig, und es gilt der Preis der ersten Infusion. Das klären wir vor Ort mit dir, abgerechnet wird erst nach der Behandlung.</div></div></section>
 
 <section class="bg-white"><div class="wrap"><div class="grid g2">
 <div class="box"><h3>Warum ärztlich?</h3><p>Das Bundesinstitut für Arzneimittel hat 2026 vor unkontrollierten Infusionen in Drip-Bars gewarnt. Bei uns gibt es jede Infusion nur nach ärztlicher Aufklärung, mit Prüfung von Gegenanzeigen und unter Aufsicht. Wir versprechen keine Wirkung.</p></div>
