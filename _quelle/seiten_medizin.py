@@ -207,6 +207,10 @@ def apherese():
 <div class="svg-schema">{schema_svg()}</div></div>
 <h3 style="margin-top:36px">In Studien gemessen</h3>
 <div class="stoffe">{t2}</div>
+<div class="box" style="margin-top:20px"><h3>Was der Filter außerdem zurückhalten kann</h3>
+<p>Laut Hersteller hält der Filter auch weitere Stoffe zurück, wenn sie an große Eiweiße oder Fette gebunden sind:</p>
+{liste(['Chemikalien wie Pestizide und organische Lösemittel', 'Schwermetalle', 'Immunkomplexe, Allergene und Stoffwechselprodukte'])}
+<p class="small muted" style="margin:0">Dazu gibt es bisher nur Herstellerangaben und einzelne Fallberichte, noch keine größeren Studien. Ob und welche dieser Stoffe in Ihrem Fall im Filter bleiben, kann die Eluat-Analyse zeigen.</p></div>
 <div class="note" style="margin-top:24px"><b>Ehrlich zur Studienlage:</b> Studien zeigen, dass diese Werte direkt nach der Behandlung deutlich niedriger sind. Ob und wie sich das auf einzelne Beschwerden auswirkt, ist in großen kontrollierten Studien noch nicht untersucht. Das sagen wir Ihnen offen. Und weil Stoffe aus dem Gewebe mit der Zeit wieder ins Blut übergehen können, planen wir die Anzahl der Behandlungen individuell.</div>
 </div></section>
 
