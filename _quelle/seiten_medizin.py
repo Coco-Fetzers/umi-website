@@ -14,13 +14,27 @@ SCHWERPUNKTE = [
     ("internistische-sprechstunde/", "Innere Medizin", "Abklärung mit Labor, EKG und Ultraschall. Auch als Vorsorge-Untersuchung."),
     ("sub-health-syndrom/", "Erschöpfung und Energie", "Immer müde, aber die Werte sind normal? Wir schauen genauer hin, bis zum Energie-Check."),
     ("long-covid-sprechstunde/", "Beschwerden nach Infektionen", "Wenn Beschwerden nach einer Infektion oder Impfung bleiben. Gründliche Abklärung und Begleitung."),
+    ("darmgesundheit/", "Darm und Verdauung", "Blähungen, Unverträglichkeiten, ein Bauch, der nicht zur Ruhe kommt? Mit Mikrobiom-Analyse und Plan."),
+    ("internistische-sprechstunde/#check-up", "Gesundheits-Check-up", "Gründliche Rundum-Untersuchung mit Labor, Ultraschall, EKG, Lungenfunktion und HRV-Messung."),
 ]
 
 
 def medizin():
     sp = "".join(a(t, f'<span class="tag">Schwerpunkt</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") for t, n, d in SCHWERPUNKTE)
-    sp += ('<div class="card"><span class="tag">Weitere Schwerpunkte</span><h3>Schmerz, Frauengesundheit, Kinder</h3>'
-           '<p>Mit unserer Heilpraktikerin und unserer Ärztin. Buchbar als Erstgespräch, Seiten folgen.</p></div>')
+    hp = liste(["Schmerz", "Stress und Entspannung", "Frauengesundheit", "Kindergesundheit", "Naturheilkunde und ganzheitliche Begleitung",
+                "Begleitung bei anhaltender Erschöpfung"])
+    th = "".join((a(t, f'<span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") if t else
+                  f'<div class="card"><span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p></div>') for t, tag, n, d in [
+        ("inuspherese-zentrum-stuttgart/", "Apherese", "INUSpherese®", "Blutplasma außerhalb des Körpers filtern, mit Eluat-Analyse."),
+        ("medizin/help-apherese/", "Apherese", "H.E.L.P.-Apherese", "Off-Label-Anwendung, nur nach ärztlicher Prüfung."),
+        ("ganzkoerperhyperthermie/", "Wärme", "Ganzkörperhyperthermie", "Kontrollierte Erwärmung des Körpers, ärztlich überwacht."),
+        (None, "Infusionen", "Infusionstherapie", "Nach ärztlicher Verordnung, abgestimmt auf Ihre Befunde."),
+        ("medizin/regenerationskuren/", "Kur", "Oxyvenierung nach Regelsberger", "Kleine Mengen Sauerstoff über die Vene, als Kur."),
+        ("medizin/regenerationskuren/", "Kur", "Intravasale Farblasertherapie", "Licht über eine feine Faser in der Vene, als Kur."),
+        (None, "Naturheilkunde", "Akupunktur", "Traditionelle Nadeltherapie, auch begleitend."),
+        (None, "Naturheilkunde", "Neuraltherapie", "Gezielte Injektionen mit einem örtlichen Betäubungsmittel."),
+        ("labordiagnostik/", "Diagnostik", "Labordiagnostik", "Immunstatus, Entzündung, Mikrobiom, Mikronährstoffe, Umweltstoffe und mehr."),
+    ])
     pk = "".join(a(t, f'<span class="tag">Paket</span><h3>{n}</h3><p>{d}</p><span class="price">{p}</span><span class="more">Zum Paket →</span>', "card") for t, n, d, p in [
         ("medizin/apherese-programm/", "Apherese-Programm", "Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch.", price("apherese_programm")),
         ("energie-check/", "Energie-Check", "Gründliche Abklärung bei anhaltender Erschöpfung, mit Befundgespräch und Therapieplan.", price("energie_check")),
@@ -35,13 +49,16 @@ def medizin():
 <div class="grid g3" style="margin-top:28px">{sp}</div></div></section>
 <section><div class="wrap"><span class="eyebrow">Pakete</span><h2>Klare Abläufe, voraussichtliche Kosten vorab</h2>
 <div class="grid g3" style="margin-top:28px">{pk}</div></div></section>
-<section class="bg-white"><div class="wrap"><div class="grid g3">
-{a('inuspherese-zentrum-stuttgart/', '<span class="tag">Apherese</span><h3>INUSpherese</h3><p>Blutplasma-Filtration im einzigen INUSpherese-Zentrum in Stuttgart.</p><span class="more">Zur Apherese →</span>', 'card')}
-{a('labordiagnostik/', '<span class="tag">Diagnostik</span><h3>Genau hinschauen</h3><p>Immunstatus, Entzündung, Zellenergie, Mikronährstoffe, Umweltbelastungen und mehr.</p><span class="more">Zur Diagnostik →</span>', 'card')}
-{a('ganzkoerperhyperthermie/', '<span class="tag">Regeneration</span><h3>Ganzkörperhyperthermie</h3><p>Kontrollierte Erwärmung des Körpers, ärztlich überwacht.</p><span class="more">Zur Hyperthermie →</span>', 'card')}
-</div>
+<section class="bg-white" id="therapien"><div class="wrap">
+<span class="eyebrow">Therapien</span><h2>Was wir in der Praxis anbieten</h2>
+<p class="lead">Welche Therapie für Sie infrage kommt, entscheiden wir gemeinsam nach dem Erstgespräch und der Diagnostik.</p>
+<div class="grid g3" style="margin-top:28px">{th}</div>
 <div class="split" style="margin-top:48px">
-<div><h2>Begleittherapien</h2><p>Nach ärztlicher Empfehlung: Infusionstherapie, Akupunktur, Neuraltherapie, Darmaufbau, Hormontherapie, Stress- und Entspannungstherapie sowie Naturheilkunde bei unserer Heilpraktikerin Aurelia Bürgler.</p></div>
+<div><h2>Begleitend</h2>{liste(["Darmaufbau und Mikrobiom-Management", "Orthomolekulare und funktionelle Nährstofftherapie", "Hormontherapie", "Stress- und Schlafmanagement", "Ernährung, Lebensstil und Stressregulation", "Gesundheitsberatung mit Evelyn Gentsch"])}</div>
+<div class="box" id="heilpraktikerin"><h3>Bei unserer Heilpraktikerin</h3><p>Aurelia Bürgler begleitet Sie naturheilkundlich, auch ergänzend zur ärztlichen Behandlung. Buchbar als Erstgespräch:</p>{hp}</div>
+</div>
+<div class="split" style="margin-top:32px">
+<div class="box"><h3>Umweltmedizin</h3><p>Das „U“ in UMI: Wir fragen nach Wohnung, Beruf und Alltag und messen, wo es sinnvoll ist, Umweltstoffe wie Schwermetalle, Pestizide oder ausgewählte PFAS.</p><p style="margin:0">{a('labordiagnostik/#umwelt', 'Zur Umweltdiagnostik')}</p></div>
 <div class="box"><h3>Für Angehörige</h3><p>Sie suchen Hilfe für Ihre Mutter, Ihren Vater oder Ihren Partner? Im <b>Angehörigengespräch</b> klären wir Ihre Fragen, auch zu Belastung, Ablauf und Anreise. Termine können Sie auch für eine andere Person buchen.</p>{tel('btn small ghost', 'Anrufen')}</div>
 </div></div></section>
 <section><div class="wrap"><div class="hint"><p><b>Noch unsicher?</b> Im Vorgespräch am Telefon oder per Video klären wir, ob wir Ihnen weiterhelfen können.</p>{book('Vorgespräch buchen', 'btn small')}</div></div></section>"""
@@ -49,12 +66,13 @@ def medizin():
 
 # ------------------------------------------------------------ Schwerpunkte
 
-def schwerpunkt(eyebrow, h1, lead, wer, ablauf, faqs, weiter):
+def schwerpunkt(eyebrow, h1, lead, wer, ablauf, faqs, weiter, extra=""):
     fh, fld = faq(faqs)
     body = f"""{hero(eyebrow, h1, lead, book('Erstgespräch buchen') + tel('btn ghost', 'Anrufen'), 'med')}
 <section class="bg-white"><div class="wrap"><div class="split">
 <div><h2>Für wen dieser Schwerpunkt da ist</h2>{liste(wer)}</div>
 <div><h2>So gehen wir vor</h2>{schritte(ablauf)}</div></div></div></section>
+{extra}
 <section><div class="wrap"><div class="grid g2">{weiter}{kosten_box()}</div></div></section>
 {team_mini(['kafle', 'buergler'])}
 {fh}{gutschein_hinweis()}"""
@@ -92,7 +110,13 @@ def internistisch():
          ("Befundgespräch", " Ergebnisse, Empfehlungen und, wenn nötig, ein Therapieplan.")],
         [("Ersetzt das den Hausarzt?", "Nein. Wir arbeiten gern mit Ihrer Hausärztin oder Ihrem Hausarzt zusammen und schicken auf Wunsch einen Befundbericht."),
          ("Wird die Untersuchung erstattet?", "Bei medizinischem Anlass erstatten private Versicherungen und Beihilfe in der Regel nach ihren Bedingungen. Reine Vorsorge oft nur teilweise.")],
-        a("energie-check/", '<span class="tag">Passend dazu</span><h3>Energie-Check</h3><p>Bei anhaltender Erschöpfung ohne klaren Befund.</p><span class="more">Zum Energie-Check →</span>', "card"))
+        a("energie-check/", '<span class="tag">Passend dazu</span><h3>Energie-Check</h3><p>Bei anhaltender Erschöpfung ohne klaren Befund.</p><span class="more">Zum Energie-Check →</span>', "card"),
+        extra=f"""<section id="check-up"><div class="wrap"><div class="split wide">
+<div><span class="eyebrow">Ganzheitlicher Gesundheits-Check-up</span><h2>Einmal gründlich durchchecken</h2>
+<p>Für alle, die es genau wissen wollen: Beim Gesundheits-Check-up verbinden wir die internistische Untersuchung mit einer breiten Labor- und Funktionsdiagnostik. Was genau dazugehört, stimmen wir im Erstgespräch auf Sie ab.</p>
+{liste(["Ganzkörperuntersuchung und ausführliche Anamnese", "Labordiagnostik", "Ultraschall der Bauchorgane und Nieren", "Ruhe-EKG", "Sauerstoffsättigung und Lungenfunktion", "Nahrungsmittelunverträglichkeiten", "HRV-Messung (Stress und vegetatives Nervensystem)", "Urin, Stuhl und weitere Untersuchungen nach Bedarf"])}</div>
+<div class="box" style="align-self:center"><h3>Voraussichtliche Kosten</h3><p>Nach GOÄ, je nach Umfang. Sie bekommen vorher einen schriftlichen Kostenvoranschlag.</p>{book('Check-up anfragen')}<p class="small muted" style="margin:14px 0 0">Gesund und neugierig auf Ihre Werte? Dann passt auch der {a('longevity/check/', 'Longevity-Check')}.</p></div>
+</div></div></section>""")
 
 
 def subhealth():
@@ -119,6 +143,26 @@ def infektionen():
          ("Kann ich das Gespräch per Video führen?", "Ja, das Vorgespräch ist per Telefon oder Video möglich."),
          ("Was ist mit der Apherese?", "Die Apherese ist eine von mehreren Möglichkeiten. Ob sie für Sie in Frage kommt, prüfen wir im Beratungsgespräch. Für einige Anwendungen ist sie nicht zugelassen. Darüber klären wir Sie vorher auf.")],
         a("inuspherese-zentrum-stuttgart/", '<span class="tag">Therapie</span><h3>Apherese</h3><p>Wie INUSpherese und H.E.L.P. funktionieren.</p><span class="more">Zur Apherese →</span>', "card"))
+
+
+def darm():
+    return schwerpunkt("Schwerpunkt · UMI Medizin", "Darm und Verdauung: Mikrobiom verstehen",
+        "Blähungen, wechselnder Stuhlgang, ein Bauch, der nicht zur Ruhe kommt, oder Lebensmittel, die Sie plötzlich nicht mehr vertragen: Der Darm meldet sich oft leise, aber hartnäckig. Wir klären gründlich ab, sehen uns Ihr Mikrobiom an und machen daraus einen Plan.",
+        ["Sie haben seit Längerem Verdauungsbeschwerden ohne klare Erklärung", "Sie vermuten, dass Sie bestimmte Lebensmittel nicht vertragen",
+         "Sie möchten wissen, wie es um Ihre Darmflora steht", "Sie haben schon einiges ausprobiert und suchen einen Plan, der zu Ihren Werten passt"],
+        [("Erstgespräch", " Beschwerden, Ernährung, Medikamente, Vorbefunde, körperliche Untersuchung."),
+         ("Diagnostik", " Mikrobiom-Analyse aus dem Stuhl, Tests auf Nahrungsmittelunverträglichkeiten, Labor nach Bedarf, Ultraschall des Bauches."),
+         ("Befundgespräch", " Wir erklären die Ergebnisse verständlich und schlagen einen Plan mit Kostenvoranschlag vor."),
+         ("Begleitung", " Darmaufbau und Mikrobiom-Management, Ernährung und Nährstoffe, mit Kontrolle nach einigen Monaten.")],
+        [("Was zeigt eine Mikrobiom-Analyse?", "Welche Bakterien in Ihrem Darm leben und in welchem Verhältnis, dazu Hinweise auf Entzündung und die Barrierefunktion der Darmschleimhaut. Was das für Sie bedeutet, besprechen wir im Befundgespräch."),
+         ("Muss ich dafür zur Darmspiegelung?", "Nein. Die Mikrobiom-Analyse wird aus einer Stuhlprobe gemacht, die Sie zu Hause nehmen. Ob zusätzlich eine Darmspiegelung sinnvoll ist, klären wir mit Ihnen und Ihrer Hausärztin oder Ihrem Hausarzt."),
+         ("Verkaufen Sie Präparate?", "Nein. Wenn Präparate sinnvoll sind, sagen wir Ihnen, welche und in welcher Dosis. Kaufen können Sie sie, wo Sie möchten.")],
+        a("labordiagnostik/#erweitertediagnostik", '<span class="tag">Diagnostik</span><h3>Mikrobiom und mehr</h3><p>Alle Laborbausteine im Überblick.</p><span class="more">Zur Diagnostik →</span>', "card"),
+        extra=f"""<section id="begleitung"><div class="wrap"><div class="grid g3">
+<div class="card"><span class="tag">Messen</span><h3>Mikrobiom-Analyse</h3><p>Darmflora, Gleichgewicht der Bakterien, Entzündung und Barrierefunktion, aus einer Stuhlprobe.</p></div>
+<div class="card"><span class="tag">Klären</span><h3>Unverträglichkeiten</h3><p>Gezielte Tests auf Nahrungsmittelunverträglichkeiten, dazu bei Bedarf Histamin und Mastzellen.</p></div>
+<div class="card"><span class="tag">Begleiten</span><h3>Darmaufbau</h3><p>Mikrobiom-Management, Ernährung und funktionelle Nährstofftherapie, abgestimmt auf Ihre Befunde.</p></div>
+</div></div></section>""")
 
 
 # ------------------------------------------------------------ Apherese (Dach)
@@ -437,24 +481,38 @@ def hyperthermie():
 
 def diagnostik():
     blocks = [
-        ("Basisdiagnostik", [("Immunstatus", "Immunglobuline, IL-6, optional Lymphozytenprofil und NK-Zellen"),
-                             ("Entzündungsstatus", "hsCRP, IL-6, optional TNF-α und weitere Marker"),
-                             ("Belastungsscreening", "oxidativer Stress, Glutathion, Q10, optional Schwermetalle"),
-                             ("Organscreening", "Leber, Niere, Schilddrüse")]),
-        ("Erweiterte Diagnostik", [("Darm-Analyse", "Mikrobiom, Entzündung, Barrierefunktion"),
-                                   ("Mikronährstoffe", "Vitamine, Mineralstoffe, Spurenelemente, Aminosäuren"),
-                                   ("Zellenergie", "oxidativer Stress und Mitochondrienfunktion"),
-                                   ("Schwermetalle und Umweltstoffe", "z. B. Blei, Cadmium, Quecksilber, ausgewählte PFAS"),
-                                   ("Hormon- und Neurostress-Profil", "Hormonachsen und Stressbotenstoffe"),
-                                   ("Nervensystem-Messung (HRV)", "Herzratenvariabilität, vegetatives Nervensystem"),
-                                   ("Omega-3-Index", "Verhältnis der Fettsäuren im Blut")]),
-        ("Untersuchungen in der Praxis", [("Körperliche Untersuchung", "mit ausführlicher Anamnese"), ("Ruhe-EKG", ""),
-                                          ("Ultraschall", "Bauchorgane und Nieren"), ("Lungenfunktion und Sauerstoffsättigung", ""),
-                                          ("Eluat-Analyse", "nach der Apherese")]),
+        ("basisdiagnostik", "Basisdiagnostik", [
+            ("Immunstatus", "Immunglobuline IgG, IgA, IgM, IL-6, optional Lymphozytenprofil, Th1/Th2-Balance und NK-Zellen"),
+            ("Entzündungsstatus", "hsCRP, IL-6, optional TNF-α, Lipidperoxidation und Nitrotyrosin"),
+            ("Belastungsscreening", "oxidativer Stress, Glutathion, Q10, optional Schwermetalle und Mitochondrienfunktion"),
+            ("Organscreening", "Leber, Niere, Schilddrüse"),
+            ("Dunkelfeldmikroskopie", "Betrachtung eines frischen Blutstropfens unter dem Mikroskop")]),
+        ("erweitertediagnostik", "Erweiterte Diagnostik", [
+            ("Mikrobiom-Analyse", "Darmflora, Gleichgewicht der Bakterien, Entzündung und Barrierefunktion"),
+            ("Nahrungsmittelunverträglichkeiten", "gezielte Tests, abgestimmt auf Ihre Beschwerden"),
+            ("Vitamine", "z. B. Vitamin D, B-Komplex, Folat, B12"),
+            ("Mineralstoffe und Spurenelemente", "z. B. Magnesium, Zink, Selen"),
+            ("Aminosäurenprofil", ""),
+            ("Zellenergie", "oxidativer Stress und Mitochondrien, z. B. Glutathion, Q10, Laktat/Pyruvat"),
+            ("Omega-3-Index", "Verhältnis der Fettsäuren im Blut (AA/EPA)"),
+            ("Hormonstatus", "Hormonachsen, abgestimmt auf Ihre Fragestellung"),
+            ("Neurostress-Profil", "Stresshormone und Botenstoffe"),
+            ("Neuro- und Autoimmunprofile", "spezielle Antikörper- und Botenstoffprofile, z. B. bei anhaltender Erschöpfung nach Infektionen"),
+            ("HRV- und VNS-Analyse", "Herzratenvariabilität und vegetatives Nervensystem"),
+            ("Erweitertes Labor", "Blutgerinnung, Hormonachsen, Histamin und Mastzellen")]),
+        ("umwelt", "Umweltmedizin", [
+            ("Schwermetalle", "z. B. Aluminium, Blei, Cadmium, Quecksilber, Arsen"),
+            ("Umweltbelastungen", "z. B. Pestizide und ausgewählte PFAS"),
+            ("Eluat-Analyse", "Analyse der abgefilterten Rückstände nach der INUSpherese®")]),
+        ("untersuchungen", "Untersuchungen in der Praxis", [
+            ("Körperliche Untersuchung", "mit ausführlicher Anamnese"), ("Ruhe-EKG", ""),
+            ("Ultraschall", "Bauchorgane und Nieren"),
+            ("Blutdruck und Kreislauf", "Blutdruckanalyse, Puls, Sauerstoffsättigung"),
+            ("Herz-Lungen-Funktion", "Lungenfunktion und Pulsoxymetrie"),
+            ("Urin und Stuhl", "je nach Fragestellung")]),
     ]
     html = ""
-    for i, (h, items) in enumerate(blocks):
-        anchor = ["basisdiagnostik", "erweitertediagnosik", "untersuchungen"][i]
+    for i, (anchor, h, items) in enumerate(blocks):
         cards = "".join(f'<div class="card"><h3>{n}</h3><p class="small">{d}</p></div>' for n, d in items)
         html += f'<section class="{"bg-white" if i % 2 == 0 else ""}" id="{anchor}"><div class="wrap"><h2>{h}</h2><div class="grid g3" style="margin-top:20px">{cards}</div></div></section>'
     fh, fld = faq([
@@ -462,7 +520,7 @@ def diagnostik():
         ("Wer rechnet das Labor ab?", "Häufig rechnet das Fachlabor direkt mit Ihnen ab. Das steht vorab in Ihrem Kostenvoranschlag."),
     ])
     body = f"""{hero('Diagnostik · UMI Medizin', 'Labordiagnostik in Stuttgart: genau hinschauen',
-    'Mehr als der Routine-Check: Viele Ursachen bleiben bei einer üblichen Untersuchung unentdeckt. Nach dem Erstgespräch wählt unsere Ärztin die Bausteine aus, die in Ihrem Fall weiterhelfen.',
+    'Mehr als der Routine-Check: Viele Ursachen bleiben bei einer üblichen Untersuchung unentdeckt. Nach dem Erstgespräch wählt unsere Ärztin die Bausteine aus, die in Ihrem Fall weiterhelfen. Für eine Rundum-Untersuchung gibt es den ' + a('internistische-sprechstunde/#check-up', 'Gesundheits-Check-up') + '.',
     book('Erstgespräch buchen') + a('energie-check/', 'Energie-Check', 'btn ghost'), 'med')}
 {html}{fh}"""
     return body, [fld]
@@ -478,6 +536,9 @@ PAGES = [
     Page("internistische-sprechstunde", "Innere Medizin Stuttgart-Vaihingen · UMI Medizin",
          "Internistische Abklärung und Vorsorge in Stuttgart-Vaihingen mit Labor, EKG und Ultraschall. Privatpraxis UMI Stuttgart, Termin online.",
          internistisch, line="med", nav="med", crumbs=MED + [(None, "Innere Medizin")]),
+    Page("darmgesundheit", "Darmgesundheit und Mikrobiom in Stuttgart · UMI Medizin",
+         "Darm und Verdauung bei UMI Stuttgart: Mikrobiom-Analyse, Tests auf Nahrungsmittelunverträglichkeiten, Darmaufbau mit Plan. Erstgespräch online buchen.",
+         darm, line="med", nav="med", crumbs=MED + [(None, "Darm und Verdauung")]),
     Page("sub-health-syndrom", "Ständig müde? Erschöpfung abklären in Stuttgart · UMI",
          "Erschöpfung und Energie: Ursachen finden, wenn Sie ständig müde sind und die Werte normal. Erstgespräch oder Energie-Check bei UMI Stuttgart.",
          subhealth, line="med", nav="med", crumbs=MED + [(None, "Erschöpfung und Energie")]),
