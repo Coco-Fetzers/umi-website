@@ -14,6 +14,7 @@ SCHWERPUNKTE = [
     ("internistische-sprechstunde/", "Innere Medizin", "Abklärung mit Labor, EKG und Ultraschall. Auch als Vorsorge-Untersuchung."),
     ("sub-health-syndrom/", "Erschöpfung und Energie", "Immer müde, aber die Werte sind normal? Wir schauen genauer hin, bis zum Energie-Check."),
     ("long-covid-sprechstunde/", "Beschwerden nach Infektionen", "Wenn Beschwerden nach einer Infektion oder Impfung bleiben. Gründliche Abklärung und Begleitung."),
+    ("umweltmedizin/", "Umweltmedizin", "Schwermetalle, Lösungsmittel, PFAS: Wir fragen nach Ihrer Umgebung und messen gezielt."),
     ("darmgesundheit/", "Darm und Verdauung", "Blähungen, Unverträglichkeiten, ein Bauch, der nicht zur Ruhe kommt? Mit Mikrobiom-Analyse und Plan."),
     ("internistische-sprechstunde/#check-up", "Gesundheits-Check-up", "Gründliche Rundum-Untersuchung mit Labor, Ultraschall, EKG, Lungenfunktion und HRV-Messung."),
 ]
@@ -58,7 +59,7 @@ def medizin():
 <div class="box" id="heilpraktikerin"><h3>Bei unserer Heilpraktikerin</h3><p>Aurelia Bürgler begleitet Sie naturheilkundlich, auch ergänzend zur ärztlichen Behandlung. Buchbar als Erstgespräch:</p>{hp}</div>
 </div>
 <div class="split" style="margin-top:32px">
-<div class="box"><h3>Umweltmedizin</h3><p>Das „U“ in UMI: Wir fragen nach Wohnung, Beruf und Alltag und messen, wo es sinnvoll ist, Umweltstoffe wie Schwermetalle, Pestizide oder ausgewählte PFAS.</p><p style="margin:0">{a('labordiagnostik/#umwelt', 'Zur Umweltdiagnostik')}</p></div>
+<div class="box"><h3>Umweltmedizin</h3><p>Das „U“ in UMI: Wir fragen nach Wohnung, Beruf und Alltag und messen, wo es sinnvoll ist, Umweltstoffe wie Schwermetalle, Pestizide oder ausgewählte PFAS.</p><p style="margin:0">{a('umweltmedizin/', 'Mehr zur Umweltmedizin')}</p></div>
 <div class="box"><h3>Für Angehörige</h3><p>Sie suchen Hilfe für Ihre Mutter, Ihren Vater oder Ihren Partner? Im <b>Angehörigengespräch</b> klären wir Ihre Fragen, auch zu Belastung, Ablauf und Anreise. Termine können Sie auch für eine andere Person buchen.</p>{tel('btn small ghost', 'Anrufen')}</div>
 </div></div></section>
 <section><div class="wrap"><div class="hint"><p><b>Noch unsicher?</b> Im Vorgespräch am Telefon oder per Video klären wir, ob wir Ihnen weiterhelfen können.</p>{book('Vorgespräch buchen', 'btn small')}</div></div></section>"""
@@ -162,6 +163,38 @@ def darm():
 <div class="card"><span class="tag">Messen</span><h3>Mikrobiom-Analyse</h3><p>Darmflora, Gleichgewicht der Bakterien, Entzündung und Barrierefunktion, aus einer Stuhlprobe.</p></div>
 <div class="card"><span class="tag">Klären</span><h3>Unverträglichkeiten</h3><p>Gezielte Tests auf Nahrungsmittelunverträglichkeiten, dazu bei Bedarf Histamin und Mastzellen.</p></div>
 <div class="card"><span class="tag">Begleiten</span><h3>Darmaufbau</h3><p>Mikrobiom-Management, Ernährung und funktionelle Nährstofftherapie, abgestimmt auf Ihre Befunde.</p></div>
+</div></div></section>""")
+
+
+def umwelt():
+    return schwerpunkt("Schwerpunkt · UMI Medizin", "Umweltmedizin in Stuttgart",
+        "Wir nehmen täglich Stoffe aus Wohnung, Beruf, Nahrung und Alltagsprodukten auf. Die Umweltmedizin fragt, ob solche Belastungen bei Ihren Beschwerden eine Rolle spielen könnten, und misst gezielt, wo es sinnvoll ist. Das „U“ in UMI steht genau dafür.",
+        ["Sie haben anhaltende Beschwerden und fragen sich, ob Ihre Umgebung damit zu tun haben könnte",
+         "Sie waren beruflich oder privat Metallen, Lösungsmitteln oder Pestiziden ausgesetzt",
+         "Sie reagieren auf Duftstoffe, Chemikalien oder Ausdünstungen empfindlicher als andere",
+         "Sie möchten wissen, ob und welche Umweltstoffe sich in Ihrem Blut messen lassen"],
+        [("Erstgespräch", " Ausführliche umweltmedizinische Anamnese: Wohnung, Arbeitsplatz, Hobbys, Ernährung, Zahnmaterialien, frühere Belastungen."),
+         ("Diagnostik", " Gezielte Messungen, zum Beispiel Schwermetalle, Pestizide, ausgewählte PFAS, oxidativer Stress und Zellenergie."),
+         ("Befundgespräch", " Wir ordnen die Werte ein und sagen Ihnen offen, was sie bedeuten und was nicht."),
+         ("Plan", " Belastungen im Alltag erkennen und verringern, begleitende Nährstofftherapie und, wenn es passt, weitere Verfahren. Mit Kostenvoranschlag.")],
+        [("Was ist Umweltmedizin?", "Ein ärztliches Fachgebiet, das den Zusammenhang zwischen Umweltfaktoren und Gesundheit untersucht. Dazu gehören Stoffe in Wohnung, Beruf und Alltag ebenso wie die Frage, wie der Körper mit ihnen umgeht."),
+         ("Kann man Umweltstoffe im Blut messen?", "Viele ja, zum Beispiel Schwermetalle, bestimmte Pestizide und ausgewählte PFAS. Welche Messungen in Ihrem Fall sinnvoll sind, legen wir nach dem Erstgespräch fest, damit nur gemacht wird, was weiterhilft."),
+         ("Was ist, wenn erhöhte Werte gefunden werden?", "Dann besprechen wir zuerst, woher die Belastung kommen könnte und wie Sie sie im Alltag verringern. Welche weiteren Schritte sinnvoll sind, entscheiden wir gemeinsam."),
+         ("Gehört die INUSpherese® dazu?", "Sie ist eine von mehreren Möglichkeiten. Ob sie für Sie infrage kommt, klären wir in einem eigenen Arztgespräch."),
+         ("Wer bezahlt das?", "Umweltmedizinische Diagnostik ist meist eine Selbstzahlerleistung. Private Versicherungen erstatten je nach Tarif und Anlass. Sie bekommen vorher einen Kostenvoranschlag.")],
+        a("labordiagnostik/#umwelt", '<span class="tag">Diagnostik</span><h3>Umweltdiagnostik</h3><p>Alle Messungen im Überblick.</p><span class="more">Zur Diagnostik →</span>', "card"),
+        extra=f"""<section id="quellen"><div class="wrap">
+<span class="eyebrow">Woher Belastungen kommen können</span><h2>Wonach wir fragen</h2>
+<div class="grid g4" style="margin-top:24px">
+<div class="card"><span class="tag">Wohnung</span><h3>Innenräume</h3><p>Ausdünstungen aus Möbeln, Farben und Bodenbelägen, Holzschutzmittel, Feuchtigkeit und Schimmel.</p></div>
+<div class="card"><span class="tag">Beruf</span><h3>Arbeitsplatz</h3><p>Metalle, Lösungsmittel, Pestizide oder Stäube, auch aus früheren Jobs.</p></div>
+<div class="card"><span class="tag">Alltag</span><h3>Produkte</h3><p>Beschichtete Pfannen, Verpackungen, Textilien und Kosmetik, zum Beispiel mit PFAS.</p></div>
+<div class="card"><span class="tag">Ernährung</span><h3>Wasser und Nahrung</h3><p>Rückstände in Lebensmitteln, Fisch, Trinkwasser und alten Leitungen.</p></div>
+</div></div></section>
+<section class="bg-white" id="messen"><div class="wrap"><div class="split">
+<div><h2>Was wir messen können</h2>{liste(["Schwermetalle, z. B. Aluminium, Blei, Cadmium, Quecksilber, Arsen", "Pestizide und ausgewählte PFAS", "Oxidativer Stress, Glutathion, Q10", "Zellenergie und Mitochondrienfunktion", "Entzündungs- und Immunstatus", "Mikronährstoffe, die der Körper für den Umgang mit Belastungen braucht"])}</div>
+<div><h2>Wie wir begleiten</h2>{liste(["Belastungsquellen im Alltag erkennen und verringern", "Orthomolekulare und funktionelle Nährstofftherapie", "Ernährung, Darm und Lebensstil", "Wenn es passt: Ganzkörperhyperthermie oder " + a("inuspherese-zentrum-stuttgart/", "INUSpherese®") + ", jeweils nach ärztlicher Prüfung"])}
+<p class="small muted">Wir versprechen keine „Entgiftung“. Wir messen, ordnen ein und planen gemeinsam, was sinnvoll ist.</p></div>
 </div></div></section>""")
 
 
@@ -503,7 +536,8 @@ def diagnostik():
         ("umwelt", "Umweltmedizin", [
             ("Schwermetalle", "z. B. Aluminium, Blei, Cadmium, Quecksilber, Arsen"),
             ("Umweltbelastungen", "z. B. Pestizide und ausgewählte PFAS"),
-            ("Eluat-Analyse", "Analyse der abgefilterten Rückstände nach der INUSpherese®")]),
+            ("Eluat-Analyse", "Analyse der abgefilterten Rückstände nach der INUSpherese®"),
+            ("Umweltmedizin", "Anamnese, Messung und Einordnung: " + a("umweltmedizin/", "zum Schwerpunkt"))]),
         ("untersuchungen", "Untersuchungen in der Praxis", [
             ("Körperliche Untersuchung", "mit ausführlicher Anamnese"), ("Ruhe-EKG", ""),
             ("Ultraschall", "Bauchorgane und Nieren"),
@@ -536,6 +570,9 @@ PAGES = [
     Page("internistische-sprechstunde", "Innere Medizin Stuttgart-Vaihingen · UMI Medizin",
          "Internistische Abklärung und Vorsorge in Stuttgart-Vaihingen mit Labor, EKG und Ultraschall. Privatpraxis UMI Stuttgart, Termin online.",
          internistisch, line="med", nav="med", crumbs=MED + [(None, "Innere Medizin")]),
+    Page("umweltmedizin", "Umweltmedizin Stuttgart · UMI Medizin",
+         "Umweltmedizin in Stuttgart-Vaihingen: umweltmedizinische Anamnese, Messung von Schwermetallen, Pestiziden und PFAS, Einordnung und Plan. Erstgespräch online buchen.",
+         umwelt, line="med", nav="med", crumbs=MED + [(None, "Umweltmedizin")]),
     Page("darmgesundheit", "Darmgesundheit und Mikrobiom in Stuttgart · UMI Medizin",
          "Darm und Verdauung bei UMI Stuttgart: Mikrobiom-Analyse, Tests auf Nahrungsmittelunverträglichkeiten, Darmaufbau mit Plan. Erstgespräch online buchen.",
          darm, line="med", nav="med", crumbs=MED + [(None, "Darm und Verdauung")]),
