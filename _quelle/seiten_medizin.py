@@ -22,7 +22,7 @@ SCHWERPUNKTE = [
 
 def medizin():
     sp = "".join(a(t, f'<span class="tag">Schwerpunkt</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") for t, n, d in SCHWERPUNKTE)
-    hp = liste(["Schmerz", "Stress und Entspannung", "Frauengesundheit", "Kindergesundheit", "Naturheilkunde und ganzheitliche Begleitung",
+    hp = liste(["Schmerz", "Stress und Entspannung", "Frauengesundheit", f"{a('medizin/kinder/', 'Kindergesundheit')}", "Naturheilkunde und ganzheitliche Begleitung",
                 "Begleitung bei anhaltender Erschöpfung"])
     th = "".join((a(t, f'<span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") if t else
                   f'<div class="card"><span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p></div>') for t, tag, n, d in [
@@ -63,6 +63,39 @@ def medizin():
 <div class="box"><h3>Für Angehörige</h3><p>Sie suchen Hilfe für Ihre Mutter, Ihren Vater oder Ihren Partner? Im <b>Angehörigengespräch</b> klären wir Ihre Fragen, auch zu Belastung, Ablauf und Anreise. Termine können Sie auch für eine andere Person buchen.</p>{tel('btn small ghost', 'Anrufen')}</div>
 </div></div></section>
 <section><div class="wrap"><div class="hint"><p><b>Noch unsicher?</b> Im Vorgespräch am Telefon oder per Video klären wir, ob wir Ihnen weiterhelfen können.</p>{book('Vorgespräch buchen', 'btn small')}</div></div></section>"""
+
+
+def kinder():
+    fh, fld = faq([
+        ("Ersetzt das den Besuch beim Kinderarzt?", "Nein. Bei akuten, starken oder unklaren Beschwerden gehört Ihr Kind zuerst zur Kinderärztin oder zum Kinderarzt. Die naturheilkundliche Begleitung ist ein ergänzendes Angebot, in Absprache mit der ärztlichen Behandlung."),
+        ("Ab welchem Alter kann ich mein Kind bringen?", "Wir begleiten Kinder jeden Alters. Bei jüngeren Kindern ist ein Elternteil immer dabei, bei Jugendlichen besprechen wir gemeinsam, wie es für alle passt."),
+        ("Wie läuft der erste Termin ab?", "Wir nehmen uns Zeit für das Gespräch mit Ihnen und Ihrem Kind: Was beschäftigt es, wie schläft und isst es, was ist in letzter Zeit passiert? Danach besprechen wir, welche Begleitung infrage kommt."),
+        ("Wer bezahlt das?", "Leistungen der Heilpraktikerin werden nach dem Gebührenverzeichnis für Heilpraktiker (GebüH) abgerechnet und sind Selbstzahlerleistungen. Manche private Zusatzversicherungen erstatten einen Teil. Sie erfahren die Kosten vorab."),
+    ])
+    return f"""{hero('UMI Medizin · bei unserer Heilpraktikerin', 'Kinder sind keine kleinen Erwachsenen.',
+    'Höher, schneller, weiter: Schon Kinder stecken heute zwischen Bildschirm, Leistungsdruck und vollem Terminkalender. Für die Kinderseele bleibt oft zu wenig Zeit, in ihrem eigenen Tempo zu wachsen. Unsere Heilpraktikerin Aurelia Bürgler begleitet Kinder und ihre Eltern naturheilkundlich, sanft und mit viel Zeit.',
+    book('Termin für Ihr Kind buchen') + tel('btn ghost', 'Anrufen'), 'med')}
+<section class="bg-white"><div class="wrap"><div class="split">
+<div><h2>Wann Eltern zu uns kommen</h2>
+<p>Elektronische Medien, Druck in der Schule, Veränderungen in der Familie, zu wenig Bewegung oder unausgewogenes Essen: Vieles davon spüren Kinder, auch wenn sie es nicht sagen können. Eltern kommen zu uns, wenn ihr Kind zum Beispiel</p>
+{liste(["schlecht ein- oder durchschläft", "ängstlich oder unruhig ist", "sich schwer konzentrieren kann", "oft Bauchweh oder Verdauungsprobleme hat", "zu Hautausschlägen neigt", "sich häufig Infekte einfängt", "über Kopfschmerzen klagt"])}
+<p class="small">Bitte lassen Sie solche Beschwerden zuerst kinderärztlich abklären. Wir begleiten ergänzend.</p></div>
+<div><h2>Wie wir begleiten</h2>
+{schritte([("Gespräch", " mit Ihnen und Ihrem Kind, in Ruhe und auf Augenhöhe."), ("Gemeinsamer Plan", " passend zum Alter, zum Alltag und zu dem, was Ihr Kind mag."), ("Begleitung", " mit sanften naturheilkundlichen Methoden und Übungen, die Ihr Kind auch zu Hause machen kann.")])}
+</div></div></div></section>
+<section id="methoden"><div class="wrap">
+<span class="eyebrow">Naturheilkunde für Kinder</span><h2>Womit wir arbeiten</h2>
+<div class="grid g4" style="margin-top:24px">
+<div class="card"><span class="tag">Naturheilkunde</span><h3>Homöopathie</h3><p>Ausgewählt nach einem ausführlichen Gespräch über Ihr Kind.</p></div>
+<div class="card"><span class="tag">Naturheilkunde</span><h3>Bachblüten</h3><p>Als sanfte Begleitung in Phasen, die für Ihr Kind gerade schwer sind.</p></div>
+<div class="card"><span class="tag">Darm</span><h3>Darmaufbau</h3><p>Zum Beispiel nach einer Antibiotikatherapie, mit Ernährungstipps für den Familienalltag.</p></div>
+<div class="card"><span class="tag">Mitmachen</span><h3>Fingerübungen und Fantasiereisen</h3><p>Bei Kindern sehr beliebt: So machen sie bei ihrer Begleitung selbst aktiv mit.</p></div>
+</div>
+<p class="small" style="margin-top:20px">Für Homöopathie und Bachblüten gibt es keinen wissenschaftlichen Wirksamkeitsnachweis im Sinne der Schulmedizin. Wir setzen sie ergänzend ein und sagen Ihnen offen, was sie leisten können und was nicht.</p>
+</div></section>
+<section class="bg-white"><div class="wrap narrow"><div class="claim"><p>„Als Therapeutin und Mutter erlebe ich, wie gern Kinder bei sanften Methoden mitmachen. Kinder sind empfindsame Wesen. Sie sollten alle Zeit und alle Liebe bekommen, gerade in dieser schnellen Welt.“</p><p class="small">Aurelia Bürgler, Heilpraktikerin</p></div></div></section>
+{team_mini(['buergler'])}
+{fh}{gutschein_hinweis()}""", [fld]
 
 
 # ------------------------------------------------------------ Schwerpunkte
@@ -564,6 +597,9 @@ PAGES = [
     Page("medizin", "Umweltmedizin und ganzheitliche Medizin Stuttgart · UMI Medizin",
          "UMI Medizin in Stuttgart-Vaihingen: Ursachen finden bei anhaltenden Beschwerden. Schwerpunkte, Apherese, Diagnostik, Hyperthermie. Erstgespräch online buchen.",
          medizin, line="med", nav="med", crumbs=[(None, "UMI Medizin")]),
+    Page("medizin/kinder", "Naturheilkunde für Kinder in Stuttgart · UMI Medizin",
+         "Kinder naturheilkundlich begleiten: Heilpraktikerin Aurelia Bürgler bei UMI Stuttgart-Vaihingen. Gespräch mit Zeit, Homöopathie, Bachblüten, Darmaufbau, Fantasiereisen.",
+         kinder, line="med", nav="med", crumbs=MED + [(None, "Kinder")]),
     Page("ganzheitliche-sprechstunde", "Ganzheitliche Medizin Stuttgart · UMI Medizin",
          "Ganzheitliche Medizin in Stuttgart-Vaihingen: ausführliches Erstgespräch, Schulmedizin und Naturheilkunde verbunden. Privatpraxis UMI Stuttgart.",
          ganzheitlich, line="med", nav="med", crumbs=MED + [(None, "Ganzheitliche Medizin")]),
