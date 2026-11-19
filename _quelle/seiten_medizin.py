@@ -368,7 +368,7 @@ def apherese():
 
 <section id="team"><div class="wrap"><div class="split wide">
 <div><h2>Unser Team und Ihre Sicherheit</h2>
-<p>Ihre INUSpherese® betreut unsere Ärztin <b>Namrata Kafle</b>, Ärztin für Innere Medizin, gemeinsam mit zwei erfahrenen Pflegefachkräften. <b>Michaela Gusic</b> leitet unser INUSpherese-Zentrum und bringt über 25 Jahre Erfahrung aus der Dialyse mit, zuletzt als Leitung der Dialysestation am Klinikum Stuttgart. <b>Evelyn Gentsch</b> ist examinierte Kinderkrankenschwester mit langjähriger Erfahrung in der Kinderdialyse am Universitätsklinikum Tübingen.</p>
+<p>Ihre INUSpherese® betreut unsere Ärztin <b>Namrata Kafle</b>, Ärztin für Innere Medizin, gemeinsam mit zwei erfahrenen Fachkräften. <b>Michaela Gusic</b> leitet unser INUSpherese-Zentrum und bringt über 25 Jahre Erfahrung aus der Dialyse mit, zuletzt als Leitung der Dialysestation am Klinikum Stuttgart. <b>Evelyn Gentsch</b> ist examinierte Kinderkrankenschwester mit langjähriger Erfahrung in der Kinderdialyse am Universitätsklinikum Tübingen.</p>
 <p>Gemeinsam begleiten sie Sie vom Vorgespräch bis zur Auswertung.</p></div>
 <div class="team-row">{''.join(f'<img src="{a_img(f)}" alt="{n}" width="480" height="720">' for f, n in [('team-namrata-kafle.jpg', 'Namrata Kafle'), ('team-michaela-gusic.jpg', 'Michaela Gusic'), ('team-evelyn-gentsch.jpg', 'Evelyn Gentsch')])}</div>
 </div></div></section>
@@ -419,7 +419,7 @@ def help_apherese():
 <div><h2>So läuft es ab</h2>{schritte([
     ('Arztgespräch', ' Vorgeschichte, Laborwerte, Gegenanzeigen. Wir prüfen, ob die H.E.L.P.-Apherese für Sie infrage kommt, und klären Sie ausführlich auf.'),
     ('Labor vorher', ' Blutfette, Fibrinogen, Entzündungswerte und Gerinnung.'),
-    ('Behandlung', ' Im Liegen, etwa 2 bis 3 Stunden, mit ständiger Überwachung durch unser Pflegeteam.'),
+    ('Behandlung', ' Im Liegen, etwa 2 bis 3 Stunden, mit ständiger Überwachung durch unser Team.'),
     ('Auswertung', ' Werte vorher und nachher im Vergleich, und die Frage, ob weitere Behandlungen sinnvoll sind.'),
 ])}</div>
 <div class="box"><h3>Kosten</h3><p>Eine Behandlung voraussichtlich <b>{price('help_sitzung', 'ab')}</b>, nach GOÄ. Vor Beginn erhalten Sie einen schriftlichen Kostenvoranschlag.</p>

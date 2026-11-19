@@ -174,7 +174,7 @@ def start():
 <div class="card"><span class="tag">4</span><h3>Begleitung</h3><p>Therapie, Kontrolle und Folgetermine, mit festen Ansprechpartnerinnen.</p></div>
 </div></div></section>
 
-<section class="bg-white"><div class="wrap"><span class="eyebrow">Unser Team</span><h2>Ärztin, Heilpraktikerin und Pflege mit Apherese-Erfahrung</h2>
+<section class="bg-white"><div class="wrap"><span class="eyebrow">Unser Team</span><h2>Ärztin, Heilpraktikerin und Fachkräfte mit Apherese-Erfahrung</h2>
 <div class="team" style="margin-top:28px">{start_team()}</div>
 <p style="margin-top:20px">{a('ueber-uns/', 'Alle im Team kennenlernen')}</p></div></section>
 
@@ -196,7 +196,7 @@ def start_team():
     people = [("Namrata Kafle", "Ärztliche Leitung, Innere Medizin", "team-namrata-kafle.jpg"),
               ("Aurelia Bürgler", "Heilpraktikerin", "team-aurelia-buergler.jpg"),
               ("Michaela Gusic", "Leitung INUSpherese-Zentrum", "team-michaela-gusic.jpg"),
-              ("Evelyn Gentsch", "Pflege, Apherese", "team-evelyn-gentsch.jpg")]
+              ("Evelyn Gentsch", "Fachkraft, Apherese", "team-evelyn-gentsch.jpg")]
     return "".join(f"""<div class="person"><div class="ph"><img src="{a_img(i)}" alt="{n}, {r}" loading="lazy" width="480" height="720"></div><div class="tx"><h3>{n}</h3><p>{r}</p></div></div>""" for n, r, i in people)
 
 
@@ -322,7 +322,7 @@ TEAM = [
          ["2012 Entspannungstherapeutin, Stuttgart", "2015 Zulassung als Heilpraktikerin, Tübingen", "seit 2015 eigene Praxis",
           "2023 bis 2026 Therapeutin im Börner Lebenswerk, Tübingen"]),
     ]),
-    ("INUSpherese-Zentrum und Pflege", [
+    ("INUSpherese-Zentrum und Fachkräfte", [
         ("Michaela Gusic", "Leitung INUSpherese-Zentrum, examinierte Krankenschwester, Fachrichtung Nephrologie", "team-michaela-gusic.jpg",
          ["1998 examinierte Krankenschwester", "1998 Dialyse, Klinikum Stuttgart", "2017 Leitung Dialysestation, Klinikum Stuttgart",
           "seit 2021 zertifizierte Qualitätsmanagement-Beauftragte"]),
@@ -353,7 +353,7 @@ def team():
                             "description": role, "worksFor": {"@type": "MedicalClinic", "name": "UMI Stuttgart"}})
         groups.append(f'<h2 style="margin-top:12px">{g}</h2><div class="team" style="margin:20px 0 48px">{"".join(cards)}</div>')
     body = f"""{hero('Über uns', 'Das Team von UMI Stuttgart',
-    'Ärztinnen, Heilpraktikerin und Pflegekräfte mit langjähriger Erfahrung in Dialyse und Apherese. Wir nehmen uns Zeit, hören zu und erklären, was wir tun.',
+    'Ärztinnen, Heilpraktikerin und Fachkräfte mit langjähriger Erfahrung in Dialyse und Apherese. Wir nehmen uns Zeit, hören zu und erklären, was wir tun.',
     book() + a('praxis/', 'Unsere Räume', 'btn ghost'))}
 <section class="bg-white"><div class="wrap">{''.join(groups)}</div></section>
 <section><div class="wrap"><div class="hint"><p><b>Wir suchen Verstärkung</b> für Pflege und Ärzteteam.</p>{a('karriere-stellenangebote-jobs/', 'Zu den Stellen', 'btn ghost small')}</div></div></section>"""
@@ -473,7 +473,7 @@ PAGES = [
          "Anfahrt, Parken und Ablauf Ihres Termins bei UMI Stuttgart in Stuttgart-Vaihingen. Was Sie mitbringen sollten und wie lange Behandlungen dauern.",
          besuch, crumbs=[(None, "Ihr Besuch bei uns")]),
     Page("ueber-uns", "Team · UMI Stuttgart",
-         "Lernen Sie das Team von UMI Stuttgart kennen: Ärztinnen, Heilpraktikerin und Pflege mit Dialyse- und Apherese-Erfahrung.",
+         "Lernen Sie das Team von UMI Stuttgart kennen: Ärztinnen, Heilpraktikerin und Fachkräften mit Dialyse- und Apherese-Erfahrung.",
          team, nav="ueber", crumbs=[(None, "Über uns")]),
     Page("praxis", "Unsere Räume · UMI Stuttgart",
          "Eindrücke aus der Praxis von UMI Stuttgart in Stuttgart-Vaihingen: Empfang, Behandlungszimmer, Infusionsraum, INUSpherese-Raum.",

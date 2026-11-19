@@ -77,7 +77,7 @@ def nad():
         lead="NAD+ ist ein Coenzym, das in jeder Zelle am Energiestoffwechsel beteiligt ist. Bei UMI bekommst du NAD+ in 250 mg als Infusion, langsam über 2 bis 4 Stunden. Vor der ersten Infusion führt die Ärztin ein Gespräch mit dir. Einzeln oder als Kur mit 5 oder 10 Infusionen.",
         preis_html=price("nad_infusion") + " für die erste Infusion, jede weitere " + price("nad_weitere") + '<sup><a href="../infusionen/#weitere" title="Bedingungen für den Preis weiterer Infusionen" style="text-decoration:none">*</a></sup>',
         enthalten=["Ärztliches Gespräch vor der ersten Infusion mit Prüfung, ob NAD+ zu dir passt", "NAD+ 250 mg in ruhiger Atmosphäre, langsam über 2 bis 4 Stunden",
-                   "Überwachung durch unser Pflegeteam", "Kur: 5 oder 10 Infusionen, Preis = Summe der Einzelinfusionen"],
+                   "Überwachung durch unser Team", "Kur: 5 oder 10 Infusionen, Preis = Summe der Einzelinfusionen"],
         ablauf=[("Gesundheitsbogen und Gespräch", " 10 Minuten früher kommen, Bogen ausfüllen, dann Gespräch mit der Ärztin."), ("Erste Infusion", " langsam, damit du sie gut verträgst."),
                 ("Weitere Termine", " bei einer Kur meist ein- bis zweimal pro Woche."), ("Check-in", " Wie ging es dir, wie geht es weiter?")],
         passt=["du gesund bist und deine Regeneration unterstützen willst", "du eine ärztlich begleitete Infusion suchst, keine Drip-Bar"],
