@@ -33,11 +33,11 @@ def gutschein_hinweis(du=False):
 def kosten_box(du=False, extra=""):
     if du:
         txt = ("Ärztliche Leistungen werden nach der Gebührenordnung für Ärzte (GOÄ) berechnet, auch wenn du selbst zahlst. "
-               "Der genannte Preis ist deshalb ein voraussichtlicher Betrag. Vor dem Start bekommst du einen schriftlichen Kostenvoranschlag. "
+               "Der genannte Preis ist deshalb ein voraussichtlicher Betrag. Frag uns gern, wir sagen dir vorher offen, womit du rechnen kannst. Auf Wunsch bekommst du einen schriftlichen Kostenvoranschlag. "
                "Private Krankenversicherungen erstatten Vorsorgeleistungen in der Regel nicht.")
     else:
         txt = ("Ärztliche Leistungen berechnen wir nach der Gebührenordnung für Ärzte (GOÄ). Der genannte Preis ist ein voraussichtlicher Betrag. "
-               "Vor Beginn erhalten Sie einen schriftlichen Kostenvoranschlag. Ob und in welcher Höhe Ihre private Krankenversicherung "
+               "Auf Nachfrage geben wir Ihnen vorab transparent Auskunft zu den Kosten, auf Wunsch auch als schriftlichen Kostenvoranschlag. Ob und in welcher Höhe Ihre private Krankenversicherung "
                "oder Beihilfe erstattet, hängt von Ihrem Tarif ab. Wir helfen Ihnen beim Antrag.")
     return f"""<div class="box"><h3>Kosten</h3><p>{txt}</p>{extra}<p style="margin:0">{a('kosten/', 'Mehr zu Kosten und Erstattung')}</p></div>"""
 
@@ -74,7 +74,7 @@ def paket(*, eyebrow, h1, lead, preis_html, enthalten, ablauf, passt, passt_nich
           team, faqs, next_step=None, du=False, line="med", kosten_extra="", intro_extra=""):
     """Paketseite nach dem Muster aus der Sitemap (8 Blöcke)."""
     buttons = book("Termin buchen") + tel("btn ghost", "Anrufen: " + C.TEL)
-    price_line = f'<p class="price-line"><b>{"Voraussichtliche Kosten" if not du else "Voraussichtlich"}: {preis_html}</b> · nach GOÄ, mit Kostenvoranschlag</p>'
+    price_line = f'<p class="price-line"><b>{"Voraussichtliche Kosten" if not du else "Voraussichtlich"}: {preis_html}</b> · nach GOÄ, Kostenvoranschlag auf Wunsch</p>'
     parts = [hero(eyebrow, h1, lead, buttons, line, price_line)]
     if intro_extra:
         parts.append(intro_extra)

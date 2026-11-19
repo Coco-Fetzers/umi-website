@@ -46,7 +46,7 @@ def medizin():
     book('Erstgespräch buchen') + tel('btn ghost', 'Anrufen: ' + C.TEL), 'med')}
 <section class="bg-white" id="schwerpunkte"><div class="wrap">
 <span class="eyebrow">Schwerpunkte · früher „Sprechstunden“</span><h2>Wo fangen wir an?</h2>
-<p class="lead">In jedem Schwerpunkt beginnt die Behandlung mit einem ausführlichen Erstgespräch. Danach folgen Diagnostik und ein Plan mit Kostenvoranschlag.</p>
+<p class="lead">In jedem Schwerpunkt beginnt die Behandlung mit einem ausführlichen Erstgespräch. Danach folgen Diagnostik und ein Plan. Zu den Kosten geben wir Ihnen jederzeit Auskunft, auf Wunsch als Kostenvoranschlag.</p>
 <div class="grid g3" style="margin-top:28px">{sp}</div></div></section>
 <section><div class="wrap"><span class="eyebrow">Pakete</span><h2>Klare Abläufe, voraussichtliche Kosten vorab</h2>
 <div class="grid g3" style="margin-top:28px">{pk}</div></div></section>
@@ -116,7 +116,7 @@ def schwerpunkt(eyebrow, h1, lead, wer, ablauf, faqs, weiter, extra=""):
 ABLAUF_STD = [
     ("Erstgespräch", " Ausführliche Anamnese und körperliche Untersuchung, etwa 45 bis 60 Minuten."),
     ("Diagnostik", " Gezielte Laboruntersuchungen und Messungen, je nach Fragestellung."),
-    ("Befundgespräch", " Wir erklären die Ergebnisse und schlagen einen Plan mit Kostenvoranschlag vor."),
+    ("Befundgespräch", " Wir erklären die Ergebnisse und schlagen einen Plan vor, auf Wunsch mit Kostenvoranschlag."),
     ("Begleitung", " Therapie und Folgetermine, mit festen Ansprechpartnerinnen."),
 ]
 
@@ -149,7 +149,7 @@ def internistisch():
 <div><span class="eyebrow">Ganzheitlicher Gesundheits-Check-up</span><h2>Einmal gründlich durchchecken</h2>
 <p>Für alle, die es genau wissen wollen: Beim Gesundheits-Check-up verbinden wir die internistische Untersuchung mit einer breiten Labor- und Funktionsdiagnostik. Was genau dazugehört, stimmen wir im Erstgespräch auf Sie ab.</p>
 {liste(["Ganzkörperuntersuchung und ausführliche Anamnese", "Labordiagnostik", "Ultraschall der Bauchorgane und Nieren", "Ruhe-EKG", "Sauerstoffsättigung und Lungenfunktion", "Nahrungsmittelunverträglichkeiten", "HRV-Messung (Stress und vegetatives Nervensystem)", "Urin, Stuhl und weitere Untersuchungen nach Bedarf"])}</div>
-<div class="box" style="align-self:center"><h3>Voraussichtliche Kosten</h3><p>Nach GOÄ, je nach Umfang. Sie bekommen vorher einen schriftlichen Kostenvoranschlag.</p>{book('Check-up anfragen')}<p class="small muted" style="margin:14px 0 0">Gesund und neugierig auf Ihre Werte? Dann passt auch der {a('longevity/check/', 'Longevity-Check')}.</p></div>
+<div class="box" style="align-self:center"><h3>Voraussichtliche Kosten</h3><p>Nach GOÄ, je nach Umfang. Wir sagen Ihnen vorher gern, womit Sie rechnen können, auf Wunsch auch schriftlich.</p>{book('Check-up anfragen')}<p class="small muted" style="margin:14px 0 0">Gesund und neugierig auf Ihre Werte? Dann passt auch der {a('longevity/check/', 'Longevity-Check')}.</p></div>
 </div></div></section>""")
 
 
@@ -172,7 +172,7 @@ def infektionen():
         [("Vorgespräch", " Am Telefon oder per Video, wenn die Anreise anstrengend ist."),
          ("Erstgespräch", " Ausführliche Anamnese, Untersuchung, Sichtung Ihrer Vorbefunde."),
          ("Diagnostik", " Je nach Bild Immunstatus, Entzündungswerte, Zellenergie, Nervensystem-Messung."),
-         ("Plan", " Schonend, schrittweise, mit Kostenvoranschlag. Ob eine Apherese sinnvoll sein kann, besprechen wir offen.")],
+         ("Plan", " Schonend und schrittweise, auf Wunsch mit Kostenvoranschlag. Ob eine Apherese sinnvoll sein kann, besprechen wir offen.")],
         [("Behandeln Sie Long-COVID und Post-Vac?", "Wir betreuen Menschen mit anhaltenden Beschwerden nach Infektionen und Impfungen. Welche Diagnostik und Behandlung in Ihrem Fall sinnvoll ist, klären wir im Erstgespräch. Eine Heilung können wir nicht versprechen."),
          ("Kann ich das Gespräch per Video führen?", "Ja, das Vorgespräch ist per Telefon oder Video möglich."),
          ("Was ist mit der Apherese?", "Die Apherese ist eine von mehreren Möglichkeiten. Ob sie für Sie in Frage kommt, prüfen wir im Beratungsgespräch. Für einige Anwendungen ist sie nicht zugelassen. Darüber klären wir Sie vorher auf.")],
@@ -186,7 +186,7 @@ def darm():
          "Sie möchten wissen, wie es um Ihre Darmflora steht", "Sie haben schon einiges ausprobiert und suchen einen Plan, der zu Ihren Werten passt"],
         [("Erstgespräch", " Beschwerden, Ernährung, Medikamente, Vorbefunde, körperliche Untersuchung."),
          ("Diagnostik", " Mikrobiom-Analyse aus dem Stuhl, Tests auf Nahrungsmittelunverträglichkeiten, Labor nach Bedarf, Ultraschall des Bauches."),
-         ("Befundgespräch", " Wir erklären die Ergebnisse verständlich und schlagen einen Plan mit Kostenvoranschlag vor."),
+         ("Befundgespräch", " Wir erklären die Ergebnisse verständlich und schlagen einen Plan vor, auf Wunsch mit Kostenvoranschlag."),
          ("Begleitung", " Darmaufbau und Mikrobiom-Management, Ernährung und Nährstoffe, mit Kontrolle nach einigen Monaten.")],
         [("Was zeigt eine Mikrobiom-Analyse?", "Welche Bakterien in Ihrem Darm leben und in welchem Verhältnis, dazu Hinweise auf Entzündung und die Barrierefunktion der Darmschleimhaut. Was das für Sie bedeutet, besprechen wir im Befundgespräch."),
          ("Muss ich dafür zur Darmspiegelung?", "Nein. Die Mikrobiom-Analyse wird aus einer Stuhlprobe gemacht, die Sie zu Hause nehmen. Ob zusätzlich eine Darmspiegelung sinnvoll ist, klären wir mit Ihnen und Ihrer Hausärztin oder Ihrem Hausarzt."),
@@ -196,7 +196,10 @@ def darm():
 <div class="card"><span class="tag">Messen</span><h3>Mikrobiom-Analyse</h3><p>Darmflora, Gleichgewicht der Bakterien, Entzündung und Barrierefunktion, aus einer Stuhlprobe.</p></div>
 <div class="card"><span class="tag">Klären</span><h3>Unverträglichkeiten</h3><p>Gezielte Tests auf Nahrungsmittelunverträglichkeiten, dazu bei Bedarf Histamin und Mastzellen.</p></div>
 <div class="card"><span class="tag">Begleiten</span><h3>Darmaufbau</h3><p>Mikrobiom-Management, Ernährung und funktionelle Nährstofftherapie, abgestimmt auf Ihre Befunde.</p></div>
-</div></div></section>""")
+</div>
+<div class="note" style="margin-top:24px"><p style="margin:0 0 8px"><b>Infusion Darmgesundheit:</b> eine Nährstoff-Infusion als Teil des Darmaufbaus, nach Diagnostik und ärztlicher Empfehlung. Ca. {price("darm_infusion", "")}<sup>*</sup> je Infusion, inklusive ärztlichem Gespräch.</p>
+<p class="small" style="margin:0">* Vor der ersten Infusion führt unsere Ärztin ein ausführliches Aufklärungsgespräch, es ist im Preis enthalten. Erhalten Sie die Infusion innerhalb von 4 Wochen erneut, wird das Gespräch nicht noch einmal berechnet und die Infusion kostet ca. 10 € weniger. Abgerechnet wird nach der GOÄ, nach der Behandlung.</p></div>
+</div></section>""")
 
 
 def umwelt():
@@ -209,12 +212,12 @@ def umwelt():
         [("Erstgespräch", " Ausführliche umweltmedizinische Anamnese: Wohnung, Arbeitsplatz, Hobbys, Ernährung, Zahnmaterialien, frühere Belastungen."),
          ("Diagnostik", " Gezielte Messungen, zum Beispiel Schwermetalle, Pestizide, ausgewählte PFAS, oxidativer Stress und Zellenergie."),
          ("Befundgespräch", " Wir ordnen die Werte ein und sagen Ihnen offen, was sie bedeuten und was nicht."),
-         ("Plan", " Belastungen im Alltag erkennen und verringern, begleitende Nährstofftherapie und, wenn es passt, weitere Verfahren. Mit Kostenvoranschlag.")],
+         ("Plan", " Belastungen im Alltag erkennen und verringern, begleitende Nährstofftherapie und, wenn es passt, weitere Verfahren. Auf Wunsch mit Kostenvoranschlag.")],
         [("Was ist Umweltmedizin?", "Ein ärztliches Fachgebiet, das den Zusammenhang zwischen Umweltfaktoren und Gesundheit untersucht. Dazu gehören Stoffe in Wohnung, Beruf und Alltag ebenso wie die Frage, wie der Körper mit ihnen umgeht."),
          ("Kann man Umweltstoffe im Blut messen?", "Viele ja, zum Beispiel Schwermetalle, bestimmte Pestizide und ausgewählte PFAS. Welche Messungen in Ihrem Fall sinnvoll sind, legen wir nach dem Erstgespräch fest, damit nur gemacht wird, was weiterhilft."),
          ("Was ist, wenn erhöhte Werte gefunden werden?", "Dann besprechen wir zuerst, woher die Belastung kommen könnte und wie Sie sie im Alltag verringern. Welche weiteren Schritte sinnvoll sind, entscheiden wir gemeinsam."),
          ("Gehört die INUSpherese® dazu?", "Sie ist eine von mehreren Möglichkeiten. Ob sie für Sie infrage kommt, klären wir in einem eigenen Arztgespräch."),
-         ("Wer bezahlt das?", "Umweltmedizinische Diagnostik ist meist eine Selbstzahlerleistung. Private Versicherungen erstatten je nach Tarif und Anlass. Sie bekommen vorher einen Kostenvoranschlag.")],
+         ("Wer bezahlt das?", "Umweltmedizinische Diagnostik ist meist eine Selbstzahlerleistung. Private Versicherungen erstatten je nach Tarif und Anlass. Zu den Kosten geben wir Ihnen vorab gern Auskunft, auf Wunsch als Kostenvoranschlag.")],
         a("labordiagnostik/#umwelt", '<span class="tag">Diagnostik</span><h3>Umweltdiagnostik</h3><p>Alle Messungen im Überblick.</p><span class="more">Zur Diagnostik →</span>', "card"),
         extra=f"""<section id="quellen"><div class="wrap">
 <span class="eyebrow">Woher Belastungen kommen können</span><h2>Wonach wir fragen</h2>
@@ -284,7 +287,7 @@ def apherese():
         ("Bekomme ich fremdes Plasma?", "Nein. Ihr eigenes Plasma wird gefiltert und zurückgeführt, eine Ersatzlösung ist nicht nötig."),
         ("Tut das weh und ist es gut verträglich?", "Spürbar ist vor allem der Einstich in der Armbeuge, die Behandlung selbst ist schmerzarm. Wie bei jeder Behandlung am Blutkreislauf kann es zu Nebenwirkungen wie Kreislaufschwäche oder Blutergüssen kommen. Darüber klären wir Sie vorher ausführlich auf."),
         ("Wie viele Behandlungen brauche ich?", "Das hängt von Ihren Werten und Zielen ab. Meist beginnen wir mit zwei Behandlungen innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen."),
-        ("Was kostet die INUSpherese®?", f"Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}, zwei Behandlungen inklusive Vorgesprächen, Untersuchungen, Überwachung und begleitenden Infusionen voraussichtlich {price('apherese_programm')}. Was Sie nicht benötigen, wird nicht berechnet. Sie bekommen vorher einen schriftlichen Kostenvoranschlag."),
+        ("Was kostet die INUSpherese®?", f"Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}, zwei Behandlungen inklusive Vorgesprächen, Untersuchungen, Überwachung und begleitenden Infusionen voraussichtlich {price('apherese_programm')}. Was Sie nicht benötigen, wird nicht berechnet. Auf Wunsch erhalten Sie vorab einen schriftlichen Kostenvoranschlag."),
         ("Zahlt das meine Krankenkasse?", "In der Regel nicht, die INUSpherese® ist bei uns eine Selbstzahlerleistung. Private Versicherungen erstatten in Einzelfällen. Wir beraten Sie dazu."),
     ])
     proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "INUSpherese",
@@ -356,7 +359,7 @@ def apherese():
     'Auf Wunsch Analyse des Eluats in einem externen Labor',
     'Nachgespräch',
 ])}
-<p class="price-line" style="margin:16px 0 0"><b>Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}</b> · nach GOÄ, mit Kostenvoranschlag</p>
+<p class="price-line" style="margin:16px 0 0"><b>Eine Behandlung voraussichtlich {price('apherese_sitzung', 'ab')}</b> · nach GOÄ, Kostenvoranschlag auf Wunsch</p>
 <p class="small" style="margin:12px 0 0">Als festes Paket: {a('medizin/apherese-programm/', 'Apherese-Programm')} · Für Gesunde: {a('longevity/apherese-reset/', 'Apherese Reset')}</p></div>
 </div></div></section>
 
@@ -390,7 +393,7 @@ def help_apherese():
         ("Was bedeutet „außerhalb der Zulassung“?", "Ein Verfahren wird für einen Zweck eingesetzt, für den es nicht ausdrücklich zugelassen ist. Das ist in der Medizin erlaubt, setzt aber eine sorgfältige ärztliche Prüfung im Einzelfall und eine ausführliche Aufklärung voraus. Darüber sprechen wir offen mit Ihnen."),
         ("Wie lange dauert eine Behandlung?", "Etwa zwei bis drei Stunden. Sie liegen bequem, unser Team überwacht Kreislauf und Werte die ganze Zeit."),
         ("Ist die Behandlung gut verträglich?", "Wie bei jeder Behandlung am Blutkreislauf kann es zu Nebenwirkungen kommen, zum Beispiel Kreislaufschwäche oder Blutergüsse. Weil Heparin eingesetzt wird, prüfen wir vorher auch die Blutgerinnung. Über alle Risiken klären wir Sie vorher ausführlich auf."),
-        ("Was kostet die H.E.L.P.-Apherese?", f"Eine Behandlung voraussichtlich {price('help_sitzung', 'ab')}. Die genauen Kosten stehen in Ihrem schriftlichen Kostenvoranschlag. Die Off-Label-Anwendung erstatten Versicherungen in der Regel nicht."),
+        ("Was kostet die H.E.L.P.-Apherese?", f"Eine Behandlung voraussichtlich {price('help_sitzung', 'ab')}. Die genauen Kosten nennen wir Ihnen vorab gern, auf Wunsch als schriftlichen Kostenvoranschlag. Die Off-Label-Anwendung erstatten Versicherungen in der Regel nicht."),
     ])
     proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "H.E.L.P.-Apherese",
             "alternateName": "Heparin-induzierte extrakorporale LDL-Präzipitation",
@@ -422,7 +425,7 @@ def help_apherese():
     ('Behandlung', ' Im Liegen, etwa 2 bis 3 Stunden, mit ständiger Überwachung durch unser Team.'),
     ('Auswertung', ' Werte vorher und nachher im Vergleich, und die Frage, ob weitere Behandlungen sinnvoll sind.'),
 ])}</div>
-<div class="box"><h3>Kosten</h3><p>Eine Behandlung voraussichtlich <b>{price('help_sitzung', 'ab')}</b>, nach GOÄ. Vor Beginn erhalten Sie einen schriftlichen Kostenvoranschlag.</p>
+<div class="box"><h3>Kosten</h3><p>Eine Behandlung voraussichtlich <b>{price('help_sitzung', 'ab')}</b>, nach GOÄ. Auf Wunsch erhalten Sie vorab einen schriftlichen Kostenvoranschlag.</p>
 <p>Ob Ihre private Krankenversicherung oder Beihilfe erstattet, hängt von Ihrem Tarif und vom Anlass ab. Die Off-Label-Anwendung erstatten Versicherungen in der Regel nicht.</p>
 <p style="margin:0">{a('kosten/', 'Mehr zu Kosten und Erstattung')}</p></div>
 </div></div></section>
@@ -444,14 +447,14 @@ def apherese_programm():
                    "Eluat-Analyse der abgefilterten Bestandteile", "Begleitende Infusionen nach ärztlicher Empfehlung", "Nachgespräch mit Befunden",
                    "Hilfe beim Erstattungsantrag an PKV oder Beihilfe"],
         ablauf=[("Vorgespräch", " Telefon, Video oder in der Praxis. Wir prüfen, ob die Apherese für Sie passt."),
-                ("Diagnostik", " Labor und Untersuchung, danach Kostenvoranschlag."),
+                ("Diagnostik", " Labor und Untersuchung, danach auf Wunsch Kostenvoranschlag."),
                 ("Zwei Sitzungen", " Je etwa zwei bis drei Stunden, innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen."),
                 ("Nachgespräch", " Ergebnisse der Eluat-Analyse, Verlauf, nächste Schritte.")],
         passt=["Ihre Beschwerden bestehen seit Langem", "Sie haben eine gründliche Abklärung hinter sich oder wollen sie bei uns machen", "Sie möchten die Apherese in einem klaren Rahmen ausprobieren"],
         passt_nicht=["Sie haben eine akute, schwere Erkrankung", "Gegenanzeigen sprechen dagegen, das prüfen wir im Vorgespräch", "Sie suchen eine schnelle Lösung ohne Diagnostik"],
         kosten_extra=f'<p>Jede weitere Sitzung voraussichtlich {price("apherese_sitzung", "")}.</p>',
         team=["kafle", "gusic", "gentsch"],
-        faqs=[("Kann ich nur eine Sitzung buchen?", "Ja, einzelne Sitzungen sind nach Kostenvoranschlag möglich. Das Programm ist für alle gedacht, die einen festen Rahmen mit Diagnostik möchten."),
+        faqs=[("Kann ich nur eine Sitzung buchen?", "Ja, einzelne Sitzungen sind möglich. Die Kosten nennen wir Ihnen vorab. Das Programm ist für alle gedacht, die einen festen Rahmen mit Diagnostik möchten."),
               ("Muss ich für das Programm in Stuttgart übernachten?", "Nicht unbedingt. Wer weit anreist, bekommt Tipps für Unterkünfte in der Nähe."),
               ("Werden die Kosten erstattet?", "Je nach Tarif und Anlass erstatten PKV und Beihilfe einen Teil. Wir stellen die Unterlagen für Ihren Antrag zusammen.")],
         next_step=("Erst wissen, was die Apherese ist?", "inuspherese-zentrum-stuttgart/", "Mehr zur Apherese"))
@@ -501,7 +504,7 @@ def regeneration_med():
 <p style="margin-top:20px">{a('ganzkoerperhyperthermie/', 'Alles zur Ganzkörperhyperthermie')}</p></div></section>
 <section><div class="wrap"><div class="split"><div><h2>So läuft eine Kur ab</h2>{schritte([
     ('Erstgespräch', ' Wir klären, ob und welche Kur passt, und schließen Gegenanzeigen aus.'),
-    ('Kostenvoranschlag', ' Sie bekommen den voraussichtlichen Preis schriftlich.'),
+    ('Kosten', ' Wir nennen Ihnen den voraussichtlichen Preis, auf Wunsch schriftlich als Kostenvoranschlag.'),
     ('Termine', ' Feste Termine über einige Wochen, bequem online oder am Empfang vereinbart.'),
     ('Abschluss', ' Gespräch zum Verlauf und zu weiteren Schritten.')])}</div>
 {kosten_box()}</div></div></section>
@@ -517,7 +520,7 @@ def hyperthermie():
         ("Wie wird überwacht?", "Temperatur, Puls und Sauerstoffsättigung werden während der ganzen Behandlung gemessen."),
         ("Wie viele Sitzungen sind sinnvoll?", "Das hängt vom Anlass ab. Häufig ist eine Kur mit 6 Sitzungen."),
         ("Kann ich danach Auto fahren?", "Wir empfehlen, sich abholen zu lassen oder öffentliche Verkehrsmittel zu nutzen."),
-        ("Was kostet eine Ganzkörperhyperthermie?", f"Die Wärmekur mit 6 Sitzungen kostet voraussichtlich {price('kur_hyperthermie', '')}. Einzelne Sitzungen nach Kostenvoranschlag."),
+        ("Was kostet eine Ganzkörperhyperthermie?", f"Die Wärmekur mit 6 Sitzungen kostet voraussichtlich {price('kur_hyperthermie', '')}. Einzelne Sitzungen sind möglich, die Kosten nennen wir Ihnen vorab."),
     ])
     proc = {"@context": "https://schema.org", "@type": "MedicalTherapy", "name": "Ganzkörperhyperthermie",
             "alternateName": ["Fieberbett", "Fiebertherapie"], "description": "Moderate Ganzkörperhyperthermie bis etwa 40,5 °C mit wIRA bei UMI Stuttgart."}
@@ -584,7 +587,7 @@ def diagnostik():
         html += f'<section class="{"bg-white" if i % 2 == 0 else ""}" id="{anchor}"><div class="wrap"><h2>{h}</h2><div class="grid g3" style="margin-top:20px">{cards}</div></div></section>'
     fh, fld = faq([
         ("Kann ich einzelne Laborwerte bestellen?", "In der Medizin stellen wir die Diagnostik nach dem Gespräch zusammen, damit nur gemacht wird, was weiterhilft. Feste Pakete sind der Energie-Check und bei UMI Longevity der Longevity-Check."),
-        ("Wer rechnet das Labor ab?", "Häufig rechnet das Fachlabor direkt mit Ihnen ab. Das steht vorab in Ihrem Kostenvoranschlag."),
+        ("Wer rechnet das Labor ab?", "Häufig rechnet das Fachlabor direkt mit Ihnen ab. Das sagen wir Ihnen vorab, auf Wunsch auch im Kostenvoranschlag."),
     ])
     body = f"""{hero('Diagnostik · UMI Medizin', 'Labordiagnostik in Stuttgart: genau hinschauen',
     'Mehr als der Routine-Check: Viele Ursachen bleiben bei einer üblichen Untersuchung unentdeckt. Nach dem Erstgespräch wählt unsere Ärztin die Bausteine aus, die in Ihrem Fall weiterhelfen. Für eine Rundum-Untersuchung gibt es den ' + a('internistische-sprechstunde/#check-up', 'Gesundheits-Check-up') + '.',

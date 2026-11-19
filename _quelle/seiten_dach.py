@@ -106,7 +106,7 @@ def einloesen():
 {schritte([
     ('Termin buchen', ' online über Doctolib oder telefonisch. Sagen Sie uns gern dazu, dass Sie einen Gutschein haben.'),
     ('Gutschein mitbringen', ' ausgedruckt, als Karte oder auf dem Handy. Wichtig ist die Gutscheinnummer.'),
-    ('Im Gespräch klären, was passt', ' Unsere Ärztin bespricht mit Ihnen, welche Leistung sinnvoll ist. Bei Bedarf bekommen Sie vorab einen Kostenvoranschlag.'),
+    ('Im Gespräch klären, was passt', ' Unsere Ärztin bespricht mit Ihnen, welche Leistung sinnvoll ist. Zu den Kosten geben wir Ihnen gern Auskunft, auf Wunsch auch schriftlich als Kostenvoranschlag.'),
     ('Verrechnen', ' Der Gutschein wird auf die Rechnung angerechnet. Ein Rest bleibt als Guthaben für später.'),
 ])}
 <div class="grid g2" style="margin-top:32px">
@@ -170,7 +170,7 @@ def start():
 <div class="grid g4" style="margin-top:28px">
 <div class="card"><span class="tag">1</span><h3>Gespräch</h3><p>Ausführlich, mit Zeit für Ihre Geschichte und Ihre Fragen.</p></div>
 <div class="card"><span class="tag">2</span><h3>Diagnostik</h3><p>Labor, Untersuchung und Messungen, die über den Routine-Check hinausgehen.</p></div>
-<div class="card"><span class="tag">3</span><h3>Plan</h3><p>Ein schriftlicher Plan mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p></div>
+<div class="card"><span class="tag">3</span><h3>Plan</h3><p>Ein schriftlicher Plan, auf Wunsch mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p></div>
 <div class="card"><span class="tag">4</span><h3>Begleitung</h3><p>Therapie, Kontrolle und Folgetermine, mit festen Ansprechpartnerinnen.</p></div>
 </div></div></section>
 
@@ -183,7 +183,7 @@ def start():
 <p>{C.STRASSE}<br>{C.PLZ} Stuttgart</p><p>{C.OEFFNUNGSZEITEN}</p>
 <p>Telefon {tel()}<br>E-Mail <a href="mailto:{C.MAIL}">{C.MAIL}</a></p>
 <div class="btns">{a('ihr-besuch/', 'Anfahrt und Ablauf', 'btn ghost')}{book()}</div></div>
-<div class="box"><h3>Wir sind eine Privatpraxis</h3><p>Wir behandeln Privatversicherte, Beihilfeberechtigte und Selbstzahler. Vor jeder Behandlung bekommen Sie einen schriftlichen Kostenvoranschlag.</p><p style="margin:0">{a('kosten/', 'Kosten und Erstattung')}</p></div>
+<div class="box"><h3>Wir sind eine Privatpraxis</h3><p>Wir behandeln Privatversicherte, Beihilfeberechtigte und Selbstzahler. Zu den Kosten geben wir Ihnen vorab gern Auskunft, auf Wunsch auch als schriftlichen Kostenvoranschlag.</p><p style="margin:0">{a('kosten/', 'Kosten und Erstattung')}</p></div>
 </div></div></section>"""
 
 
@@ -220,18 +220,18 @@ def schema_svg():
 def kosten():
     fh, fld = faq([
         ("Was kostet eine Blutwäsche (Apherese)?",
-         f"Eine Sitzung INUSpherese kostet voraussichtlich {price('apherese_sitzung', '')} nach GOÄ. Das Apherese-Programm mit Vorgespräch, Diagnostik, zwei Sitzungen und Nachgespräch kostet voraussichtlich {price('apherese_programm')}. Sie bekommen vorab einen Kostenvoranschlag."),
+         f"Eine Sitzung INUSpherese kostet voraussichtlich {price('apherese_sitzung', '')} nach GOÄ. Das Apherese-Programm mit Vorgespräch, Diagnostik, zwei Sitzungen und Nachgespräch kostet voraussichtlich {price('apherese_programm')}. Auf Wunsch erhalten Sie vorab einen Kostenvoranschlag."),
         ("Zahlt die private Krankenversicherung?",
-         "Das hängt von Ihrem Tarif und der medizinischen Begründung ab. Bei Behandlungen wegen einer Erkrankung erstatten Versicherer und Beihilfe häufig einen Teil. Vorsorge- und Longevity-Leistungen werden in der Regel nicht erstattet. Fragen Sie am besten vorab mit unserem Kostenvoranschlag nach."),
+         "Das hängt von Ihrem Tarif und der medizinischen Begründung ab. Bei Behandlungen wegen einer Erkrankung erstatten Versicherer und Beihilfe häufig einen Teil. Vorsorge- und Longevity-Leistungen werden in der Regel nicht erstattet. Fragen Sie am besten vorab bei Ihrer Versicherung nach. Für die Anfrage erstellen wir Ihnen auf Wunsch einen Kostenvoranschlag."),
         ("Behandeln Sie gesetzlich Versicherte?",
          "Ja, als Selbstzahler. Wir sind eine Privatpraxis und rechnen nicht mit der gesetzlichen Krankenkasse ab."),
         ("Warum steht „voraussichtlich“ vor den Preisen?",
          "Ärztliche Leistungen müssen nach der GOÄ abgerechnet werden. Der genaue Betrag ergibt sich aus den tatsächlich erbrachten Leistungen. Unsere Preise beschreiben, was ein Paket in der Regel kostet."),
         ("Gibt es Rabatte?",
-         "Nein. Ärztinnen und Ärzte dürfen keine Rabatte auf Behandlungen geben. Folgeinfusionen sind günstiger, weil die ärztliche Aufklärung der ersten Infusion entfällt."),
+         "Nein. Ärztinnen und Ärzte dürfen keine Rabatte auf Behandlungen geben. Erhalten Sie dieselbe Infusion innerhalb von 4 Wochen erneut, kostet sie etwas weniger, weil das ärztliche Gespräch nach der GOÄ dann nicht noch einmal berechnet wird."),
     ])
     body = f"""{hero('Kosten und Erstattung', 'Was kostet eine Behandlung bei UMI Stuttgart?',
-    'Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Vor jeder Behandlung bekommen Sie einen schriftlichen Kostenvoranschlag. So wissen Sie vorher, was auf Sie zukommt.',
+    'Wir sind eine Privatpraxis und rechnen nach der Gebührenordnung für Ärzte (GOÄ) ab. Fragen Sie uns gern vorab nach den Kosten, wir geben Ihnen transparent Auskunft. Auf Wunsch erhalten Sie einen schriftlichen Kostenvoranschlag.',
     book('Vorgespräch buchen') + tel('btn ghost', 'Anrufen'))}
 <section class="bg-white"><div class="wrap">
 <h2>Voraussichtliche Kosten der Pakete</h2>
@@ -246,14 +246,13 @@ def kosten():
 <tr><td>Farblaser, 12 Sitzungen</td><td>{price('kur_farblaser')}</td></tr></table>
 <table class="price-table"><tr><th colspan="2">UMI Longevity</th></tr>
 <tr><td>{a('longevity/check/', 'Longevity-Check')}</td><td>{price('longevity_check')}</td></tr>
-<tr><td>{a('longevity/nad-infusion/', 'NAD+-Infusion')}, je Infusion</td><td>{price('nad_infusion')}</td></tr>
-<tr><td>{a('longevity/infusionen/', 'Infusionsmenü')}, erste Infusion</td><td>{price('infusion_erste')}</td></tr>
-<tr><td>jede weitere Infusion</td><td>{price('infusion_weitere')}</td></tr>
+<tr><td>{a('longevity/nad-infusion/', 'NAD+-Infusion')}, je Infusion</td><td>ca. {price('nad_infusion', '')}</td></tr>
+<tr><td>{a('longevity/infusionen/', 'Infusionsmenü')}, je Infusion inkl. ärztlichem Gespräch</td><td>ab ca. {price('infusion_ab', '')}</td></tr>
 <tr><td>{a('longevity/supplement-analyse/', 'Supplement-Analyse')}</td><td>{price('supplement_analyse')}</td></tr>
 <tr><td>{a('longevity/apherese-reset/', 'Apherese Reset')}</td><td>{price('apherese_reset')}</td></tr></table>
 </div></div></section>
 <section><div class="wrap"><div class="grid g3">
-<div class="box"><h3>Kostenvoranschlag vorab</h3><p>Bevor eine Behandlung beginnt, bekommen Sie schriftlich, was sie voraussichtlich kostet und ob eine Erstattung wahrscheinlich ist.</p></div>
+<div class="box"><h3>Kostenvoranschlag auf Wunsch</h3><p>Fragen Sie uns vor der Behandlung, was sie voraussichtlich kostet. Wir geben Ihnen transparent Auskunft. Wenn Sie es schriftlich möchten, zum Beispiel für Ihre Versicherung, erstellen wir Ihnen einen Kostenvoranschlag.</p></div>
 <div class="box"><h3>Hilfe beim Erstattungsantrag</h3><p>Für Ihre private Krankenversicherung oder Beihilfe stellen wir die nötigen Unterlagen zusammen und erklären, was Sie einreichen.</p></div>
 <div class="box"><h3>Gesetzlich versichert?</h3><p>Sie sind als Selbstzahler herzlich willkommen. Wir beraten Sie vorher offen zu den Kosten.</p></div>
 </div></div></section>
@@ -299,7 +298,7 @@ def besuch():
     ('Ankommen', ' Am Empfang nehmen wir Ihre Daten auf. Bitte kommen Sie etwa 10 Minuten früher.'),
     ('Gespräch', ' Ausführliche Anamnese und Untersuchung mit unserer Ärztin.'),
     ('Diagnostik', ' Blutabnahme und Messungen, je nach Anlass gleich am selben Tag.'),
-    ('Plan', ' Sie bekommen einen Vorschlag mit Kostenvoranschlag und entscheiden in Ruhe.'),
+    ('Plan', ' Sie bekommen einen Vorschlag, auf Wunsch mit Kostenvoranschlag, und entscheiden in Ruhe.'),
 ])}</div>
 <div><h2>Am Behandlungstag</h2><p>Für Apherese, Ganzkörperhyperthermie und Infusionen planen Sie bitte genug Zeit ein. Eine Apherese dauert etwa zwei bis drei Stunden, eine Ganzkörperhyperthermie mit Ruhephase etwa zwei Stunden. Trinken Sie vorher ausreichend und essen Sie leicht.</p>
 <p>Wer von weiter her anreist, bekommt von uns gern Hinweise zur Übernachtung in der Nähe.</p></div>
@@ -464,7 +463,7 @@ PAGES = [
          "Bedingungen für Wertgutscheine von UMI Stuttgart: Gültigkeit, Einlösung, Restwert, Übertragbarkeit.",
          gutscheinbedingungen, crumbs=[("gutscheine/", "Gutscheine"), (None, "Bedingungen")]),
     Page("kosten", "Blutwäsche Kosten, GOÄ und Erstattung · UMI Stuttgart",
-         "Was kosten Apherese, Hyperthermie und Longevity-Check? Voraussichtliche Kosten nach GOÄ, Kostenvoranschlag vorab, Hilfe beim Erstattungsantrag.",
+         "Was kosten Apherese, Hyperthermie und Longevity-Check? Voraussichtliche Kosten nach GOÄ, Kostenvoranschlag auf Wunsch, Hilfe beim Erstattungsantrag.",
          kosten, crumbs=[(None, "Kosten und Erstattung")]),
     Page("terminvereinbarung", "Termin vereinbaren · UMI Stuttgart",
          f"Termin bei UMI Stuttgart online über Doctolib buchen, telefonisch unter {C.TEL} oder per E-Mail. Auch Vorgespräch per Telefon oder Video.",

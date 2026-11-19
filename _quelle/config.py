@@ -50,26 +50,22 @@ PREISE = {
     "erstgespraech": None,
     # UMI Longevity
     "longevity_check": None,
-    "nad_infusion": "489 €",
-    "nad_weitere": "439 €",
-    "infusion_erste": "124 €",
-    "infusion_weitere": "99 €",
+    "nad_infusion": "349 €",
+    "infusion_ab": "55 €",
+    "darm_infusion": "109 €",
     "supplement_analyse": None,
     "apherese_reset": "ca. 5.400 €",
 }
 
-# Infusionsmenü: (erste Infusion, jede weitere). None = Platzhalter "… €".
-# "-" = kein Preis für weitere Infusionen. Erste Infusion inkl. ärztlicher Aufklärung.
+# Infusionsmenü (CoCo, 19.11.): ein Preis je Infusion, inkl. kurzem ärztlichem Gespräch.
+# None = Platzhalter "… €". Auf der Website mit "ca.".
 INFUSIONSPREISE = {
-    "winter": ("124 €", "99 €"), "winter_plus": ("204 €", "179 €"),
-    "myers": ("184 €", "159 €"),
-    "recharge": ("179 €", "129 €"), "recharge_plus": ("219 €", "169 €"),
-    "sport": ("134 €", "109 €"), "sport_plus": ("174 €", "149 €"),
-    "night_out": ("149 €", "-"),
-    "longevity_basis": ("204 €", "179 €"), "longevity_plus": ("224 €", "199 €"), "longevity_premium": ("274 €", "249 €"),
-    "glow": ("194 €", "169 €"), "glow_plus": ("264 €", "239 €"),
-    "mito": ("174 €", "149 €"),
-    "nad": ("489 €", "439 €"),
+    "winter": "69 €", "winter_plus": "169 €", "myers": "139 €",
+    "recharge": "79 €", "recharge_plus": "139 €", "recharge_premium": "169 €",
+    "sport": "55 €", "sport_plus": "135 €", "night_out": None,
+    "longevity": "139 €", "longevity_plus": "179 €", "longevity_premium": "219 €",
+    "glow": "55 €", "glow_plus": "185 €", "mito": "109 €", "mito_plus": "239 €",
+    "nad": "349 €",
 }
 
 # ------------------------------------------------------------ Weiterleitungen
