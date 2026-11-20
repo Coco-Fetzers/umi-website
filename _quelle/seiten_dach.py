@@ -35,7 +35,7 @@ def gutscheine():
         ("Wie lange gilt der Gutschein?",
          "Bis zum 31. Dezember des dritten Jahres nach dem Kauf. Ein Gutschein aus 2026 gilt also bis zum 31.12.2029."),
         ("Wie bekomme ich den Gutschein?",
-         "Online erhalten Sie ihn sofort als PDF per E-Mail zum Ausdrucken. In der Praxis bekommen Sie ihn als gedruckte Karte mit Umschlag."),
+         "Immer als PDF per E-Mail, egal ob Sie online, in der Praxis oder am Telefon kaufen. Sie können ihn ausdrucken oder direkt weiterleiten."),
         ("Was passiert, wenn eine Behandlung mehr oder weniger kostet?",
          "Der Gutschein wird auf die Rechnung angerechnet. Ein Restbetrag bleibt als Guthaben erhalten, ein Mehrbetrag wird ganz normal bezahlt."),
         ("Gibt es Rabatte oder Gutscheine für eine bestimmte Behandlung?",
@@ -49,7 +49,7 @@ def gutscheine():
 <section class="hero"><div class="wrap"><div>
 {{{{CRUMBS}}}}<span class="eyebrow">Wertgutscheine von UMI Stuttgart</span>
 <h1>Schenken Sie <em>Zeit für Gesundheit.</em></h1>
-<p class="lead">Wertgutscheine ab 150 €, einlösbar für alle Leistungen von UMI Stuttgart und drei Jahre gültig. Sofort per E-Mail oder als Karte in unserer Praxis in Stuttgart-Vaihingen.</p>
+<p class="lead">Wertgutscheine ab 150 €, einlösbar für alle Leistungen von UMI Stuttgart und drei Jahre gültig. Sie erhalten ihn als PDF per E-Mail, zum Ausdrucken oder Weiterleiten.</p>
 <div class="btns">{shop()}{a('#kaufen', 'So kaufen Sie', 'btn ghost')}</div></div>
 <div class="hero-mark">{mark('lon')}</div></div></section>
 
@@ -74,8 +74,8 @@ def gutscheine():
 <div id="kaufen"><h2>So kaufen Sie</h2>
 {schritte([
     ('Online', ' Betrag und Motiv wählen, bezahlen, PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else '<i>Der Online-Verkauf startet in Kürze.</i>')),
-    ('In der Praxis', f' Gedruckte Karte mit Umschlag am Empfang, {C.OEFFNUNGSZEITEN}.'),
-    ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken den Gutschein per Post oder legen ihn zur Abholung bereit.'),
+    ('In der Praxis', f' Betrag und Motiv am Empfang wählen und bezahlen, {C.OEFFNUNGSZEITEN}. Das PDF schicken wir Ihnen per E-Mail.'),
+    ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken Ihnen den Gutschein als PDF per E-Mail.'),
 ])}
 <div class="btns">{shop()}</div>
 <p class="small muted" style="margin-top:14px">Jeder Gutschein hat eine Nummer, einen Wert und ein Ausstellungsdatum. Es gelten unsere {a('gutscheinbedingungen/', 'Gutscheinbedingungen')}.</p>
@@ -99,7 +99,7 @@ def einloesen():
 <section class="bg-white"><div class="wrap narrow">
 {schritte([
     ('Termin buchen', ' online über Doctolib oder telefonisch. Sagen Sie uns gern dazu, dass Sie einen Gutschein haben.'),
-    ('Gutschein mitbringen', ' ausgedruckt, als Karte oder auf dem Handy. Wichtig ist die Gutscheinnummer.'),
+    ('Gutschein mitbringen', ' ausgedruckt oder auf dem Handy. Wichtig ist die Gutscheinnummer.'),
     ('Im Gespräch klären, was passt', ' Unsere Ärztin bespricht mit Ihnen, welche Leistung sinnvoll ist. Zu den Kosten geben wir Ihnen gern Auskunft, auf Wunsch auch schriftlich als Kostenvoranschlag.'),
     ('Verrechnen', ' Der Gutschein wird auf die Rechnung angerechnet. Ein Rest bleibt als Guthaben für später.'),
 ])}
@@ -148,7 +148,7 @@ def start():
 
 <section class="tight"><div class="wrap"><div class="banner">
 <div><span class="eyebrow">Wertgutscheine ab 150 €</span><h2>Schenken Sie Zeit für Gesundheit.</h2>
-<p style="margin:0">Einlösbar für alle Leistungen, drei Jahre gültig. Sofort per E-Mail oder als Karte in der Praxis.</p></div>
+<p style="margin:0">Einlösbar für alle Leistungen, drei Jahre gültig. Als PDF per E-Mail.</p></div>
 <div>{a('gutscheine/', 'Gutschein wählen', 'btn')}</div></div></div></section>
 
 <section class="tight"><div class="wrap"><div class="hint"><p><b>Immer müde, aber die Werte sind normal?</b> Der Energie-Check schaut genauer hin.</p>{a('energie-check/', 'Zum Energie-Check', 'btn ghost small')}</div></div></section>
@@ -448,7 +448,7 @@ PAGES = [
          "Privatpraxis in Stuttgart-Vaihingen: UMI Medizin für Menschen mit Beschwerden, UMI Longevity für alle, die gesund bleiben wollen. INUSpherese, H.E.L.P., Diagnostik.",
          start),
     Page("gutscheine", "Gesundheitsgutschein Stuttgart: Wertgutscheine · UMI",
-         "Schenken Sie Zeit für Gesundheit: Wertgutscheine von UMI Stuttgart ab 150 €, für alle Leistungen, 3 Jahre gültig. Sofort per E-Mail oder als Karte.",
+         "Schenken Sie Zeit für Gesundheit: Wertgutscheine von UMI Stuttgart ab 150 €, für alle Leistungen, 3 Jahre gültig. Als PDF per E-Mail.",
          gutscheine, nav="gut", crumbs=[(None, "Gutscheine")]),
     Page("einloesen", "Gutschein einlösen · UMI Stuttgart",
          "So lösen Sie Ihren Wertgutschein von UMI Stuttgart ein: Termin buchen, Gutschein mitbringen, im ärztlichen Gespräch klären, was passt.",
