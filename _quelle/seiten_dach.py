@@ -36,6 +36,8 @@ def gutscheine():
          "Bis zum 31. Dezember des dritten Jahres nach dem Kauf. Ein Gutschein aus 2026 gilt also bis zum 31.12.2029."),
         ("Wie bekomme ich den Gutschein?",
          "Immer als PDF per E-Mail, egal ob Sie online, in der Praxis oder am Telefon kaufen. Sie können ihn ausdrucken oder direkt weiterleiten."),
+        ("Wie kann ich bezahlen?",
+         "Direkt online per PayPal oder Kreditkarte. Den Gutschein erhalten Sie danach sofort als PDF per E-Mail."),
         ("Was passiert, wenn eine Behandlung mehr oder weniger kostet?",
          "Der Gutschein wird auf die Rechnung angerechnet. Ein Restbetrag bleibt als Guthaben erhalten, ein Mehrbetrag wird ganz normal bezahlt."),
         ("Gibt es Rabatte oder Gutscheine für eine bestimmte Behandlung?",
@@ -73,7 +75,7 @@ def gutscheine():
 <p class="small muted" style="margin-top:12px">Welche Leistung passt, besprechen wir in Ruhe im ärztlichen Gespräch.</p></div>
 <div id="kaufen"><h2>So kaufen Sie</h2>
 {schritte([
-    ('Online', ' Betrag und Motiv wählen, bezahlen, PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else '<i>Der Online-Verkauf startet in Kürze.</i>')),
+    ('Online', ' Betrag und Motiv wählen, direkt online bezahlen per PayPal oder Kreditkarte, das PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else '<i>Der Online-Verkauf startet in Kürze.</i>')),
     ('In der Praxis', f' Betrag und Motiv am Empfang wählen und bezahlen, {C.OEFFNUNGSZEITEN}. Das PDF schicken wir Ihnen per E-Mail.'),
     ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken Ihnen den Gutschein als PDF per E-Mail.'),
 ])}
