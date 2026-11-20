@@ -155,6 +155,12 @@ def start():
 
 <section class="tight"><div class="wrap"><div class="hint"><p><b>Immer müde, aber die Werte sind normal?</b> Der Energie-Check schaut genauer hin.</p>{a('energie-check/', 'Zum Energie-Check', 'btn ghost small')}</div></div></section>
 
+<section class="tight bg-dark" id="umweltgifte"><div class="wrap">
+<span class="eyebrow" style="color:var(--mist)">Umweltmedizin</span>
+<p class="claim">Umweltgifte wie Mikroplastik, Pestizide und Schwermetalle gehören nicht in unser Blut: Sie stehen im Verdacht, viele moderne Zivilisationskrankheiten bis hin zu neurodegenerativen Erkrankungen zu begünstigen.</p>
+<div class="btns" style="margin-top:24px">{a('inuspherese-zentrum-stuttgart/#im-blut', 'Was die Studien zeigen', 'btn light')}{a('umweltmedizin/', 'Mehr zur Umweltmedizin', 'btn ghost light')}</div>
+</div></section>
+
 <section class="bg-white"><div class="wrap"><div class="split">
 <div><span class="eyebrow">Apherese in Stuttgart</span><h2>INUSpherese und H.E.L.P.-Apherese</h2>
 <p>Bei der Apherese wird das Blutplasma außerhalb des Körpers gefiltert, umgangssprachlich oft „Blutwäsche“ genannt. UMI Stuttgart bietet beide Verfahren an. Als zertifizierter INUS-Partner sind wir der einzige Anbieter der INUSpherese® im Raum Stuttgart.</p>

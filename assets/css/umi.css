@@ -281,3 +281,5 @@ a.card:hover{border-color:var(--accent)}
   .nav .dd-menu a{font-size:17px;padding:9px 12px}
 }
 @media (max-width:1060px){.nav.open{max-height:calc(100vh - 90px);overflow-y:auto}}
+.btn.ghost.light{background:transparent;color:var(--shell);border-color:var(--shell)}
+.btn.ghost.light:hover{background:var(--shell);color:var(--slate-deep)}
