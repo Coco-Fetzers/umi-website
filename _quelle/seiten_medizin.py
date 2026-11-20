@@ -26,7 +26,7 @@ def medizin():
                 "Begleitung bei anhaltender Erschöpfung"])
     th = "".join((a(t, f'<span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") if t else
                   f'<div class="card"><span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p></div>') for t, tag, n, d in [
-        ("inuspherese-zentrum-stuttgart/", "Apherese", "INUSpherese®", "Blutplasma außerhalb des Körpers filtern, mit Eluat-Analyse."),
+        ("inuspherese-zentrum-stuttgart/", "Apherese", "INUSpherese®", "Blutplasma außerhalb des Körpers filtern, mit Eluat-Analyse. Einziger Anbieter im Raum Stuttgart."),
         ("medizin/help-apherese/", "Apherese", "H.E.L.P.-Apherese", "Off-Label-Anwendung, nur nach ärztlicher Prüfung."),
         ("ganzkoerperhyperthermie/", "Wärme", "Ganzkörperhyperthermie", "Kontrollierte Erwärmung des Körpers, ärztlich überwacht."),
         (None, "Infusionen", "Infusionstherapie", "Nach ärztlicher Verordnung, abgestimmt auf Ihre Befunde."),
@@ -302,7 +302,7 @@ def apherese():
     anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
 
     body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese®-Zentrum Stuttgart<span class="h1-sub">Blutplasma filtern, Belastungsstoffe reduzieren</span>',
-    'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen.',
+    'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen. Im Raum Stuttgart sind wir der einzige Anbieter der INUSpherese®.',
     book('Erstgespräch vereinbaren') + a('#info-abend', 'Info-Abend am 9. Dezember', 'btn ghost'), 'dach',
     '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Wichtige Eiweiße und Elektrolyte bleiben erhalten</li></ul>')}
 
@@ -441,7 +441,7 @@ def apherese_programm():
     return paket(
         eyebrow="Paket · UMI Medizin", line="med",
         h1="Apherese-Programm",
-        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf.",
+        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf. Im Raum Stuttgart gibt es die INUSpherese® nur bei uns.",
         preis_html=price("apherese_programm"),
         enthalten=["Beratungs- und Vorgespräch mit der Ärztin", "Diagnostik vor der Behandlung", "2 Sitzungen INUSpherese",
                    "Eluat-Analyse der abgefilterten Bestandteile", "Begleitende Infusionen nach ärztlicher Empfehlung", "Nachgespräch mit Befunden",

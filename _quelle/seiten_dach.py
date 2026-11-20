@@ -157,7 +157,7 @@ def start():
 
 <section class="bg-white"><div class="wrap"><div class="split">
 <div><span class="eyebrow">Apherese in Stuttgart</span><h2>INUSpherese und H.E.L.P.-Apherese</h2>
-<p>Bei der Apherese wird das Blutplasma außerhalb des Körpers gefiltert, umgangssprachlich oft „Blutwäsche“ genannt. UMI Stuttgart bietet als zertifizierter INUS-Partner beide Verfahren an und ist damit in Stuttgart der einzige Anbieter.</p>
+<p>Bei der Apherese wird das Blutplasma außerhalb des Körpers gefiltert, umgangssprachlich oft „Blutwäsche“ genannt. UMI Stuttgart bietet beide Verfahren an. Als zertifizierter INUS-Partner sind wir der einzige Anbieter der INUSpherese® im Raum Stuttgart.</p>
 <p>Betreut werden Sie von einem Team mit langjähriger Dialyse-Erfahrung. Was sich aus Ihrem Plasma filtern ließ, zeigt auf Wunsch die Eluat-Analyse.</p>
 <div class="btns">{a('inuspherese-zentrum-stuttgart/', 'Mehr zur Apherese', 'btn')}{a('kosten/', 'Was kostet das?', 'btn ghost')}</div></div>
 <div class="svg-schema">{schema_svg()}</div></div></div></section>

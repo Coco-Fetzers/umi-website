@@ -196,7 +196,7 @@ def reset():
     return paket(
         eyebrow="Premium · UMI Longevity", line="lon", du=True,
         h1="Apherese Reset in Stuttgart",
-        lead="Die Apherese filtert das Blutplasma außerhalb des Körpers. Im Apherese Reset verbinden wir zwei Sitzungen INUSpherese mit Labor vorher und nachher, Eluat-Analyse und einem Auswertungsgespräch. Für Gesunde, ärztlich begleitet.",
+        lead="Die Apherese filtert das Blutplasma außerhalb des Körpers. Im Apherese Reset verbinden wir zwei Sitzungen INUSpherese mit Labor vorher und nachher, Eluat-Analyse und einem Auswertungsgespräch. Für Gesunde, ärztlich begleitet. Im Raum Stuttgart gibt es die INUSpherese® nur bei uns.",
         preis_html=price("apherese_reset"),
         enthalten=["Vorgespräch mit der Ärztin", "Labor vorher und nachher (Entzündung, Blutfette, Schadstoffe)", "2 Sitzungen INUSpherese",
                    "Eluat-Analyse", "Auswertungsgespräch"],
@@ -206,7 +206,7 @@ def reset():
         passt_nicht=["du schwanger bist", "Gegenanzeigen dagegen sprechen, das prüfen wir im Vorgespräch"],
         team=["kafle", "gusic", "gentsch"],
         intro_extra=f"""<section class="tight"><div class="wrap"><div class="grid g2">
-<div class="box"><h3>INUSpherese einzeln</h3><p>Doppelmembran-Filtration des Plasmas, ca. 2 bis 3 Stunden, mit Vorgespräch. Voraussichtlich {price('apherese_sitzung', '')} je Sitzung.</p></div>
+<div class="box"><h3>INUSpherese einzeln</h3><p>Doppelmembran-Filtration des Plasmas, ca. 2 bis 3 Stunden, mit Vorgespräch. Einziger Anbieter im Raum Stuttgart. Voraussichtlich {price('apherese_sitzung', '')} je Sitzung.</p></div>
 </div></div></section>""",
         faqs=[("Warum kostet der Reset nicht mehr als das Apherese-Programm?", "Es ist dieselbe Behandlung. Der Unterschied liegt in Begleitdiagnostik und Ziel, nicht in der Apherese selbst."),
               ("Zahlt die Versicherung?", "Bei Anwendung ohne medizinischen Anlass in der Regel nicht."),
