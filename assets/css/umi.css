@@ -258,3 +258,26 @@ a.card:hover{border-color:var(--accent)}
 @media (max-width:1060px){.stoffe{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){.stoffe{grid-template-columns:1fr}}
 .h1-sub{display:block;font-size:.55em;font-weight:500;color:var(--accent);margin-top:10px;line-height:1.25}
+
+/* Ausklappmenüs Therapien / Diagnostik */
+.dd{position:relative}
+.dd-btn{background:none;border:0;font:inherit;font-weight:500;font-size:16px;padding:8px 12px;border-radius:999px;color:var(--slate-deep);cursor:pointer}
+.dd-btn::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 3px 8px}
+.dd-btn:hover,.dd-btn[aria-expanded="true"]{background:var(--flax)}
+.dd-menu{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--flax);border-radius:var(--radius);box-shadow:0 12px 32px rgba(46,58,66,.12);padding:20px 24px;gap:28px;z-index:60}
+.dd-menu::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu,.dd.open .dd-menu{display:flex}
+.dd-group{display:flex;flex-direction:column;min-width:190px}
+.dd-h{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px 10px}
+.nav .dd-menu a{font-size:15px;padding:7px 10px;border-radius:8px;white-space:nowrap}
+.nav .dd-menu a:hover{background:var(--shell)}
+@media (max-width:1060px){
+  .dd-btn{font-size:18px;padding:12px;width:100%;text-align:left}
+  .dd-btn::after{float:right;margin-top:8px}
+  .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:none}
+  .dd.open .dd-menu{display:block;position:static;transform:none;box-shadow:none;border:0;background:transparent;padding:0 0 8px 12px}
+  .dd-group{margin-bottom:8px}
+  .dd-h{margin:8px 0 4px 12px}
+  .nav .dd-menu a{font-size:17px;padding:9px 12px}
+}
+@media (max-width:1060px){.nav.open{max-height:calc(100vh - 90px);overflow-y:auto}}
