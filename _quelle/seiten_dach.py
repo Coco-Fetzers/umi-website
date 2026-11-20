@@ -54,21 +54,15 @@ def gutscheine():
 <div class="hero-mark">{mark('lon')}</div></div></section>
 
 <section class="bg-white" id="werte"><div class="wrap">
-<span class="eyebrow">Karte „Zeit für dich“</span>
-<h2>Vier Werte, ein Geschenk</h2>
-<p class="lead" style="margin-bottom:28px">Die Karte spricht die beschenkte Person an. Der Wert ist fest, die Leistung wählt sie später selbst, gemeinsam mit unserer Ärztin.</p>
+<span class="eyebrow">Wertgutscheine</span>
+<h2>Vier Werte, zwei Motive</h2>
+<p class="lead" style="margin-bottom:28px">Der Wert ist fest, die Leistung wählt die beschenkte Person später selbst, gemeinsam mit unserer Ärztin. Suchen Sie sich einfach das Motiv aus, das Ihnen am besten gefällt.</p>
 {voucher_cards('g')}
+<div style="margin-top:24px">{voucher_cards('l')}</div>
 <p class="voucher-meta muted">Ab 500 € in Schritten von 50 €. Die Beispiele auf der Karte sind eine Orientierung, kein Anspruch auf eine bestimmte Leistung.</p>
 </div></section>
 
-<section><div class="wrap">
-<span class="eyebrow">Oder als Karte „Ein Geschenk an dein zukünftiges Ich“</span>
-<h2>Gleiche Werte, zweites Motiv</h2>
-<p class="lead" style="margin-bottom:28px">Für alle, die an gesundes Älterwerden denken. Werte und Bedingungen sind gleich, nur Gestaltung und Namen unterscheiden sich.</p>
-{voucher_cards('l')}
-</div></section>
-
-<section class="bg-white"><div class="wrap"><div class="split">
+<section><div class="wrap"><div class="split">
 <div><h2>Was man damit buchen kann</h2>
 <p>Alles, was wir anbieten. Ein paar Beispiele, wofür die Werte reichen können:</p>
 <table class="price-table"><tr><th>Wert</th><th>zum Beispiel</th></tr>
@@ -87,7 +81,7 @@ def gutscheine():
 <p class="small muted" style="margin-top:14px">Jeder Gutschein hat eine Nummer, einen Wert und ein Ausstellungsdatum. Es gelten unsere {a('gutscheinbedingungen/', 'Gutscheinbedingungen')}.</p>
 </div></div></div></section>
 
-<section><div class="wrap"><div class="grid g3">
+<section class="bg-white"><div class="wrap"><div class="grid g3">
 <div class="box"><h3>Drei Jahre gültig</h3><p>Bis zum 31.12. des dritten Jahres nach dem Kauf. Genug Zeit, in Ruhe einen Termin zu finden.</p></div>
 <div class="box"><h3>Für alle Leistungen</h3><p>UMI Medizin und UMI Longevity. Restguthaben bleibt erhalten.</p></div>
 <div class="box"><h3>Ärztlich begleitet</h3><p>Jede Behandlung beginnt mit einem Gespräch. Was nicht passt, wird nicht gemacht.</p></div>
