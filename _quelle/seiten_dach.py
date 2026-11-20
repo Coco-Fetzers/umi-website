@@ -157,7 +157,7 @@ def start():
 
 <section class="tight bg-dark" id="umweltgifte"><div class="wrap">
 <span class="eyebrow" style="color:var(--mist)">Umweltmedizin</span>
-<p class="claim">Umweltgifte wie Mikroplastik, Pestizide und Schwermetalle gehören nicht in unser Blut: Sie stehen im Verdacht, viele moderne Zivilisationskrankheiten bis hin zu neurodegenerativen Erkrankungen zu begünstigen.</p>
+<p class="claim">Umweltgifte wie Mikroplastik, PFAS, Pestizide und Schwermetalle gehören nicht in unser Blut: Sie stehen im Verdacht, viele moderne Zivilisationskrankheiten bis hin zu neurodegenerativen Erkrankungen zu begünstigen.</p>
 <div class="btns" style="margin-top:24px">{a('inuspherese-zentrum-stuttgart/#im-blut', 'Was die Studien zeigen', 'btn light')}{a('umweltmedizin/', 'Mehr zur Umweltmedizin', 'btn ghost light')}</div>
 </div></section>
 
