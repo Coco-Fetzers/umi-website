@@ -489,7 +489,7 @@ KUREN = [
 
 
 def kuren_html(du=False):
-    return "".join(f'<div class="card"><span class="tag">{s}</span><h3>{n}</h3><p>{d}</p><span class="price">voraussichtlich {price(k, "")}</span></div>' for n, s, k, d in KUREN)
+    return "".join(f'<div class="card" id="{k.replace("kur_", "")}"><span class="tag">{s}</span><h3>{n}</h3><p>{d}</p><span class="price">voraussichtlich {price(k, "")}</span></div>' for n, s, k, d in KUREN)
 
 
 def regeneration_med():
