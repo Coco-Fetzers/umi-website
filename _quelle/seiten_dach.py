@@ -138,7 +138,7 @@ def gutscheinbedingungen():
 def start():
     return f"""
 <section class="hero" style="padding-bottom:40px"><div class="wrap" style="display:block">
-<span class="eyebrow">Privatpraxis in Stuttgart-Vaihingen · seit 2023 INUSpherese-Zentrum</span>
+<span class="eyebrow">Umweltmedizinisches Institut Stuttgart · Privatpraxis und INUSpherese-Zentrum in Vaihingen</span>
 <h1 style="max-width:900px">Medizin, die nach Ursachen sucht. <em>Und dich gesund begleitet.</em></h1>
 <p class="lead">UMI Stuttgart verbindet gründliche Diagnostik mit Verfahren, die es in der Region sonst kaum gibt. Für Menschen mit anhaltenden Beschwerden und für alle, die gesund bleiben wollen.</p>
 <div class="doors">
@@ -446,8 +446,8 @@ def nicht_gefunden():
 
 
 PAGES = [
-    Page("", "UMI Stuttgart · Privatpraxis und INUSpherese-Zentrum in Stuttgart",
-         "Privatpraxis in Stuttgart-Vaihingen: UMI Medizin für Menschen mit Beschwerden, UMI Longevity für alle, die gesund bleiben wollen. INUSpherese, H.E.L.P., Diagnostik.",
+    Page("", "UMI Stuttgart · Umweltmedizinisches Institut und INUSpherese-Zentrum",
+         "Umweltmedizinisches Institut Stuttgart, Privatpraxis in Stuttgart-Vaihingen: UMI Medizin für Menschen mit Beschwerden, UMI Longevity für alle, die gesund bleiben wollen. INUSpherese, H.E.L.P., Diagnostik.",
          start),
     Page("gutscheine", "Gesundheitsgutschein Stuttgart: Wertgutscheine · UMI",
          "Schenken Sie Zeit für Gesundheit: Wertgutscheine von UMI Stuttgart ab 150 €, für alle Leistungen, 3 Jahre gültig. Als PDF per E-Mail.",
