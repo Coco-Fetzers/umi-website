@@ -397,7 +397,7 @@ def impressum():
 <h2>Angaben gemäß § 5 DDG</h2>
 <p>UMI Stuttgart GmbH<br>Umweltmedizinisches Institut Stuttgart<br>{C.STRASSE}<br>{C.PLZ} Stuttgart</p>
 <p>Handelsregister: HRB 788067, Amtsgericht Stuttgart<br>Umsatzsteuer-Identifikationsnummer: DE359171405</p>
-<p>Vertreten durch die Geschäftsführer: Marcus Kraft, Andreas Braig</p>
+<p>Vertreten durch die Geschäftsführung: Andreas Braig, Bettina Fetzer, Dirk Fetzer</p>
 <h2>Kontakt</h2>
 <p>Telefon: {tel()}<br>Fax: {C.FAX}<br>E-Mail: <a href="mailto:{C.MAIL}">{C.MAIL}</a></p>
 <h2>Ärztliche Leitung</h2>
@@ -410,7 +410,7 @@ Zuständige Kammer: Landesärztekammer Baden-Württemberg, Jahnstraße 40, 70597
 <h2>Berufshaftpflichtversicherung</h2>
 <p>Allianz, Reutlingen. Räumlicher Geltungsbereich: Deutschland.</p>
 <h2>Verantwortlich für den Inhalt</h2>
-<p>Marcus Kraft, UMI Stuttgart GmbH, {C.STRASSE}, {C.PLZ} Stuttgart</p>
+<p>Andreas Braig, UMI Stuttgart GmbH, {C.STRASSE}, {C.PLZ} Stuttgart</p>
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 <h2>Haftung für Inhalte und Links</h2>
