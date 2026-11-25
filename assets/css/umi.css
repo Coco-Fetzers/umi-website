@@ -78,9 +78,9 @@ li{margin:.25em 0}
 .head-actions{display:flex;align-items:center;justify-content:flex-end;gap:24px;grid-column:3;grid-row:1}
 .tel{text-decoration:none;white-space:nowrap;font-size:var(--p-s);line-height:1.1}
 .menu-toggle{display:none;background:var(--ink);color:#fff;border:0;padding:10px 18px;font:inherit;font-size:var(--p-s);cursor:pointer}
-.home .site-header:not(.scrolled):not(.menu-open){background:transparent;color:#fff}
-.home .site-header:not(.scrolled):not(.menu-open) .brand svg [fill^="#"]{fill:#fff}
-.home .site-header:not(.scrolled):not(.menu-open) .brand svg [stroke]{stroke:#fff}
+.home .site-header:not(.scrolled):not(.menu-open):not(:has(.dd:hover,.dd.open)){background:transparent;color:#fff}
+.home .site-header:not(.scrolled):not(.menu-open):not(:has(.dd:hover,.dd.open)) .brand svg [fill^="#"]{fill:#fff}
+.home .site-header:not(.scrolled):not(.menu-open):not(:has(.dd:hover,.dd.open)) .brand svg [stroke]{stroke:#fff}
 .home .site-header:not(.scrolled) a:not(.btn):hover{opacity:.75;color:inherit}
 
 /* Knöpfe */
@@ -363,8 +363,35 @@ a.card:hover{border-color:var(--terra)}
 .door:has(.slot)::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,3,1,.55),rgba(25,3,1,.05) 40%,rgba(25,3,1,.75))}
 .foto{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--sand-deep)}
 .card .foto{margin-top:auto}
-.card p+.foto{margin-top:16px}
+.card:has(.foto){padding-bottom:0}
+.card p:has(+.foto){margin-bottom:8px}
 .split .foto+.box{margin-top:6px}
 .bg-dark .foto{margin-top:28px}
 .b-apherese{object-position:60% 50%}.b-zuhoeren{object-position:70% 40%}.b-blutprobe{object-position:60% 50%}.b-warten{object-position:35% 50%}.b-labor{object-position:60% 50%}.b-ankommen{object-position:45% 50%}.b-blutdruck{object-position:40% 50%}
 .symbolbild{text-shadow:0 0 6px rgba(0,0,0,.7)}
+
+/* Ausklappmenüs Therapien / Diagnostik: volle Breite unter dem Kopf */
+.dd-btn{background:none;border:0;padding:6px 0;font:inherit;font-size:var(--p-s);line-height:1.1;color:inherit;cursor:pointer;white-space:nowrap}
+.dd-btn::after{content:"";display:inline-block;width:6px;height:6px;border-right:1.2px solid currentColor;border-bottom:1.2px solid currentColor;transform:rotate(45deg);margin:0 2px 3px 8px}
+.dd-btn:hover,.dd-btn[aria-expanded="true"]{color:var(--terra-text)}
+.dd-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--pearl);color:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:32px max(var(--pad),calc((100% - var(--wrap))/2 + var(--pad))) 40px;gap:32px;z-index:60}
+.dd-menu::before{content:"";position:absolute;left:0;right:0;top:-30px;height:30px}
+.dd:hover .dd-menu,.dd.open .dd-menu{display:flex}
+.dd-group{display:flex;flex-direction:column;flex:1;min-width:0;border-left:1px solid var(--line);padding-left:16px}
+.dd-h{font-size:var(--p-xs);font-weight:var(--w-caps);text-transform:uppercase;--ls:.04em;color:var(--terra-text);margin-bottom:10px}
+.nav .dd-menu a{font-size:var(--p-m);padding:6px 0;white-space:normal}
+.nav .dd-menu a:hover{color:var(--terra-text);opacity:1}
+@media (max-width:1240px){
+  .nav.open{max-height:calc(100svh - 80px);overflow-y:auto}
+  .dd-btn{font-size:20px;padding:14px 0;width:100%;text-align:left;border-bottom:1px solid var(--line)}
+  .dd-btn::after{float:right;margin:4px 4px 0}
+  .dd:hover .dd-menu{display:none}
+  .dd .dd-menu::before{display:none}
+  .dd.open .dd-menu{display:block;position:static;border:0;padding:12px 0}
+  .dd-group{margin-bottom:16px}
+  .nav .dd-menu a{border:0;padding:8px 0}
+}
+.bg-dark .btn.light:not(.ghost){background:var(--peach);color:var(--ink)}
+.bg-dark .btn.light:not(.ghost):hover{background:#FFC699}
+.bg-dark .claim{padding:8px 0}
+@media (max-width:760px){.nav.open{padding-bottom:110px}}

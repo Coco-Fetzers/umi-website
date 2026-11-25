@@ -16,6 +16,17 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+  // Ausklappmenüs: Klick öffnet/schließt (Handy, Touch, Tastatur)
+  document.querySelectorAll('.dd-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var dd = b.parentNode, open = !dd.classList.contains('open');
+      document.querySelectorAll('.dd.open').forEach(function (o) { o.classList.remove('open'); o.firstChild.setAttribute('aria-expanded', 'false'); });
+      if (open) { dd.classList.add('open'); b.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.dd')) document.querySelectorAll('.dd.open').forEach(function (o) { o.classList.remove('open'); o.firstChild.setAttribute('aria-expanded', 'false'); });
+  });
   // Knöpfe, deren Ziel noch fehlt (z. B. Gutschein-Shop), lösen nichts aus
   document.querySelectorAll('a[aria-disabled="true"]').forEach(function (a) {
     a.addEventListener('click', function (e) { e.preventDefault(); });

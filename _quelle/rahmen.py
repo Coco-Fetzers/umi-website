@@ -129,16 +129,45 @@ def mark(variant="dach", size=None):
 NAV = [
     ("medizin/", "UMI Medizin", "med"),
     ("longevity/", "UMI Longevity", "lon"),
-    ("inuspherese-zentrum-stuttgart/", "Apherese", "aph"),
+    ("therapien", "Therapien", "ther"),
+    ("diagnostik", "Diagnostik", "dia"),
     ("gutscheine/", "Gutscheine", "gut"),
     ("ueber-uns/", "Über uns", "ueber"),
 ]
+
+# Ausklappmenüs: (Gruppe oder None, [(Ziel, Text)])
+DROPDOWNS = {
+    "therapien": [
+        ("Apherese", [("inuspherese-zentrum-stuttgart/", "INUSpherese®"), ("medizin/help-apherese/", "H.E.L.P.-Apherese"),
+                      ("medizin/apherese-programm/", "Apherese-Programm")]),
+        ("Wärme, Sauerstoff, Licht", [("ganzkoerperhyperthermie/", "Ganzkörperhyperthermie"),
+                                      ("medizin/regenerationskuren/#oxyvenierung", "Oxyvenierung"),
+                                      ("medizin/regenerationskuren/#farblaser", "Farblaser")]),
+        ("Infusionen", [("longevity/infusionen/", "Infusionsmenü"), ("longevity/nad-infusion/", "NAD+-Infusion")]),
+        ("Naturheilkunde", [("medizin/#therapien", "Akupunktur und Neuraltherapie"), ("medizin/#heilpraktikerin", "Bei unserer Heilpraktikerin"),
+                            ("medizin/kinder/", "Kinder")]),
+    ],
+    "diagnostik": [
+        ("Labor", [("labordiagnostik/", "Alle Laboruntersuchungen"), ("labordiagnostik/#basisdiagnostik", "Basisdiagnostik"),
+                   ("labordiagnostik/#erweitertediagnostik", "Erweiterte Diagnostik"), ("labordiagnostik/#umwelt", "Umweltdiagnostik")]),
+        ("Checks und Pakete", [("internistische-sprechstunde/#check-up", "Gesundheits-Check-up"), ("energie-check/", "Energie-Check"),
+                               ("longevity/check/", "Longevity-Check"), ("longevity/supplement-analyse/", "Supplement-Analyse")]),
+        ("Schwerpunkte", [("umweltmedizin/", "Umweltmedizin"), ("darmgesundheit/", "Darm und Mikrobiom")]),
+    ],
+}
 
 
 def header(page):
     items = []
     for target, label, key in NAV:
         cur = ' aria-current="page"' if page.nav == key else ""
+        if target in DROPDOWNS:
+            groups = "".join(f'<div class="dd-group"><span class="dd-h">{g}</span>' +
+                             "".join(f'<a href="{rel(t)}">{x}</a>' for t, x in links) + "</div>"
+                             for g, links in DROPDOWNS[target])
+            items.append(f'<div class="dd"><button class="dd-btn" aria-expanded="false" aria-controls="dd-{target}">{label}</button>'
+                         f'<div class="dd-menu" id="dd-{target}">{groups}</div></div>')
+            continue
         cls = ' class="hl"' if key == "gut" else ""
         items.append(f'<a href="{rel(target)}"{cur}{cls}>{label}</a>')
     preview = ('<div class="preview-bar">Vorschau der neuen Website · nicht öffentlich · '

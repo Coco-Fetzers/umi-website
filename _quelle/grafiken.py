@@ -23,7 +23,7 @@ KOPFBILD = {
     "long-covid-sprechstunde": "gespraech", "sub-health-syndrom": "gespraech", "medizin/kinder": "wartebereich", "umweltmedizin": "labor",
     "labordiagnostik": "blutprobe", "energie-check": "blutprobe", "medizin/regenerationskuren": "wartebereich", "ganzkoerperhyperthermie": "wartebereich",
     "longevity": "ankommen", "longevity/check": "gespraech", "longevity/infusionen": "warten", "longevity/nad-infusion": "warten",
-    "longevity/supplement-analyse": "labor", "longevity/regenerationskuren": "wartebereich", "longevity/preise": "empfang",
+    "longevity/supplement-analyse": "labor", "longevity/regenerationskuren": "wartebereich", "longevity/preise": "empfang", "longevity/pflanzenwissen": "wartebereich",
     "leistungen": "blutdruck", "gutscheine": "wartebereich", "einloesen": "wartebereich", "terminvereinbarung": "empfang", "ihr-besuch": "flur", "kosten": "gespraech",
     "karriere-stellenangebote-jobs": "labor",
 }

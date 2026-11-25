@@ -48,7 +48,7 @@ def team_mini(names, du=False):
         "kafle": ("Namrata Kafle", "Ärztliche Leitung, Ärztin für Innere Medizin", "team-namrata-kafle.jpg"),
         "buergler": ("Aurelia Bürgler", "Heilpraktikerin, Entspannungstherapeutin", "team-aurelia-buergler.jpg"),
         "gusic": ("Michaela Gusic", "Leitung INUSpherese-Zentrum, Krankenschwester Nephrologie", "team-michaela-gusic.jpg"),
-        "gentsch": ("Evelyn Gentsch", "Kinderkrankenschwester, Dialyse-Erfahrung", "team-evelyn-gentsch.jpg"),
+        "gentsch": ("Evelyn Gentsch", "Fachkraft, Phytopraktikerin", "team-evelyn-gentsch.jpg"),
     }
     cards = []
     for n in names:

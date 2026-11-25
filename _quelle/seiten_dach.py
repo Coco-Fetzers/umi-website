@@ -36,7 +36,9 @@ def gutscheine():
         ("Wie lange gilt der Gutschein?",
          "Bis zum 31. Dezember des dritten Jahres nach dem Kauf. Ein Gutschein aus 2026 gilt also bis zum 31.12.2029."),
         ("Wie bekomme ich den Gutschein?",
-         "Online erhalten Sie ihn sofort als PDF per E-Mail zum Ausdrucken. In der Praxis bekommen Sie ihn als gedruckte Karte mit Umschlag."),
+         "Immer als PDF per E-Mail, egal ob Sie online, in der Praxis oder am Telefon kaufen. Sie können ihn ausdrucken oder direkt weiterleiten."),
+        ("Wie kann ich bezahlen?",
+         "Direkt online per PayPal oder Kreditkarte. Den Gutschein erhalten Sie danach sofort als PDF per E-Mail."),
         ("Was passiert, wenn eine Behandlung mehr oder weniger kostet?",
          "Der Gutschein wird auf die Rechnung angerechnet. Ein Restbetrag bleibt als Guthaben erhalten, ein Mehrbetrag wird ganz normal bezahlt."),
         ("Gibt es Rabatte oder Gutscheine für eine bestimmte Behandlung?",
@@ -50,26 +52,20 @@ def gutscheine():
 <section class="hero"><div class="wrap"><div>
 {{{{CRUMBS}}}}<span class="eyebrow">Wertgutscheine von UMI Stuttgart</span>
 <h1>Schenken Sie Zeit für Gesundheit.</h1>
-<p class="lead">Wertgutscheine ab 150 €, einlösbar für alle Leistungen von UMI Stuttgart und drei Jahre gültig. Sofort per E-Mail oder als Karte in unserer Praxis in Stuttgart-Vaihingen.</p>
+<p class="lead">Wertgutscheine ab 150 €, einlösbar für alle Leistungen von UMI Stuttgart und drei Jahre gültig. Sie erhalten ihn als PDF per E-Mail, zum Ausdrucken oder Weiterleiten.</p>
 <div class="btns">{shop()}{a('#kaufen', 'So kaufen Sie', 'btn ghost')}</div></div>
 <div class="hero-mark">{hero_bild('dach') or mark('light')}</div></div></section>
 
 <section class="bg-white" id="werte"><div class="wrap">
-<span class="eyebrow">Karte „Zeit für dich“</span>
-<h2>Vier Werte, ein Geschenk</h2>
-<p class="lead" style="margin-bottom:28px">Die Karte spricht die beschenkte Person an. Der Wert ist fest, die Leistung wählt sie später selbst, gemeinsam mit unserer Ärztin.</p>
+<span class="eyebrow">Wertgutscheine</span>
+<h2>Vier Werte, zwei Motive</h2>
+<p class="lead" style="margin-bottom:28px">Der Wert ist fest, die Leistung wählt die beschenkte Person später selbst, gemeinsam mit unserer Ärztin. Suchen Sie sich einfach das Motiv aus, das Ihnen am besten gefällt.</p>
 {voucher_cards('g')}
+<div style="margin-top:24px">{voucher_cards('l')}</div>
 <p class="voucher-meta muted">Ab 500 € in Schritten von 50 €. Die Beispiele auf der Karte sind eine Orientierung, kein Anspruch auf eine bestimmte Leistung.</p>
 </div></section>
 
-<section><div class="wrap">
-<span class="eyebrow">Oder als Karte „Ein Geschenk an dein zukünftiges Ich“</span>
-<h2>Gleiche Werte, zweites Motiv</h2>
-<p class="lead" style="margin-bottom:28px">Für alle, die an gesundes Älterwerden denken. Werte und Bedingungen sind gleich, nur Gestaltung und Namen unterscheiden sich.</p>
-{voucher_cards('l')}
-</div></section>
-
-<section class="bg-white"><div class="wrap"><div class="split">
+<section><div class="wrap"><div class="split">
 <div><h2>Was man damit buchen kann</h2>
 <p>Alles, was wir anbieten. Ein paar Beispiele, wofür die Werte reichen können:</p>
 <table class="price-table"><tr><th>Wert</th><th>zum Beispiel</th></tr>
@@ -80,15 +76,15 @@ def gutscheine():
 <p class="small muted" style="margin-top:12px">Welche Leistung passt, besprechen wir in Ruhe im ärztlichen Gespräch.</p></div>
 <div id="kaufen"><h2>So kaufen Sie</h2>
 {schritte([
-    ('Online', ' Betrag und Motiv wählen, bezahlen, PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else 'Der Online-Verkauf startet in Kürze.')),
-    ('In der Praxis', f' Gedruckte Karte mit Umschlag am Empfang, {C.OEFFNUNGSZEITEN}.'),
-    ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken den Gutschein per Post oder legen ihn zur Abholung bereit.'),
+    ('Online', ' Betrag und Motiv wählen, direkt online bezahlen per PayPal oder Kreditkarte, das PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else 'Der Online-Verkauf startet in Kürze.')),
+    ('In der Praxis', f' Betrag und Motiv am Empfang wählen und bezahlen, {C.OEFFNUNGSZEITEN}. Das PDF schicken wir Ihnen per E-Mail.'),
+    ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken Ihnen den Gutschein als PDF per E-Mail.'),
 ])}
 <div class="btns">{shop()}</div>
 <p class="small muted" style="margin-top:14px">Jeder Gutschein hat eine Nummer, einen Wert und ein Ausstellungsdatum. Es gelten unsere {a('gutscheinbedingungen/', 'Gutscheinbedingungen')}.</p>
 </div></div></div></section>
 
-<section><div class="wrap"><div class="grid g3">
+<section class="bg-white"><div class="wrap"><div class="grid g3">
 <div class="box"><h3>Drei Jahre gültig</h3><p>Bis zum 31.12. des dritten Jahres nach dem Kauf. Genug Zeit, in Ruhe einen Termin zu finden.</p></div>
 <div class="box"><h3>Für alle Leistungen</h3><p>UMI Medizin und UMI Longevity. Restguthaben bleibt erhalten.</p></div>
 <div class="box"><h3>Ärztlich begleitet</h3><p>Jede Behandlung beginnt mit einem Gespräch. Was nicht passt, wird nicht gemacht.</p></div>
@@ -106,7 +102,7 @@ def einloesen():
 <section class="bg-white"><div class="wrap narrow">
 {schritte([
     ('Termin buchen', ' online über Doctolib oder telefonisch. Sagen Sie uns gern dazu, dass Sie einen Gutschein haben.'),
-    ('Gutschein mitbringen', ' ausgedruckt, als Karte oder auf dem Handy. Wichtig ist die Gutscheinnummer.'),
+    ('Gutschein mitbringen', ' ausgedruckt oder auf dem Handy. Wichtig ist die Gutscheinnummer.'),
     ('Im Gespräch klären, was passt', ' Unsere Ärztin bespricht mit Ihnen, welche Leistung sinnvoll ist. Zu den Kosten geben wir Ihnen gern Auskunft, auf Wunsch auch schriftlich als Kostenvoranschlag.'),
     ('Verrechnen', ' Der Gutschein wird auf die Rechnung angerechnet. Ein Rest bleibt als Guthaben für später.'),
 ])}
@@ -143,9 +139,9 @@ def gutscheinbedingungen():
 def start():
     return f"""
 <section class="hero hero-start">{bild_img('hero')}<div class="wrap">
-<span class="eyebrow">Privatpraxis in Stuttgart-Vaihingen · seit 2023 INUSpherese-Zentrum</span>
+<span class="eyebrow">Umweltmedizinisches Institut Stuttgart · Privatpraxis und INUSpherese-Zentrum in Vaihingen</span>
 <h1>Medizin, die nach Ursachen sucht. <span class="soft">Und dich gesund begleitet.</span></h1>
-<p class="lead">UMI Stuttgart verbindet gründliche Diagnostik mit Verfahren, die es in der Region sonst kaum gibt. Für Menschen mit anhaltenden Beschwerden und für alle, die gesund bleiben wollen.</p>
+<p class="lead">UMI Stuttgart verbindet gründliche Diagnostik mit Verfahren, die es in der Region sonst kaum gibt. Für Menschen mit anhaltenden Beschwerden und für alle, die gesund bleiben wollen. Wir verbinden schulmedizinische Diagnostik mit Umweltmedizin, Apherese und Naturheilkunde.</p>
 <div class="btns">{book()}{a('ueber-uns/', 'Team kennenlernen', 'btn ghost')}</div>
 <ul class="facts"><li><b>INUSpherese-Zentrum</b>Zertifizierter Partner seit 2023</li><li><b>Dialyse-Erfahrung</b>Team mit langjähriger Praxis</li><li><b>Privatpraxis</b>Privat, Beihilfe und Selbstzahler</li></ul>
 </div></section>
@@ -160,14 +156,20 @@ def start():
 
 <section class="tight"><div class="wrap"><div class="banner">
 <div><span class="eyebrow">Wertgutscheine ab 150 €</span><h2>Schenken Sie Zeit für Gesundheit.</h2>
-<p style="margin:0">Einlösbar für alle Leistungen, drei Jahre gültig. Sofort per E-Mail oder als Karte in der Praxis.</p></div>
+<p style="margin:0">Einlösbar für alle Leistungen, drei Jahre gültig. Als PDF per E-Mail.</p></div>
 <div>{a('gutscheine/', 'Gutschein wählen', 'btn')}</div></div></div></section>
 
 <section class="tight"><div class="wrap"><div class="hint"><p><b>Immer müde, aber die Werte sind normal?</b> Der Energie-Check schaut genauer hin.</p>{a('energie-check/', 'Zum Energie-Check', 'btn ghost small')}</div></div></section>
 
+<section class="tight bg-dark" id="umweltgifte"><div class="wrap">
+<span class="eyebrow" style="color:var(--mist)">Umweltmedizin</span>
+<p class="claim">Umweltgifte wie Mikroplastik, PFAS, Pestizide und Schwermetalle gehören nicht in unser Blut: Sie stehen im Verdacht, viele moderne Zivilisationskrankheiten bis hin zu neurodegenerativen Erkrankungen zu begünstigen.</p>
+<div class="btns" style="margin-top:24px">{a('inuspherese-zentrum-stuttgart/#im-blut', 'Was die Studien zeigen', 'btn light')}{a('umweltmedizin/', 'Mehr zur Umweltmedizin', 'btn ghost light')}</div>
+</div></section>
+
 <section class="bg-white"><div class="wrap"><div class="split">
 <div><span class="eyebrow">Apherese in Stuttgart</span><h2>INUSpherese und H.E.L.P.-Apherese</h2>
-<p>Bei der Apherese wird das Blutplasma außerhalb des Körpers gefiltert, umgangssprachlich oft „Blutwäsche“ genannt. UMI Stuttgart bietet als zertifizierter INUS-Partner beide Verfahren an und ist damit in Stuttgart der einzige Anbieter.</p>
+<p>Bei der Apherese wird das Blutplasma außerhalb des Körpers gefiltert, umgangssprachlich oft „Blutwäsche“ genannt. UMI Stuttgart bietet beide Verfahren an. Als zertifizierter INUS-Partner sind wir der einzige Anbieter der INUSpherese® im Raum Stuttgart.</p>
 <p>Betreut werden Sie von einem Team mit langjähriger Dialyse-Erfahrung. Was sich aus Ihrem Plasma filtern ließ, zeigt auf Wunsch die Eluat-Analyse.</p>
 <div class="btns">{a('inuspherese-zentrum-stuttgart/', 'Mehr zur Apherese', 'btn')}{a('kosten/', 'Was kostet das?', 'btn ghost')}</div></div>
 <div class="svg-schema">{schema_svg()}</div></div></div></section>
@@ -202,7 +204,7 @@ def start_team():
     people = [("Namrata Kafle", "Ärztliche Leitung, Innere Medizin", "team-namrata-kafle.jpg"),
               ("Aurelia Bürgler", "Heilpraktikerin", "team-aurelia-buergler.jpg"),
               ("Michaela Gusic", "Leitung INUSpherese-Zentrum", "team-michaela-gusic.jpg"),
-              ("Evelyn Gentsch", "Fachkraft, Apherese", "team-evelyn-gentsch.jpg")]
+              ("Evelyn Gentsch", "Fachkraft, Phytopraktikerin", "team-evelyn-gentsch.jpg")]
     return "".join(f"""<div class="person"><div class="ph"><img src="{a_img(i)}" alt="{n}, {r}" loading="lazy" width="480" height="720"></div><div class="tx"><h3>{n}</h3><p>{r}</p></div></div>""" for n, r, i in people)
 
 
@@ -392,7 +394,7 @@ def impressum():
 <h2>Angaben gemäß § 5 DDG</h2>
 <p>UMI Stuttgart GmbH<br>Umweltmedizinisches Institut Stuttgart<br>{C.STRASSE}<br>{C.PLZ} Stuttgart</p>
 <p>Handelsregister: HRB 788067, Amtsgericht Stuttgart<br>Umsatzsteuer-Identifikationsnummer: DE359171405</p>
-<p>Vertreten durch die Geschäftsführer: Marcus Kraft, Andreas Braig</p>
+<p>Vertreten durch die Geschäftsführung: Andreas Braig, Bettina Fetzer, Dirk Fetzer</p>
 <h2>Kontakt</h2>
 <p>Telefon: {tel()}<br>Fax: {C.FAX}<br>E-Mail: <a href="mailto:{C.MAIL}">{C.MAIL}</a></p>
 <h2>Ärztliche Leitung</h2>
@@ -405,7 +407,7 @@ Zuständige Kammer: Landesärztekammer Baden-Württemberg, Jahnstraße 40, 70597
 <h2>Berufshaftpflichtversicherung</h2>
 <p>Allianz, Reutlingen. Räumlicher Geltungsbereich: Deutschland.</p>
 <h2>Verantwortlich für den Inhalt</h2>
-<p>Marcus Kraft, UMI Stuttgart GmbH, {C.STRASSE}, {C.PLZ} Stuttgart</p>
+<p>Andreas Braig, UMI Stuttgart GmbH, {C.STRASSE}, {C.PLZ} Stuttgart</p>
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 <h2>Haftung für Inhalte und Links</h2>
@@ -445,11 +447,11 @@ def nicht_gefunden():
 
 
 PAGES = [
-    Page("", "UMI Stuttgart · Privatpraxis und INUSpherese-Zentrum in Stuttgart",
-         "Privatpraxis in Stuttgart-Vaihingen: UMI Medizin für Menschen mit Beschwerden, UMI Longevity für alle, die gesund bleiben wollen. INUSpherese, H.E.L.P., Diagnostik.",
+    Page("", "UMI Stuttgart · Umweltmedizinisches Institut und INUSpherese-Zentrum",
+         "Umweltmedizinisches Institut Stuttgart, Privatpraxis in Stuttgart-Vaihingen: UMI Medizin für Menschen mit Beschwerden, UMI Longevity für alle, die gesund bleiben wollen. INUSpherese, H.E.L.P., Diagnostik.",
          start),
     Page("gutscheine", "Gesundheitsgutschein Stuttgart: Wertgutscheine · UMI",
-         "Schenken Sie Zeit für Gesundheit: Wertgutscheine von UMI Stuttgart ab 150 €, für alle Leistungen, 3 Jahre gültig. Sofort per E-Mail oder als Karte.",
+         "Schenken Sie Zeit für Gesundheit: Wertgutscheine von UMI Stuttgart ab 150 €, für alle Leistungen, 3 Jahre gültig. Als PDF per E-Mail.",
          gutscheine, nav="gut", crumbs=[(None, "Gutscheine")]),
     Page("einloesen", "Gutschein einlösen · UMI Stuttgart",
          "So lösen Sie Ihren Wertgutschein von UMI Stuttgart ein: Termin buchen, Gutschein mitbringen, im ärztlichen Gespräch klären, was passt.",

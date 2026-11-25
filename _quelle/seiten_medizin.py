@@ -27,7 +27,7 @@ def medizin():
                 "Begleitung bei anhaltender Erschöpfung"])
     th = "".join((a(t, f'<span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p><span class="more">Mehr erfahren →</span>', "card") if t else
                   f'<div class="card"><span class="tag">{tag}</span><h3>{n}</h3><p>{d}</p></div>') for t, tag, n, d in [
-        ("inuspherese-zentrum-stuttgart/", "Apherese", "INUSpherese®", "Blutplasma außerhalb des Körpers filtern, mit Eluat-Analyse."),
+        ("inuspherese-zentrum-stuttgart/", "Apherese", "INUSpherese®", "Blutplasma außerhalb des Körpers filtern, mit Eluat-Analyse. Einziger Anbieter im Raum Stuttgart."),
         ("medizin/help-apherese/", "Apherese", "H.E.L.P.-Apherese", "Off-Label-Anwendung, nur nach ärztlicher Prüfung."),
         ("ganzkoerperhyperthermie/", "Wärme", "Ganzkörperhyperthermie", "Kontrollierte Erwärmung des Körpers, ärztlich überwacht."),
         (None, "Infusionen", "Infusionstherapie", "Nach ärztlicher Verordnung, abgestimmt auf Ihre Befunde."),
@@ -56,7 +56,8 @@ def medizin():
 <p class="lead">Welche Therapie für Sie infrage kommt, entscheiden wir gemeinsam nach dem Erstgespräch und der Diagnostik.</p>
 <div class="grid g3" style="margin-top:28px">{th}</div>
 <div class="split" style="margin-top:48px">
-<div><h2>Begleitend</h2>{liste(["Darmaufbau und Mikrobiom-Management", "Orthomolekulare und funktionelle Nährstofftherapie", "Hormontherapie", "Stress- und Schlafmanagement", "Ernährung, Lebensstil und Stressregulation", "Gesundheitsberatung mit Evelyn Gentsch"])}</div>
+<div><h2>Begleitend</h2>{liste(["Darmaufbau und Mikrobiom-Management", "Orthomolekulare und funktionelle Nährstofftherapie", "Hormontherapie", "Stress- und Schlafmanagement", "Ernährung, Lebensstil und Stressregulation", f"Beratung zu Heilpflanzen mit Evelyn Gentsch ({a('longevity/pflanzenwissen/', 'Pflanzenwissen')})"])}
+<p class="small muted">Frauengesundheit und Wechseljahre: Ergänzend zur ärztlichen Betreuung bietet unsere Phytopraktikerin Evelyn Gentsch eine Beratung zu Heilpflanzen im Alltag an, zum Beispiel zur Zubereitung oder zu Wechselwirkungen. Sie ersetzt keine Behandlung.</p></div>
 <div class="box" id="heilpraktikerin"><h3>Bei unserer Heilpraktikerin</h3><p>Aurelia Bürgler begleitet Sie naturheilkundlich, auch ergänzend zur ärztlichen Behandlung. Buchbar als Erstgespräch:</p>{hp}</div>
 </div>
 <div class="split" style="margin-top:32px">
@@ -200,6 +201,7 @@ def darm():
 </div>
 <div class="note" style="margin-top:24px"><p style="margin:0 0 8px"><b>Infusion Darmgesundheit:</b> eine Nährstoff-Infusion als Teil des Darmaufbaus, nach Diagnostik und ärztlicher Empfehlung. Ca. {price("darm_infusion", "")}<sup>*</sup> je Infusion, inklusive ärztlichem Gespräch.</p>
 <p class="small" style="margin:0">* Vor der ersten Infusion führt unsere Ärztin ein ausführliches Aufklärungsgespräch, es ist im Preis enthalten. Erhalten Sie die Infusion innerhalb von 4 Wochen erneut, wird das Gespräch nicht noch einmal berechnet und die Infusion kostet ca. 10 € weniger. Abgerechnet wird nach der GOÄ, nach der Behandlung.</p></div>
+<p style="margin-top:20px">Ergänzend zur ärztlichen Betreuung bietet unsere Phytopraktikerin Evelyn Gentsch eine Beratung zu Heilpflanzen im Alltag an, zum Beispiel zur Zubereitung oder zu Wechselwirkungen. Sie ersetzt keine Behandlung. {a('longevity/pflanzenwissen/', 'Mehr zum Pflanzenwissen')}</p>
 </div></section>""")
 
 
@@ -303,7 +305,7 @@ def apherese():
     anmeldung = f"mailto:{C.MAIL}?subject=Anmeldung%20Info-Abend%20INUSpherese%209.12."
 
     body = f"""{hero('Apherese in Stuttgart · INUSpherese-Zentrum', 'INUSpherese®-Zentrum Stuttgart<span class="h1-sub">Blutplasma filtern, Belastungsstoffe reduzieren</span>',
-    'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen.',
+    'Bei der INUSpherese® wird Ihr Blutplasma außerhalb des Körpers durch einen feinen Spezialfilter geleitet und wieder zurückgeführt. Der Filter hält große Eiweiße, Fette und daran gebundene Stoffe zurück. Was im Filter bleibt, lässt sich im Labor untersuchen. Im Raum Stuttgart sind wir der einzige Anbieter der INUSpherese®.',
     book('Erstgespräch vereinbaren') + a('#info-abend', 'Info-Abend am 9. Dezember', 'btn ghost'), 'dach',
     '<ul class="pills"><li>Ihr eigenes Plasma, ohne Ersatzlösung</li><li>Ambulant, etwa 2 bis 3 Stunden</li><li>Wichtige Eiweiße und Elektrolyte bleiben erhalten</li></ul>')}
 
@@ -442,7 +444,7 @@ def apherese_programm():
     return paket(
         eyebrow="Paket · UMI Medizin", line="med",
         h1="Apherese-Programm",
-        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf.",
+        lead="Für Menschen mit anhaltenden Beschwerden, bei denen eine Apherese sinnvoll sein kann. Das Programm bündelt Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse und Nachgespräch in einem festen Ablauf. Im Raum Stuttgart gibt es die INUSpherese® nur bei uns.",
         preis_html=price("apherese_programm"),
         enthalten=["Beratungs- und Vorgespräch mit der Ärztin", "Diagnostik vor der Behandlung", "2 Sitzungen INUSpherese",
                    "Eluat-Analyse der abgefilterten Bestandteile", "Begleitende Infusionen nach ärztlicher Empfehlung", "Nachgespräch mit Befunden",
@@ -490,7 +492,7 @@ KUREN = [
 
 
 def kuren_html(du=False):
-    return "".join(f'<div class="card"><span class="tag">{s}</span><h3>{n}</h3><p>{d}</p><span class="price">voraussichtlich {price(k, "")}</span></div>' for n, s, k, d in KUREN)
+    return "".join(f'<div class="card" id="{k.replace("kur_", "")}"><span class="tag">{s}</span><h3>{n}</h3><p>{d}</p><span class="price">voraussichtlich {price(k, "")}</span></div>' for n, s, k, d in KUREN)
 
 
 def regeneration_med():
@@ -624,10 +626,10 @@ PAGES = [
          infektionen, line="med", nav="med", crumbs=MED + [(None, "Beschwerden nach Infektionen")]),
     Page("inuspherese-zentrum-stuttgart", "INUSpherese-Zentrum Stuttgart: Blutplasma filtern · UMI",
          "INUSpherese-Zentrum Stuttgart-Vaihingen: Blutplasma filtern und das Ergebnis im Labor sehen. Ablauf, Verfahren, Team, Info-Abend am 9.12. Erstgespräch online.",
-         apherese, nav="aph", crumbs=[(None, "Apherese")]),
+         apherese, nav="ther", crumbs=[(None, "Apherese")]),
     Page("medizin/help-apherese", "H.E.L.P.-Apherese in Stuttgart · UMI Medizin",
          "H.E.L.P.-Apherese bei UMI Stuttgart: Off-Label-Anwendung nach ärztlicher Prüfung. Wie das Verfahren funktioniert, Ablauf, Kosten nach GOÄ.",
-         help_apherese, line="med", nav="aph", crumbs=MED + [(None, "H.E.L.P.-Apherese")]),
+         help_apherese, line="med", nav="ther", crumbs=MED + [(None, "H.E.L.P.-Apherese")]),
     Page("medizin/apherese-programm", "Apherese-Programm Stuttgart · UMI Medizin",
          "Apherese-Programm bei UMI Stuttgart: Vorgespräch, Diagnostik, zwei Sitzungen INUSpherese, Eluat-Analyse. Voraussichtliche Kosten nach GOÄ.",
          apherese_programm, line="med", nav="med", crumbs=MED + [(None, "Apherese-Programm")]),

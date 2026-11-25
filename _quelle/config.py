@@ -54,6 +54,9 @@ PREISE = {
     "infusion_ab": "55 €",
     "darm_infusion": "109 €",
     "supplement_analyse": None,
+    "pflanzen_60": None,
+    "pflanzen_45": None,
+    "pflanzen_30": None,
     "apherese_reset": "ca. 5.400 €",
 }
 
