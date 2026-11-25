@@ -210,6 +210,7 @@ def pflanzen():
         ("Frühjahrskur mit Kräutern", "Bitterstoffe, Wildkräuter und eine leichte Frühjahrsküche."),
         ("Ruhig schlafen, gelassen bleiben", "Pflanzen und Rituale für den Abend."),
         ("Heilpflanzen und Medikamente", "Ein kurzer Blick darauf, ob deine Tees und pflanzlichen Präparate zu dem passen, was du sonst nimmst."),
+        ("Familie und Kinder", "Für Eltern: was in die Kräuter-Hausapotheke gehört, welche Tees, Wickel und Auflagen sich im Familienalltag bewährt haben, und woran du erkennst, wann dein Kind zur Kinderärztin oder zum Kinderarzt gehört."),
     ])
     body = f"""{hero('Ergänzen · UMI Longevity', 'Pflanzenwissen für deinen Alltag',
     'Heilpflanzen verstehen, sicher anwenden, selbst zubereiten. Pflanzen begleiten Menschen seit Jahrhunderten. Aber welcher Tee passt zu dir, worauf achtest du bei Qualität und Zubereitung, und was verträgt sich mit Medikamenten oder Nahrungsergänzung? Unsere Phytopraktikerin Evelyn Gentsch nimmt sich Zeit für deine Fragen und gibt dir Wissen mit, das du zu Hause direkt umsetzen kannst.',
@@ -222,7 +223,7 @@ def pflanzen():
     ('Fragebogen', ' Du füllst vorab einen kurzen Fragebogen aus.'),
     ('Gespräch', ' 45 oder 60 Minuten über deine Fragen, deinen Alltag und das, was dir schmeckt.'),
     ('Zusammenfassung', ' Du bekommst sie schriftlich, mit Pflanzen, Zubereitung und Bezugsquellen.')])}</div>
-<div class="box"><h3>Gut zu wissen</h3><p style="margin:0">Die Beratung ist Gesundheitsbildung und ersetzt keine ärztliche Untersuchung oder Behandlung. Evelyn stellt keine Diagnosen und behandelt keine Krankheiten. Wenn du Beschwerden hast, schwanger bist oder regelmäßig Medikamente nimmst, sprich bitte zuerst mit unserer Ärztin oder deiner Hausärztin. Bei UMI geht das unter einem Dach.</p></div>
+<div class="box"><h3>Gut zu wissen</h3><p style="margin:0">Die Beratung ist Gesundheitsbildung und ersetzt keine ärztliche Untersuchung oder Behandlung. Evelyn stellt keine Diagnosen und behandelt keine Krankheiten. Wenn du Beschwerden hast, schwanger bist oder regelmäßig Medikamente nimmst, sprich bitte zuerst mit unserer Ärztin oder deiner Hausärztin. Bei Kindern ersetzt die Beratung nicht den Besuch in der Kinderarztpraxis. Bei UMI geht das unter einem Dach.</p></div>
 </div></div></section>
 <section><div class="wrap"><div class="grid g2">
 <div class="box"><h3>Kosten</h3><table class="price-table">
