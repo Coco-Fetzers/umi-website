@@ -55,7 +55,8 @@ def medizin():
 <p class="lead">Welche Therapie für Sie infrage kommt, entscheiden wir gemeinsam nach dem Erstgespräch und der Diagnostik.</p>
 <div class="grid g3" style="margin-top:28px">{th}</div>
 <div class="split" style="margin-top:48px">
-<div><h2>Begleitend</h2>{liste(["Darmaufbau und Mikrobiom-Management", "Orthomolekulare und funktionelle Nährstofftherapie", "Hormontherapie", "Stress- und Schlafmanagement", "Ernährung, Lebensstil und Stressregulation", "Gesundheitsberatung mit Evelyn Gentsch"])}</div>
+<div><h2>Begleitend</h2>{liste(["Darmaufbau und Mikrobiom-Management", "Orthomolekulare und funktionelle Nährstofftherapie", "Hormontherapie", "Stress- und Schlafmanagement", "Ernährung, Lebensstil und Stressregulation", f"Beratung zu Heilpflanzen mit Evelyn Gentsch ({a('longevity/pflanzenwissen/', 'Pflanzenwissen')})"])}
+<p class="small muted">Frauengesundheit und Wechseljahre: Ergänzend zur ärztlichen Betreuung bietet unsere Phytopraktikerin Evelyn Gentsch eine Beratung zu Heilpflanzen im Alltag an, zum Beispiel zur Zubereitung oder zu Wechselwirkungen. Sie ersetzt keine Behandlung.</p></div>
 <div class="box" id="heilpraktikerin"><h3>Bei unserer Heilpraktikerin</h3><p>Aurelia Bürgler begleitet Sie naturheilkundlich, auch ergänzend zur ärztlichen Behandlung. Buchbar als Erstgespräch:</p>{hp}</div>
 </div>
 <div class="split" style="margin-top:32px">
@@ -199,6 +200,7 @@ def darm():
 </div>
 <div class="note" style="margin-top:24px"><p style="margin:0 0 8px"><b>Infusion Darmgesundheit:</b> eine Nährstoff-Infusion als Teil des Darmaufbaus, nach Diagnostik und ärztlicher Empfehlung. Ca. {price("darm_infusion", "")}<sup>*</sup> je Infusion, inklusive ärztlichem Gespräch.</p>
 <p class="small" style="margin:0">* Vor der ersten Infusion führt unsere Ärztin ein ausführliches Aufklärungsgespräch, es ist im Preis enthalten. Erhalten Sie die Infusion innerhalb von 4 Wochen erneut, wird das Gespräch nicht noch einmal berechnet und die Infusion kostet ca. 10 € weniger. Abgerechnet wird nach der GOÄ, nach der Behandlung.</p></div>
+<p style="margin-top:20px">Ergänzend zur ärztlichen Betreuung bietet unsere Phytopraktikerin Evelyn Gentsch eine Beratung zu Heilpflanzen im Alltag an, zum Beispiel zur Zubereitung oder zu Wechselwirkungen. Sie ersetzt keine Behandlung. {a('longevity/pflanzenwissen/', 'Mehr zum Pflanzenwissen')}</p>
 </div></section>""")
 
 

@@ -198,7 +198,7 @@ def start_team():
     people = [("Namrata Kafle", "Ärztliche Leitung, Innere Medizin", "team-namrata-kafle.jpg"),
               ("Aurelia Bürgler", "Heilpraktikerin", "team-aurelia-buergler.jpg"),
               ("Michaela Gusic", "Leitung INUSpherese-Zentrum", "team-michaela-gusic.jpg"),
-              ("Evelyn Gentsch", "Fachkraft, Apherese", "team-evelyn-gentsch.jpg")]
+              ("Evelyn Gentsch", "Fachkraft, Phytopraktikerin", "team-evelyn-gentsch.jpg")]
     return "".join(f"""<div class="person"><div class="ph"><img src="{a_img(i)}" alt="{n}, {r}" loading="lazy" width="480" height="720"></div><div class="tx"><h3>{n}</h3><p>{r}</p></div></div>""" for n, r, i in people)
 
 

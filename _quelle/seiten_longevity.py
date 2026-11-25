@@ -30,7 +30,8 @@ def longevity():
 </div></div></section>
 <section class="bg-white" id="ergaenzen"><div class="wrap"><div class="grid g2">
 <div><span class="eyebrow">Ergänzen</span><h2>Ernährung und Mikronährstoffe</h2>
-{card('longevity/supplement-analyse/', 'Analyse', 'Supplement-Analyse', 'Was dir fehlt, was du schon nimmst und was davon sinnvoll ist. Mit schriftlichem Plan und Kontrolle nach 3 Monaten.', price('supplement_analyse'))}</div>
+{card('longevity/supplement-analyse/', 'Analyse', 'Supplement-Analyse', 'Was dir fehlt, was du schon nimmst und was davon sinnvoll ist. Mit schriftlichem Plan und Kontrolle nach 3 Monaten.', price('supplement_analyse'))}
+<div style="margin-top:16px">{card('longevity/pflanzenwissen/', 'Beratung', 'Pflanzenwissen', 'Heilpflanzen verstehen und sicher anwenden, mit unserer Phytopraktikerin. Auch zu den Wechseljahren.', price('pflanzen_45'))}</div></div>
 <div id="apherese"><span class="eyebrow">Premium</span><h2>Apherese</h2>
 {card('longevity/apherese-reset/', 'Premium', 'Apherese Reset', 'Zwei Sitzungen INUSpherese, Labor vorher und nachher, Eluat-Analyse und Auswertungsgespräch.', price('apherese_reset'))}</div>
 </div></div></section>
@@ -62,7 +63,8 @@ def check():
         passt=["du gesund bist und wissen willst, wo du stehst", "du gezielt etwas tun willst statt zu raten", "du Wert auf eine ärztliche Einordnung legst"],
         passt_nicht=["du akute Beschwerden hast, dann ist der Energie-Check oder ein Erstgespräch in der Medizin besser", "du nur einzelne Werte ohne Gespräch willst"],
         team=["kafle"],
-        intro_extra=f"""<section class="tight"><div class="wrap"><div class="note"><b>In den Wechseljahren?</b> Viele Frauen zwischen 45 und 55 kommen mit Fragen zu Hormonen, Schlaf und Energie. Sag es uns im Gespräch, dann ergänzen wir den Check passend. Ein eigener Frauen-Balance-Check folgt im Frühjahr.</div></div></section>""",
+        intro_extra=f"""<section class="tight"><div class="wrap"><div class="note"><b>In den Wechseljahren?</b> Viele Frauen zwischen 45 und 55 kommen mit Fragen zu Hormonen, Schlaf und Energie. Sag es uns im Gespräch, dann ergänzen wir den Check passend. Ein eigener Frauen-Balance-Check folgt im Frühjahr.</div>
+<div class="box" style="margin-top:16px">{WECHSELJAHRE}<p style="margin:0">{a('longevity/pflanzenwissen/#wechseljahre', 'Zur Beratung Pflanzenwissen')}</p></div></div></section>""",
         faqs=[("Muss ich nüchtern kommen?", "Ja, bitte komm zur Blutabnahme nüchtern. Wasser ist erlaubt."),
               ("Zahlt die Krankenversicherung?", "Vorsorge ohne Beschwerden wird in der Regel nicht erstattet. Was es kostet, sagen wir dir vorher gern, auf Wunsch auch als Kostenvoranschlag."),
               ("Was passiert nach dem Check?", "Du bekommst einen Plan. Je nach Ergebnis kann das Ernährung, Bewegung, Mikronährstoffe, eine Infusion oder einfach ein Check-in in sechs Monaten sein."),
@@ -192,6 +194,48 @@ def supplement():
         next_step=("Mehr als Mikronährstoffe messen?", "longevity/check/", "Zum Longevity-Check"))
 
 
+
+WECHSELJAHRE = """<p><b>Die Wechseljahre mit Pflanzenwissen begleiten.</b> Hitzewallungen, unruhige Nächte, wechselnde Stimmung: Viele Frauen möchten in dieser Zeit wissen, was sie selbst tun können. Evelyn Gentsch hat sich in ihrer Ausbildung zur Phytopraktikerin intensiv mit Pflanzen in den Wechseljahren beschäftigt. Sie erklärt dir, welche Pflanzen traditionell verwendet werden, was über sie bekannt ist und worauf du bei Qualität und Wechselwirkungen achten solltest. Wenn du medizinische Fragen zu Hormonen hast, ist unsere Ärztin im Haus für dich da.</p>"""
+
+
+def pflanzen():
+    fh, fld = faq([
+        ("Ist das eine Behandlung?", "Nein. Die Beratung ist Gesundheitsbildung. Evelyn Gentsch stellt keine Diagnosen und behandelt keine Krankheiten. Bei Beschwerden sprichst du bitte zuerst mit unserer Ärztin."),
+        ("Was bringe ich mit?", "Tees, pflanzliche Präparate oder Nahrungsergänzung, die du schon nimmst, gern auch als Foto der Packung, und eine Liste deiner Medikamente."),
+        ("Zahlt die Krankenkasse?", "In der Regel nicht. Die Beratung ist keine ärztliche Leistung. Die Kosten nennen wir dir gern vorab."),
+    ])
+    themen = "".join(f'<div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in [
+        ("Pflanzenwissen für die Wechseljahre", "Welche Pflanzen in dieser Lebensphase traditionell verwendet werden, was die Forschung dazu sagt und wie du sie in deinen Alltag einbaust."),
+        ("Gut durch Herbst und Winter", "Tees, Küchenkräuter und Gewohnheiten für die kalte Jahreszeit."),
+        ("Frühjahrskur mit Kräutern", "Bitterstoffe, Wildkräuter und eine leichte Frühjahrsküche."),
+        ("Ruhig schlafen, gelassen bleiben", "Pflanzen und Rituale für den Abend."),
+        ("Heilpflanzen und Medikamente", "Ein kurzer Blick darauf, ob deine Tees und pflanzlichen Präparate zu dem passen, was du sonst nimmst."),
+    ])
+    body = f"""{hero('Ergänzen · UMI Longevity', 'Pflanzenwissen für deinen Alltag',
+    'Heilpflanzen verstehen, sicher anwenden, selbst zubereiten. Pflanzen begleiten Menschen seit Jahrhunderten. Aber welcher Tee passt zu dir, worauf achtest du bei Qualität und Zubereitung, und was verträgt sich mit Medikamenten oder Nahrungsergänzung? Unsere Phytopraktikerin Evelyn Gentsch nimmt sich Zeit für deine Fragen und gibt dir Wissen mit, das du zu Hause direkt umsetzen kannst.',
+    book('Beratung buchen') + tel('btn ghost', 'Anrufen'), 'lon')}
+<section class="bg-white" id="themen"><div class="wrap"><span class="eyebrow">Themen</span><h2>Worüber wir sprechen können</h2>
+<div class="grid g3" style="margin-top:24px">{themen}</div></div></section>
+<section id="wechseljahre"><div class="wrap narrow">{WECHSELJAHRE}</div></section>
+<section class="bg-white"><div class="wrap"><div class="split">
+<div><h2>So läuft es ab</h2>{schritte([
+    ('Fragebogen', ' Du füllst vorab einen kurzen Fragebogen aus.'),
+    ('Gespräch', ' 45 oder 60 Minuten über deine Fragen, deinen Alltag und das, was dir schmeckt.'),
+    ('Zusammenfassung', ' Du bekommst sie schriftlich, mit Pflanzen, Zubereitung und Bezugsquellen.')])}</div>
+<div class="box"><h3>Gut zu wissen</h3><p style="margin:0">Die Beratung ist Gesundheitsbildung und ersetzt keine ärztliche Untersuchung oder Behandlung. Evelyn stellt keine Diagnosen und behandelt keine Krankheiten. Wenn du Beschwerden hast, schwanger bist oder regelmäßig Medikamente nimmst, sprich bitte zuerst mit unserer Ärztin oder deiner Hausärztin. Bei UMI geht das unter einem Dach.</p></div>
+</div></div></section>
+<section><div class="wrap"><div class="grid g2">
+<div class="box"><h3>Kosten</h3><table class="price-table">
+<tr><td style="white-space:normal;font-weight:400">Pflanzenwissen-Gespräch, 60 Min., mit schriftlicher Zusammenfassung</td><td>{price('pflanzen_60')}</td></tr>
+<tr><td style="white-space:normal;font-weight:400">Pflanzenwissen-Gespräch, 45 Min.</td><td>{price('pflanzen_45')}</td></tr>
+<tr><td style="white-space:normal;font-weight:400">Folgegespräch, 30 Min.</td><td>{price('pflanzen_30')}</td></tr></table>
+<p class="small muted" style="margin:12px 0 0">Preise inkl. MwSt. Die Beratung ist keine ärztliche Leistung und wird in der Regel nicht von Krankenkassen erstattet. Kosten nennen wir dir gern vorab.</p></div>
+<div class="box"><h3>Passt gut dazu</h3><p>Die {a('longevity/supplement-analyse/', 'Supplement-Analyse')} zeigt, welche Nährstoffe dir fehlen. Der {a('longevity/check/', 'Longevity-Check')} zeigt, wo du gesundheitlich stehst.</p></div>
+</div></div></section>
+{team_mini(['gentsch'], True)}{fh}{gutschein_hinweis(True)}"""
+    return body, [fld]
+
+
 def reset():
     return paket(
         eyebrow="Premium · UMI Longevity", line="lon", du=True,
@@ -254,6 +298,9 @@ PAGES = [
     Page("longevity/supplement-analyse", "Mikronährstoffanalyse Stuttgart · UMI Longevity",
          "Supplement-Analyse bei UMI Stuttgart: Mikronährstoffstatus messen, eigene Präparate prüfen, schriftlicher Plan und Kontrolle nach 3 Monaten.",
          supplement, line="lon", nav="lon", crumbs=LON + [(None, "Supplement-Analyse")]),
+    Page("longevity/pflanzenwissen", "Pflanzenwissen: Beratung zu Heilpflanzen in Stuttgart · UMI Longevity",
+         "Heilpflanzen verstehen, sicher anwenden, selbst zubereiten: Beratung mit unserer Phytopraktikerin Evelyn Gentsch, auch zu den Wechseljahren. UMI Stuttgart.",
+         pflanzen, line="lon", nav="lon", crumbs=LON + [(None, "Pflanzenwissen")]),
     Page("longevity/apherese-reset", "Apherese Reset: Blutwäsche für Gesunde · UMI",
          "Apherese Reset in Stuttgart: zwei Sitzungen INUSpherese, Labor vorher und nachher, Eluat-Analyse, Auswertung. Ärztlich begleitet.",
          reset, line="lon", nav="lon", crumbs=LON + [(None, "Apherese Reset")]),
