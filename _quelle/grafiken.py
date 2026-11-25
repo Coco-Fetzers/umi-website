@@ -13,19 +13,21 @@ ALT = {
     "apherese": "Frau im Ledersessel während einer Apherese, Pfleger am Gerät", "ankommen": "Frau geht durch einen hellen Empfang",
     "gespraech": "Ärztin im Gespräch mit einem Patienten", "labor": "Pfleger mit Blutproben im Labor", "warten": "Mann mit Tee im Ledersessel am Fenster",
     "blutprobe": "Hand mit Blutröhrchen", "zuhoeren": "Ärztin hört aufmerksam zu", "blutdruck": "Ärztin misst den Blutdruck",
+    "hero": "Ärztin und Patient im Gespräch am Empfang", "tresen": "Ärztin berät einen Patienten am Empfang",
+    "beratung": "Beratung zu dritt mit Terminkalender", "beratung-nah": "Ärztin berät einen Patienten",
     "flur": "Heller Flur mit Olivenbaum", "wartebereich": "Wartebereich mit Ledersesseln und Pflanzen", "empfang": "Empfang mit Granittresen und Olivenbaum",
 }
 
-# Bild im Seitenkopf je Adresse. Team und Räume bleiben bewusst ohne Symbolbild.
+# Bild im Seitenkopf je Adresse.
 KOPFBILD = {
     "inuspherese-zentrum-stuttgart": "apherese", "medizin/apherese-programm": "apherese", "medizin/help-apherese": "apherese", "longevity/apherese-reset": "apherese",
     "medizin": "blutdruck", "internistische-sprechstunde": "blutdruck", "ganzheitliche-sprechstunde": "zuhoeren", "darmgesundheit": "zuhoeren",
-    "long-covid-sprechstunde": "gespraech", "sub-health-syndrom": "gespraech", "medizin/kinder": "wartebereich", "umweltmedizin": "labor",
+    "long-covid-sprechstunde": "beratung-nah", "sub-health-syndrom": "gespraech", "medizin/kinder": "wartebereich", "umweltmedizin": "labor",
     "labordiagnostik": "blutprobe", "energie-check": "blutprobe", "medizin/regenerationskuren": "wartebereich", "ganzkoerperhyperthermie": "wartebereich",
     "longevity": "ankommen", "longevity/check": "gespraech", "longevity/infusionen": "warten", "longevity/nad-infusion": "warten",
     "longevity/supplement-analyse": "labor", "longevity/regenerationskuren": "wartebereich", "longevity/preise": "empfang", "longevity/pflanzenwissen": "wartebereich",
-    "leistungen": "blutdruck", "gutscheine": "wartebereich", "einloesen": "wartebereich", "terminvereinbarung": "empfang", "ihr-besuch": "flur", "kosten": "gespraech",
-    "karriere-stellenangebote-jobs": "labor",
+    "leistungen": "blutdruck", "gutscheine": "wartebereich", "einloesen": "wartebereich", "terminvereinbarung": "beratung", "ihr-besuch": "flur", "kosten": "beratung-nah",
+    "karriere-stellenangebote-jobs": "labor", "ueber-uns": "tresen", "praxis": "empfang",
 }
 
 

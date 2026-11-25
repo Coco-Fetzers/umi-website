@@ -178,7 +178,7 @@ def start():
 <div class="grid g4" style="margin-top:28px">
 <div class="card"><span class="tag">01</span>{icon('gespraech')}<h3>Gespräch</h3><p>Ausführlich, mit Zeit für Ihre Geschichte und Ihre Fragen.</p>{foto('zuhoeren')}</div>
 <div class="card"><span class="tag">02</span>{icon('diagnostik')}<h3>Diagnostik</h3><p>Labor, Untersuchung und Messungen, die über den Routine-Check hinausgehen.</p>{foto('blutprobe')}</div>
-<div class="card"><span class="tag">03</span>{icon('plan')}<h3>Plan</h3><p>Ein schriftlicher Plan, auf Wunsch mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p>{foto('gespraech')}</div>
+<div class="card"><span class="tag">03</span>{icon('plan')}<h3>Plan</h3><p>Ein schriftlicher Plan, auf Wunsch mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p>{foto('beratung')}</div>
 <div class="card"><span class="tag">04</span>{icon('begleitung')}<h3>Begleitung</h3><p>Therapie, Kontrolle und Folgetermine, mit festen Ansprechpartnerinnen.</p>{foto('apherese')}</div>
 </div></div></section>
 
