@@ -13,7 +13,7 @@ def card(t, tag, n, d, p, more="Mehr erfahren →"):
 
 
 def longevity():
-    return f"""{hero('UMI Longevity', 'Wissen, wo du stehst. <em>Gezielt etwas tun.</em>',
+    return f"""{hero('UMI Longevity', 'Wissen, wo du stehst. Gezielt etwas tun.',
     'Für Gesunde, die verstehen wollen, wie es um ihre Gesundheit steht, und dranbleiben möchten. Ärztlich begleitet, mit Messwerten statt Versprechen und einem Plan, der zu deinem Alltag passt.',
     book('Longevity-Gespräch buchen') + a('longevity/preise/', 'Alle Preise', 'btn ghost'), 'lon')}
 <section class="bg-white" id="messen"><div class="wrap"><span class="eyebrow">Messen</span><h2>Wissen, wo du stehst</h2>

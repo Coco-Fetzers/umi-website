@@ -1,5 +1,6 @@
 """Wiederkehrende Bausteine für die Seiten."""
 from rahmen import a, book, shop, tel, faq, mark, price  # noqa: F401
+from grafiken import hero_bild
 import config as C
 
 
@@ -9,7 +10,7 @@ def hero(eyebrow, h1, lead, buttons="", line="dach", extra=""):
 <h1>{h1}</h1>
 <p class="lead">{lead}</p>{extra}
 <div class="btns">{buttons}</div></div>
-<div class="hero-mark">{mark(line if line in ('med', 'lon') else 'dach')}</div>
+<div class="hero-mark">{hero_bild(line) or mark('light')}</div>
 </div></section>"""
 
 

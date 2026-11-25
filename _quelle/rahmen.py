@@ -111,10 +111,10 @@ def faq(items, heading="Fragen und Antworten"):
 def mark(variant="dach", size=None):
     """UMI-Bildmarke (nachgezeichnet aus dem Linien-Design)."""
     cols = {
-        "dach": ("#A8B5A5", "#9B8C82", "#5F6770"),
-        "med": ("#BCC8CF", "#5F6770", "#6F8796"),
-        "lon": ("#6F806E", "#F7F3ED", "#3E454D"),
-        "light": ("#F7F3ED", "#F7F3ED", "#F7F3ED"),
+        "dach": ("#E08D5F", "#573B24", "#190301"),
+        "med": ("#E08D5F", "#573B24", "#693916"),
+        "lon": ("#FFB57F", "#E08D5F", "#D9774C"),
+        "light": ("#FFFFFF", "#FFFFFF", "#FFFFFF"),
     }[variant]
     s = f' width="{size}" height="{size}"' if size else ""
     return (f'<svg viewBox="0 0 100 100"{s} aria-hidden="true" focusable="false">'
@@ -155,7 +155,7 @@ def footer():
     y = C.JAHR
     return f"""<footer class="site-footer"><div class="wrap">
 <div class="cols">
-<div><a class="brand" href="{rel('')}" style="color:var(--shell)">{mark('light')}<div><b>UMI</b><span style="color:var(--mist)">Stuttgart</span></div></a>
+<div><a class="brand" href="{rel('')}">{mark('dach')}<div><b>UMI</b><span>Stuttgart</span></div></a>
 <p class="small" style="margin-top:16px">{C.NAME_LANG}<br>{C.STRASSE}<br>{C.PLZ} {C.ORT_LANG}</p>
 <p class="small">Telefon {tel()}<br>E-Mail <a href="mailto:{C.MAIL}">{C.MAIL}</a></p></div>
 <div><h4>UMI Medizin</h4><ul>
@@ -253,12 +253,12 @@ def render(page):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{page.desc}">
 <link rel="icon" href="{rel('assets/img/favicon.svg')}" type="image/svg+xml">
-<link rel="preload" href="{rel('assets/fonts/hanken-grotesk-regular.woff2')}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{rel('assets/fonts/season-sans-vf.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{rel('assets/css/umi.css')}">
-<meta name="theme-color" content="#F7F3ED">
+<meta name="theme-color" content="#FBF9F4">
 {ld_html}
 </head>
-<body class="{page.line}">
+<body class="{page.line}{' home' if page.path == '' else ''}">
 <a class="skip" href="#inhalt">Zum Inhalt springen</a>
 {header(page)}
 <main id="inhalt">
@@ -334,8 +334,8 @@ def main():
         redirect(o, n)
     extras(pages)
     with open(os.path.join(ROOT, "assets/img/favicon.svg"), "w") as f:
-        f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#F7F3ED"/>'
-                '<circle cx="52" cy="27" r="11" fill="#3E454D"/><path d="M12 33 C30 38 44 44 52 46 C62 42 78 32 94 22 C76 40 60 60 54 97 C46 66 30 46 12 33 Z" fill="#3E454D"/></svg>')
+        f.write('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#FBF9F4"/>'
+                '<circle cx="52" cy="27" r="11" fill="#190301"/><path d="M12 33 C30 38 44 44 52 46 C62 42 78 32 94 22 C76 40 60 60 54 97 C46 66 30 46 12 33 Z" fill="#190301"/></svg>')
     print(f"{len(pages)} Seiten erzeugt ({'LIVE' if LIVE else 'Vorschau, noindex'}).")
 
 

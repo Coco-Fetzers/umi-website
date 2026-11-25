@@ -1,6 +1,7 @@
 """Seiten unter dem Dach UMI Stuttgart (Ansprache: Sie)."""
 from rahmen import Page, a, book, shop, tel, faq, mark, price
 from bausteine import hero, liste, schritte, a_img
+from grafiken import kreislauf, icon, bild_img, hero_bild, foto
 import config as C
 
 GUTSCHEINE_G = [
@@ -48,10 +49,10 @@ def gutscheine():
     body = f"""
 <section class="hero"><div class="wrap"><div>
 {{{{CRUMBS}}}}<span class="eyebrow">Wertgutscheine von UMI Stuttgart</span>
-<h1>Schenken Sie <em>Zeit für Gesundheit.</em></h1>
+<h1>Schenken Sie Zeit für Gesundheit.</h1>
 <p class="lead">Wertgutscheine ab 150 €, einlösbar für alle Leistungen von UMI Stuttgart und drei Jahre gültig. Sofort per E-Mail oder als Karte in unserer Praxis in Stuttgart-Vaihingen.</p>
 <div class="btns">{shop()}{a('#kaufen', 'So kaufen Sie', 'btn ghost')}</div></div>
-<div class="hero-mark">{mark('lon')}</div></div></section>
+<div class="hero-mark">{hero_bild('dach') or mark('light')}</div></div></section>
 
 <section class="bg-white" id="werte"><div class="wrap">
 <span class="eyebrow">Karte „Zeit für dich“</span>
@@ -79,7 +80,7 @@ def gutscheine():
 <p class="small muted" style="margin-top:12px">Welche Leistung passt, besprechen wir in Ruhe im ärztlichen Gespräch.</p></div>
 <div id="kaufen"><h2>So kaufen Sie</h2>
 {schritte([
-    ('Online', ' Betrag und Motiv wählen, bezahlen, PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else '<i>Der Online-Verkauf startet in Kürze.</i>')),
+    ('Online', ' Betrag und Motiv wählen, bezahlen, PDF kommt sofort per E-Mail. ' + ('' if C.GUTSCHEIN_SHOP else 'Der Online-Verkauf startet in Kürze.')),
     ('In der Praxis', f' Gedruckte Karte mit Umschlag am Empfang, {C.OEFFNUNGSZEITEN}.'),
     ('Am Telefon', f' Rufen Sie uns an unter {tel()}. Wir schicken den Gutschein per Post oder legen ihn zur Abholung bereit.'),
 ])}
@@ -141,14 +142,19 @@ def gutscheinbedingungen():
 
 def start():
     return f"""
-<section class="hero" style="padding-bottom:40px"><div class="wrap" style="display:block">
+<section class="hero hero-start">{bild_img('hero')}<div class="wrap">
 <span class="eyebrow">Privatpraxis in Stuttgart-Vaihingen · seit 2023 INUSpherese-Zentrum</span>
-<h1 style="max-width:900px">Medizin, die nach Ursachen sucht. <em>Und dich gesund begleitet.</em></h1>
+<h1>Medizin, die nach Ursachen sucht. <span class="soft">Und dich gesund begleitet.</span></h1>
 <p class="lead">UMI Stuttgart verbindet gründliche Diagnostik mit Verfahren, die es in der Region sonst kaum gibt. Für Menschen mit anhaltenden Beschwerden und für alle, die gesund bleiben wollen.</p>
+<div class="btns">{book()}{a('ueber-uns/', 'Team kennenlernen', 'btn ghost')}</div>
+<ul class="facts"><li><b>INUSpherese-Zentrum</b>Zertifizierter Partner seit 2023</li><li><b>Dialyse-Erfahrung</b>Team mit langjähriger Praxis</li><li><b>Privatpraxis</b>Privat, Beihilfe und Selbstzahler</li></ul>
+</div></section>
+
+<section><div class="wrap"><h2>Zwei Wege zu uns. <span class="soft">Ein Team, das zuhört.</span></h2>
 <div class="doors">
-<a class="door med" href="{a_rel('medizin/')}"><span class="line-name">UMI Medizin</span><h2>Ich habe Beschwerden</h2>
+<a class="door med" href="{a_rel('medizin/')}">{bild_img('zuhoeren', alt='')}<span class="line-name">UMI Medizin</span><h2>Ich habe Beschwerden</h2>
 <p>Gründliche Abklärung, wenn die Werte normal sind und es Ihnen trotzdem nicht gut geht. Mit Apherese, Wärmetherapie und Naturheilkunde.</p><span class="go">Ursachen finden →</span></a>
-<a class="door lon" href="{a_rel('longevity/')}"><span class="line-name">UMI Longevity</span><h2>Ich will gesund bleiben</h2>
+<a class="door lon" href="{a_rel('longevity/')}">{bild_img('warten', alt='')}<span class="line-name">UMI Longevity</span><h2>Ich will gesund bleiben</h2>
 <p>Messen, verstehen, gezielt etwas tun. Ärztlich, ohne Versprechen, mit einem Plan, der zu deinem Alltag passt.</p><span class="go">Wissen, wo du stehst →</span></a>
 </div></div></section>
 
@@ -168,22 +174,22 @@ def start():
 
 <section><div class="wrap"><span class="eyebrow">So arbeiten wir</span><h2>Zuhören, genau hinschauen, gemeinsam planen</h2>
 <div class="grid g4" style="margin-top:28px">
-<div class="card"><span class="tag">1</span><h3>Gespräch</h3><p>Ausführlich, mit Zeit für Ihre Geschichte und Ihre Fragen.</p></div>
-<div class="card"><span class="tag">2</span><h3>Diagnostik</h3><p>Labor, Untersuchung und Messungen, die über den Routine-Check hinausgehen.</p></div>
-<div class="card"><span class="tag">3</span><h3>Plan</h3><p>Ein schriftlicher Plan, auf Wunsch mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p></div>
-<div class="card"><span class="tag">4</span><h3>Begleitung</h3><p>Therapie, Kontrolle und Folgetermine, mit festen Ansprechpartnerinnen.</p></div>
+<div class="card"><span class="tag">01</span>{icon('gespraech')}<h3>Gespräch</h3><p>Ausführlich, mit Zeit für Ihre Geschichte und Ihre Fragen.</p>{foto('zuhoeren')}</div>
+<div class="card"><span class="tag">02</span>{icon('diagnostik')}<h3>Diagnostik</h3><p>Labor, Untersuchung und Messungen, die über den Routine-Check hinausgehen.</p>{foto('blutprobe')}</div>
+<div class="card"><span class="tag">03</span>{icon('plan')}<h3>Plan</h3><p>Ein schriftlicher Plan, auf Wunsch mit Kostenvoranschlag. Sie entscheiden in Ruhe.</p>{foto('gespraech')}</div>
+<div class="card"><span class="tag">04</span>{icon('begleitung')}<h3>Begleitung</h3><p>Therapie, Kontrolle und Folgetermine, mit festen Ansprechpartnerinnen.</p>{foto('apherese')}</div>
 </div></div></section>
 
-<section class="bg-white"><div class="wrap"><span class="eyebrow">Unser Team</span><h2>Ärztin, Heilpraktikerin und Fachkräfte mit Apherese-Erfahrung</h2>
-<div class="team" style="margin-top:28px">{start_team()}</div>
-<p style="margin-top:20px">{a('ueber-uns/', 'Alle im Team kennenlernen')}</p></div></section>
+<section class="bg-white"><div class="wrap team-split"><div><span class="eyebrow">Unser Team</span><h2>Ärztin, Heilpraktikerin und Fachkräfte <span class="soft">mit Apherese-Erfahrung</span></h2>
+<div class="btns">{a('ueber-uns/', 'Alle im Team kennenlernen', 'btn dark')}</div></div>
+<div class="team">{start_team()}</div></div></section>
 
 <section><div class="wrap"><div class="split">
 <div><span class="eyebrow">Ihr Besuch bei uns</span><h2>Mitten in Stuttgart-Vaihingen</h2>
 <p>{C.STRASSE}<br>{C.PLZ} Stuttgart</p><p>{C.OEFFNUNGSZEITEN}</p>
 <p>Telefon {tel()}<br>E-Mail <a href="mailto:{C.MAIL}">{C.MAIL}</a></p>
 <div class="btns">{a('ihr-besuch/', 'Anfahrt und Ablauf', 'btn ghost')}{book()}</div></div>
-<div class="box"><h3>Wir sind eine Privatpraxis</h3><p>Wir behandeln Privatversicherte, Beihilfeberechtigte und Selbstzahler. Zu den Kosten geben wir Ihnen vorab gern Auskunft, auf Wunsch auch als schriftlichen Kostenvoranschlag.</p><p style="margin:0">{a('kosten/', 'Kosten und Erstattung')}</p></div>
+<div>{foto('flur')}<div class="box"><h3>Wir sind eine Privatpraxis</h3><p>Wir behandeln Privatversicherte, Beihilfeberechtigte und Selbstzahler. Zu den Kosten geben wir Ihnen vorab gern Auskunft, auf Wunsch auch als schriftlichen Kostenvoranschlag.</p><p style="margin:0">{a('kosten/', 'Kosten und Erstattung')}</p></div></div>
 </div></div></section>"""
 
 
@@ -201,18 +207,7 @@ def start_team():
 
 
 def schema_svg():
-    return """<svg viewBox="0 0 560 300" role="img" aria-label="Schema der Apherese: Blut wird entnommen, das Plasma abgetrennt und gefiltert und gereinigt zurückgegeben" style="width:100%;height:auto;font-family:'Hanken Grotesk',sans-serif">
-<rect x="0" y="0" width="560" height="300" fill="#FFFFFF"/>
-<g fill="#5F6770"><circle cx="70" cy="110" r="18"/><path d="M40 140 h60 v70 h-14 v60 h-12 v-60 h-8 v60 h-12 v-60 h-14z"/></g>
-<path d="M100 150 C150 150 160 80 210 80" fill="none" stroke="#9B8C82" stroke-width="5"/>
-<rect x="210" y="50" width="110" height="60" rx="12" fill="#EBE1D3"/><text x="265" y="78" text-anchor="middle" font-size="15" fill="#3E454D" font-weight="600">Plasma-</text><text x="265" y="96" text-anchor="middle" font-size="15" fill="#3E454D" font-weight="600">abtrennung</text>
-<path d="M320 80 C360 80 360 80 380 80" fill="none" stroke="#9B8C82" stroke-width="5"/>
-<rect x="380" y="50" width="130" height="60" rx="12" fill="#A8B5A5"/><text x="445" y="78" text-anchor="middle" font-size="15" fill="#3E454D" font-weight="600">Filter</text><text x="445" y="96" text-anchor="middle" font-size="13" fill="#3E454D">INUSpherese / H.E.L.P.</text>
-<path d="M445 110 L445 150" stroke="#9B8C82" stroke-width="3" stroke-dasharray="5 5"/><rect x="390" y="150" width="110" height="40" rx="10" fill="#F7F3ED" stroke="#9B8C82"/><text x="445" y="175" text-anchor="middle" font-size="13" fill="#3E454D">Eluat-Analyse</text>
-<path d="M380 100 C330 200 200 230 100 200" fill="none" stroke="#6F806E" stroke-width="5"/>
-<text x="230" y="258" text-anchor="middle" font-size="14" fill="#6F806E" font-weight="600">gefiltertes Plasma zurück</text>
-<text x="160" y="58" text-anchor="middle" font-size="14" fill="#5F6770">Blut</text>
-</svg>"""
+    return kreislauf()
 
 
 # ------------------------------------------------------------ Kosten
@@ -361,7 +356,7 @@ def team():
 
 def praxis():
     rooms = ["Empfang", "Wartezimmer", "Behandlungszimmer", "Infusionsraum", "INUSpherese-Raum", "Praxis"]
-    tiles = "".join(f'<div class="person"><div class="ph" style="aspect-ratio:3/2;font-size:20px;font-family:var(--sans)">Foto folgt</div><div class="tx"><h3>{r}</h3></div></div>' for r in rooms)
+    tiles = "".join(f'<div class="person"><div class="ph" style="aspect-ratio:3/2;font-size:18px;font-family:var(--sans)">Foto folgt</div><div class="tx"><h3>{r}</h3></div></div>' for r in rooms)
     return f"""{hero('Unsere Räume', 'Ruhige Räume für Gespräch und Behandlung',
     'Unsere Praxis in Stuttgart-Vaihingen hat eigene Räume für Gespräche, Infusionen, Wärmetherapie und Apherese. Hier ein erster Eindruck.',
     a('ihr-besuch/', 'Ihr Besuch bei uns', 'btn') + book('Termin buchen', 'btn ghost'))}

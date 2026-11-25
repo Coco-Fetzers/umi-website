@@ -7,7 +7,7 @@ Neue, statische Website für [umi-stuttgart.de](https://umi-stuttgart.de): reine
 | Ordner / Datei | Inhalt |
 | --- | --- |
 | `index.html`, `medizin/`, `longevity/`, `gutscheine/` … | die fertigen Seiten, eine `index.html` je Adresse. Die alten Adressen (z. B. `/inuspherese-zentrum-stuttgart/`) bleiben gleich. |
-| `assets/` | Schriften (Hanken Grotesk, Cormorant Garamond, selbst gehostet), Farben und Layout (`css/umi.css`), Bilder, Skript |
+| `assets/` | Schriften (Season Mix, Season Sans, selbst gehostet), Farben und Layout (`css/umi.css`), Bilder, Skript |
 | `_quelle/` | Werkzeug, das die Seiten erzeugt. Wird **nicht** auf den Server hochgeladen. |
 | `_quelle/config.py` | **Preise, Doctolib-Link, Gutschein-Shop, Kontakt, Öffnungszeiten** an einer Stelle |
 | `_quelle/seiten_*.py` | Texte der Seiten (Dach, Medizin, Longevity) |

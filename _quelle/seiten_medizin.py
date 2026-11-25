@@ -2,6 +2,7 @@
 from rahmen import Page, a, book, tel, faq, price
 from bausteine import hero, liste, schritte, paket, team_mini, gutschein_hinweis, kosten_box, a_img
 from seiten_dach import schema_svg
+from grafiken import filterprinzip, foto
 import config as C
 
 MED = [("medizin/", "UMI Medizin")]
@@ -319,7 +320,7 @@ def apherese():
 <span class="eyebrow">Teil 2</span><h2>Was die INUSpherese® aus dem Plasma filtert</h2>
 <div class="split"><div><p>Viele Stoffe im Blut schwimmen nicht frei, sondern sind an große Eiweiße und Fette gebunden. Genau hier setzt der Filter an. Er lässt kleine Bestandteile wie Wasser, Salze und die meisten Nährstoffe durch und hält größere Moleküle zurück, und mit ihnen vieles, was daran gebunden ist.</p>
 <p>Anders als beim Plasmaaustausch verlieren Sie dabei keine nennenswerten Mengen an Elektrolyten oder lebenswichtigen Eiweißen.</p></div>
-<div class="svg-schema">{schema_svg()}</div></div>
+<div class="svg-schema">{filterprinzip()}</div></div>
 <h3 style="margin-top:36px">In Studien gemessen</h3>
 <div class="stoffe">{t2}</div>
 <div class="box" style="margin-top:20px"><h3>Was der Filter außerdem zurückhalten kann</h3>
@@ -331,7 +332,7 @@ def apherese():
 
 <section class="bg-dark" id="eluat"><div class="wrap"><div class="split">
 <div><span class="eyebrow" style="color:var(--euca)">Eluat-Analyse</span><h2 style="color:var(--shell)">Ihre Werte vorher. Ihre Werte nachher. Und was dazwischen im Filter geblieben ist.</h2></div>
-<div><p>Was der Filter zurückhält, kann ein Labor untersuchen. So sehen Sie schwarz auf weiß, was aus Ihrem Plasma gefiltert wurde. Die Ergebnisse dokumentieren wir, damit wir den Verlauf vergleichen und weitere Behandlungen gezielt planen können.</p></div>
+<div><p>Was der Filter zurückhält, kann ein Labor untersuchen. So sehen Sie schwarz auf weiß, was aus Ihrem Plasma gefiltert wurde. Die Ergebnisse dokumentieren wir, damit wir den Verlauf vergleichen und weitere Behandlungen gezielt planen können.</p>{foto('labor')}</div>
 </div></div></section>
 
 <section class="bg-white" id="fuer-wen"><div class="wrap"><div class="split wide">
@@ -345,7 +346,7 @@ def apherese():
 </div></div></section>
 
 <section id="ablauf"><div class="wrap"><div class="split">
-<div><h2>So läuft es ab</h2>{schritte([
+<div><h2>So läuft es ab</h2><div class="svg-schema" style="margin-bottom:32px">{schema_svg()}</div>{schritte([
     ('Erstgespräch', ' Vorgeschichte, Beschwerden, Ziele und mögliche Gegenanzeigen. Die ärztliche Aufklärung findet mindestens 24 Stunden vor der ersten Behandlung statt, bei weiter Anreise auch telefonisch.'),
     ('Labor vorher', ' Wir messen die Werte, auf die es in Ihrem Fall ankommt.'),
     ('Zwei Behandlungen', ' Sie liegen bequem, über beide Armbeugen wird je ein Zugang gelegt. Etwa 2 bis 3 Stunden, unser Team ist die ganze Zeit bei Ihnen. Meist zwei Behandlungen innerhalb von fünf Tagen, mit mindestens einem Tag Pause dazwischen.'),
